@@ -5,9 +5,10 @@
 - Front-end Delphi  com template bootstrap
 - Todo código vai ser disponibilizado no nosso GitHub
 
+
 ## ▶️ Conhecendo as ferramentas e frameworks utilizados
 - [XData | API REST](https://www.youtube.com/watch?v=cwb6_SKbB6A)
-- [TMS Web Core + Bootstrap](https://www.youtube.com/watch?v=79AkYTLvHLM)  
+
  
 
 ## ▶️ Vídeos de criação do projeto no Youtube
