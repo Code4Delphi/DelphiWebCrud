@@ -4,6 +4,9 @@ interface
 
 uses
   System.SysUtils,
+  System.Generics.Collections,
+  Data.DB,
+  FireDAC.Stan.Param,
   XData.Server.Module,
   XData.Service.Common,
   ClientesService,
@@ -17,6 +20,7 @@ type
     FDM: TDatabaseDM;
     function GetNome(Id: Integer): string;
     function Get(const AId: Integer): TCliente;
+    function List: TList<TCliente>;
   public
     constructor Create;
     destructor Destroy; override;
@@ -66,6 +70,37 @@ begin
   Result.Limite := FDM.QClienteslimite.AsFloat;
   Result.Porcentagem := FDM.QClientesporcentagem.AsInteger;
   Result.Ativo := FDM.QClientesativo.AsString = 'S';
+end;
+
+function TClientesService.List: TList<TCliente>;
+var
+  LClienteObj: TCliente;
+begin
+  Result := TList<TCliente>.Create;
+
+  FDM.QClientes.Close;
+  FDM.QClientes.SQL.Text := 'select * from clientes';
+  FDM.QClientes.Open;
+
+  if FDM.QClientes.IsEmpty then
+    Exit;
+
+  FDM.QClientes.First;
+  while not FDM.QClientes.Eof do
+  begin
+    LClienteObj := TCliente.Create;
+    LClienteObj.Id := FDM.QClientesid.AsInteger;
+    LClienteObj.IdCidade := FDM.QClientesid_cidade.AsInteger;
+    LClienteObj.Nome := FDM.QClientesnome.AsString;
+    LClienteObj.Profissao := FDM.QClientesprofissao.AsString;
+    LClienteObj.Limite := FDM.QClienteslimite.AsFloat;
+    LClienteObj.Porcentagem := FDM.QClientesporcentagem.AsInteger;
+    LClienteObj.Ativo := FDM.QClientesativo.AsString = 'S';
+
+    Result.Add(LClienteObj);
+
+    FDM.QClientes.Next;
+  end;
 end;
 
 initialization

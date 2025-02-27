@@ -3,6 +3,7 @@ unit ClientesService;
 interface
 
 uses
+  System.Generics.Collections,
   XData.Service.Common,
   Clientes.Entity;
 
@@ -14,6 +15,8 @@ type
     function GetNome(Id: Integer): string;
     [HttpGet, Route('{Id}')]
     function Get(const Id: Integer): TCliente;
+    [HttpGet, Route('')]
+    function List: TList<TCliente>;
   end;
 
 implementation

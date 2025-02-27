@@ -1,7 +1,7 @@
 object ServerMainView: TServerMainView
   Left = 0
   Top = 0
-  Caption = 'Web com Delphi - CRUD - v1.0.0'
+  Caption = 'Web com Delphi - CRUD - v1.2.0'
   ClientHeight = 265
   ClientWidth = 557
   Color = clBtnFace
