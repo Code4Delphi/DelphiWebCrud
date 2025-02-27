@@ -7,7 +7,8 @@ uses
   XData.Server.Module,
   XData.Service.Common,
   ClientesService,
-  Database.DM;
+  Database.DM,
+  Clientes.Entity;
 
 type
   [ServiceImplementation]
@@ -15,6 +16,7 @@ type
   private
     FDM: TDatabaseDM;
     function GetNome(Id: Integer): string;
+    function Get(const AId: Integer): TCliente;
   public
     constructor Create;
     destructor Destroy; override;
@@ -44,6 +46,26 @@ begin
     raise Exception.Create('Cliente não encontrado');
 
   Result := FDM.QClientesnome.AsString;
+end;
+
+function TClientesService.Get(const AId: Integer): TCliente;
+begin
+  FDM.QClientes.Close;
+  FDM.QClientes.SQL.Text := 'select * from clientes where id = :ID';
+  FDM.QClientes.ParamByName('ID').AsInteger := AId;
+  FDM.QClientes.Open;
+
+  if FDM.QClientes.IsEmpty then
+    raise Exception.Create('Cliente não encontrado');
+
+  Result := TCliente.Create;
+  Result.Id := FDM.QClientesid.AsInteger;
+  Result.IdCidade := FDM.QClientesid_cidade.AsInteger;
+  Result.Nome := FDM.QClientesnome.AsString;
+  Result.Profissao := FDM.QClientesprofissao.AsString;
+  Result.Limite := FDM.QClienteslimite.AsFloat;
+  Result.Porcentagem := FDM.QClientesporcentagem.AsInteger;
+  Result.Ativo := FDM.QClientesativo.AsString = 'S';
 end;
 
 initialization
