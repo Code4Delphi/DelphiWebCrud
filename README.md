@@ -13,3 +13,4 @@
 
 ## ▶️ Vídeos de criação do projeto no Youtube
 - [Delphi Web #01 - Apresentação e início da criação do back-end](https://www.youtube.com/watch?v=qrFUxkFV0vQ&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=1)
+- [Delphi Web #02 - Endpoint | Verbo Get | Get e List | Consultando dados na API](https://www.youtube.com/watch?v=j5RoRTDNx3o&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=2)
