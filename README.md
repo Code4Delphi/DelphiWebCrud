@@ -4,7 +4,11 @@
 - Com a regra de negocio toda no back-end 
 - Front-end Delphi  com template bootstrap
 - Todo código vai ser disponibilizado no nosso GitHub
+
+## ▶️ Conhecendo as ferramentas e frameworks utilizados
+- [XData | API REST](https://www.youtube.com/watch?v=cwb6_SKbB6A)
+- [TMS Web Core + Bootstrap](https://www.youtube.com/watch?v=79AkYTLvHLM)  
  
 
-## ▶️ Vídeos de criação do projeto ho Youtube
+## ▶️ Vídeos de criação do projeto no Youtube
 - [Delphi Web #01 - Apresentação e início da criação do back-end](https://www.youtube.com/watch?v=qrFUxkFV0vQ&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=1)
