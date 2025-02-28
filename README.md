@@ -21,7 +21,7 @@
 
 ## 📞 Contatos
 
-<p align="left">
+<div align="left">
   <a href="https://t.me/Code4Delphi" target="_blank">
     <img src="https://img.shields.io/badge/Telegram-Join%20Channel-blue?logo=telegram">
   </a> 
@@ -34,11 +34,11 @@
     <img src="https://img.shields.io/badge/LinkedIn-Follow-blue?logo=LinkedIn&logoColor=blue">
   </a>  
   &nbsp;
-  <a href="https://go.hotmart.com/U81331747Y?dp=1" target="_blank">
-    <img src="https://img.shields.io/badge/Course-Open%20Tools%20API-F00?logo=delphi">
+  <a href="http://code4delphi.com.br/blog/" target="_blank">
+    <img src="https://img.shields.io/badge/Blog-Code4Delphi-F00?logo=delphi">
   </a>   
   &nbsp;
   <a href="mailto:contato@code4delphi.com.br" target="_blank">
     <img src="https://img.shields.io/badge/E--mail-Send-yellowgreen?logo=maildotru&logoColor=yellowgreen">
   </a>
-</p> 
+</div> 
