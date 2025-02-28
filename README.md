@@ -21,24 +21,9 @@
 
 ## 📞 Contatos
 
-<div align="left">
-  <a href="https://t.me/Code4Delphi" target="_blank">
-    <img src="https://img.shields.io/badge/Telegram-Join%20Channel-blue?logo=telegram">
-  </a> 
-  &nbsp;
-  <a href="https://www.youtube.com/@code4delphi" target="_blank">
-    <img src="https://img.shields.io/badge/YouTube-Join%20Channel-red?logo=youtube&logoColor=red">
-  </a>
-  &nbsp;
-  <a href="https://www.linkedin.com/in/cesar-cardoso-dev" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-Follow-blue?logo=LinkedIn&logoColor=blue">
-  </a>  
-  &nbsp;
-  <a href="http://code4delphi.com.br/blog/" target="_blank">
-    <img src="https://img.shields.io/badge/Blog-Code4Delphi-F00?logo=delphi">
-  </a>   
-  &nbsp;
-  <a href="mailto:contato@code4delphi.com.br" target="_blank">
-    <img src="https://img.shields.io/badge/E--mail-Send-yellowgreen?logo=maildotru&logoColor=yellowgreen">
-  </a>
-</div> 
+[![Telegram](https://img.shields.io/badge/Telegram-Join%20Channel-blue?logo=telegram)](https://www.instagram.com/code4delphi/)
+[![Instagram](https://img.shields.io/badge/Intagram-Follow%20Channel-red?logo=instagram&logoColor=pink)](https://www.instagram.com/code4delphi/)
+[![YouTube](https://img.shields.io/badge/YouTube-Join%20Channel-red?logo=youtube&logoColor=red)](https://www.youtube.com/@code4delphi)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://www.linkedin.com/in/cesar-cardoso-dev)
+[![Blog](https://img.shields.io/badge/Blog-Code4Delphi-F00?logo=delphi)](https://www.linkedin.com/in/cesar-cardoso-dev)
+[![E-mail](https://img.shields.io/badge/E--mail-Send-yellowgreen?logo=maildotru&logoColor=yellowgreen)](mailto:contato@code4delphi.com.br)
