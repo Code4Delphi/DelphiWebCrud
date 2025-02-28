@@ -19,7 +19,7 @@
 
 <br/>
 
-## 📞 Contacts
+## 📞 Contatos
 
 <p align="left">
   <a href="https://t.me/Code4Delphi" target="_blank">
