@@ -4,6 +4,7 @@ interface
 
 uses
   System.SysUtils,
+  System.StrUtils,
   System.Generics.Collections,
   Data.DB,
   FireDAC.Stan.Param,
@@ -21,6 +22,7 @@ type
     function GetNome(Id: Integer): string;
     function Get(const AId: Integer): TCliente;
     function List: TList<TCliente>;
+    function Post(ACliente: TCliente): Integer;
   public
     constructor Create;
     destructor Destroy; override;
@@ -101,6 +103,23 @@ begin
 
     FDM.QClientes.Next;
   end;
+end;
+
+function TClientesService.Post(ACliente: TCliente): Integer;
+begin
+  FDM.QClientes.SQL.Text := 'select * from clientes where 1 = 2';
+  FDM.QClientes.Open;
+
+  FDM.QClientes.Append;
+  FDM.QClientesid_cidade.AsInteger := ACliente.IdCidade;
+  FDM.QClientesnome.AsString := ACliente.Nome;
+  FDM.QClientesprofissao.AsString := ACliente.Profissao;
+  FDM.QClienteslimite.AsFloat := ACliente.Limite;
+  FDM.QClientesporcentagem.AsInteger := ACliente.Porcentagem;
+  FDM.QClientesativo.AsString := IfThen(ACliente.Ativo, 'S', 'N');
+  FDM.QClientes.Post;
+
+  Result := FDM.QClientesid.AsInteger;
 end;
 
 initialization

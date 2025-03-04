@@ -17,6 +17,8 @@ type
     function Get(const Id: Integer): TCliente;
     [HttpGet, Route('')]
     function List: TList<TCliente>;
+    [HttpPost, Route('')]
+    function Post(ACliente: TCliente): Integer;
   end;
 
 implementation

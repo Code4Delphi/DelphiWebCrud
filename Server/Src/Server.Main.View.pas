@@ -70,7 +70,11 @@ begin
   btnStart.Enabled := not btnStop.Enabled;
 
   if XDataDM.SparkleHttpSysDispatcher1.Active then
-    mmLog.Lines.Add('Servidor iniciado em: ' + Self.GetServerBaseUrl)
+  begin
+    mmLog.Lines.Add('Servidor iniciado em:');
+    mmLog.Lines.Add(Self.GetServerBaseUrl);
+    mmLog.Lines.Add(Self.GetServerBaseUrl + '/ClientesService/');
+  end
   else
     mmLog.Lines.Add('Servidor parado');
 end;
