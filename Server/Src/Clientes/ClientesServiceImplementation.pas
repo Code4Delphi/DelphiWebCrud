@@ -23,6 +23,8 @@ type
     function Get(const AId: Integer): TCliente;
     function List: TList<TCliente>;
     function Post(ACliente: TCliente): Integer;
+    procedure Update(Id: Integer; ACliente: TCliente);
+    procedure Delete(Id: Integer);
   public
     constructor Create;
     destructor Destroy; override;
@@ -120,6 +122,37 @@ begin
   FDM.QClientes.Post;
 
   Result := FDM.QClientesid.AsInteger;
+end;
+
+procedure TClientesService.Update(Id: Integer; ACliente: TCliente);
+begin
+  FDM.QClientes.SQL.Text := 'select * from clientes where id = :ID';
+  FDM.QClientes.ParamByName('ID').AsInteger := Id;
+  FDM.QClientes.Open;
+
+  if FDM.QClientes.IsEmpty then
+    raise Exception.Create('Cliente não encontrado na base de dados');
+
+  FDM.QClientes.Edit;
+  FDM.QClientesid_cidade.AsInteger := ACliente.IdCidade;
+  FDM.QClientesnome.AsString := ACliente.Nome;
+  FDM.QClientesprofissao.AsString := ACliente.Profissao;
+  FDM.QClienteslimite.AsFloat := ACliente.Limite;
+  FDM.QClientesporcentagem.AsInteger := ACliente.Porcentagem;
+  FDM.QClientesativo.AsString := IfThen(ACliente.Ativo, 'S', 'N');
+  FDM.QClientes.Post;
+end;
+
+procedure TClientesService.Delete(Id: Integer);
+begin
+  FDM.QClientes.SQL.Text := 'select * from clientes where id = :ID';
+  FDM.QClientes.ParamByName('ID').AsInteger := Id;
+  FDM.QClientes.Open;
+
+  if FDM.QClientes.IsEmpty then
+    raise Exception.Create('Cliente não encontrado na base de dados');
+
+  FDM.QClientes.Delete;
 end;
 
 initialization

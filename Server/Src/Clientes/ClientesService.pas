@@ -19,6 +19,10 @@ type
     function List: TList<TCliente>;
     [HttpPost, Route('')]
     function Post(ACliente: TCliente): Integer;
+    [HttpPut, Route('{id}')]
+    procedure Update(Id: Integer; ACliente: TCliente);
+    [HttpDelete, Route('{id}')]
+    procedure Delete(Id: Integer);
   end;
 
 implementation
