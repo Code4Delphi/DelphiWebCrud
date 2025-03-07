@@ -17,6 +17,7 @@
 - [Delphi Web #01 - Apresentação e início da criação do back-end](https://www.youtube.com/watch?v=qrFUxkFV0vQ&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=1)
 - [Delphi Web #02 - Endpoint | Verbo Get | Get e List | Consultando dados na API](https://www.youtube.com/watch?v=j5RoRTDNx3o&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=2)
 - [Delphi Web #03 - Inserindo dados na API Rest | Verbos HTTP Post, Put e Delete | Postman](https://www.youtube.com/watch?v=dt23lMZmLpw&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=3)
+- [Delphi Web #04 - Finalizando API + Documentação Swagger + Middlewares](https://www.youtube.com/watch?v=wx0PkzMm2Zw&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=4)
 
 <br/>
 
