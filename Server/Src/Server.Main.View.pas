@@ -13,16 +13,19 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
   Vcl.StdCtrls,
-  XData.DM;
+  XData.DM,
+  ShellAPI;
 
 type
   TServerMainView = class(TForm)
     btnStart: TButton;
     btnStop: TButton;
     mmLog: TMemo;
+    btnSwaggerDocumentacao: TButton;
     procedure btnStartClick(Sender: TObject);
     procedure btnStopClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure btnSwaggerDocumentacaoClick(Sender: TObject);
   private
     procedure AtualizarTela;
     function GetServerBaseUrl: string;
@@ -77,6 +80,11 @@ begin
   end
   else
     mmLog.Lines.Add('Servidor parado');
+end;
+
+procedure TServerMainView.btnSwaggerDocumentacaoClick(Sender: TObject);
+begin
+   ShellExecute(Handle, 'open', PChar(Self.GetServerBaseUrl + '/swaggerui'), nil, nil, SW_SHOWNORMAL);
 end;
 
 end.

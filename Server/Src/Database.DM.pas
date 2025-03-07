@@ -39,6 +39,7 @@ type
     QClienteslimite: TFloatField;
     QClientesporcentagem: TIntegerField;
     QClientesativo: TWideStringField;
+    procedure DataModuleCreate(Sender: TObject);
   private
 
   public
@@ -53,5 +54,11 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+procedure TDatabaseDM.DataModuleCreate(Sender: TObject);
+begin
+  FDConnection1.Connected := False;
+  FDConnection1.Params.Database := '..\..\DB\Code4DTeste.db';
+end;
 
 end.

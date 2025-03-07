@@ -5,7 +5,7 @@ interface
 uses
   System.Generics.Collections,
   XData.Service.Common,
-  Clientes.Entity;
+  Clientes.DTO;
 
 type
   [ServiceContract]

@@ -10,12 +10,14 @@ uses
   XData.Server.Module,
   Sparkle.Comp.Server,
   Sparkle.Comp.HttpSysDispatcher,
-  XData.Comp.Server;
+  XData.Comp.Server, Sparkle.Comp.CompressMiddleware, Sparkle.Comp.CorsMiddleware;
 
 type
   TXDataDM = class(TDataModule)
     XDataServer1: TXDataServer;
     SparkleHttpSysDispatcher1: TSparkleHttpSysDispatcher;
+    XDataServer1CORS: TSparkleCorsMiddleware;
+    XDataServer1Compress: TSparkleCompressMiddleware;
   private
 
   public

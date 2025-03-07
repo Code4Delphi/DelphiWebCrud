@@ -40,4 +40,13 @@ object ServerMainView: TServerMainView
     ScrollBars = ssVertical
     TabOrder = 2
   end
+  object btnSwaggerDocumentacao: TButton
+    Left = 336
+    Top = 16
+    Width = 193
+    Height = 25
+    Caption = 'Abrir documenta'#231#227'o Swagger'
+    TabOrder = 3
+    OnClick = btnSwaggerDocumentacaoClick
+  end
 end

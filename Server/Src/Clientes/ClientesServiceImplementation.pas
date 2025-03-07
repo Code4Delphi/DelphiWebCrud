@@ -12,7 +12,7 @@ uses
   XData.Service.Common,
   ClientesService,
   Database.DM,
-  Clientes.Entity;
+  Clientes.DTO;
 
 type
   [ServiceImplementation]
