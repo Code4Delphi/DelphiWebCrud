@@ -54,7 +54,7 @@ end;
 procedure TLoginView.edtSenhaKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
-    btnEntrar.SetFocus;
+    btnEntrar.Click;
 end;
 
 procedure TLoginView.btnEntrarClick(Sender: TObject);
