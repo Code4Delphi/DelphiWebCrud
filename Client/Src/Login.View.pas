@@ -3,8 +3,17 @@ unit Login.View;
 interface
 
 uses
-  System.SysUtils, System.Classes, JS, Web, WEBLib.Graphics, WEBLib.Controls,
-  WEBLib.Forms, WEBLib.Dialogs, Vcl.StdCtrls, WEBLib.StdCtrls, Vcl.Controls;
+  System.SysUtils,
+  System.Classes,
+  JS,
+  Web,
+  WEBLib.Graphics,
+  WEBLib.Controls,
+  WEBLib.Forms,
+  WEBLib.Dialogs,
+  Vcl.StdCtrls,
+  WEBLib.StdCtrls,
+  Vcl.Controls;
 
 type
   TLoginView = class(TWebForm)
@@ -18,9 +27,9 @@ type
     procedure btnEntrarClick(Sender: TObject);
     procedure WebFormShow(Sender: TObject);
   private
-    { Private declarations }
+
   public
-    { Public declarations }
+
   end;
 
 var
@@ -63,6 +72,7 @@ begin
     Exit;
   end;
 
+  Self.Close;
 end;
 
 end.

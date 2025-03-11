@@ -43957,6 +43957,41 @@ rtl.module("WEBLib.Forms",["System","Classes","Types","SysUtils","WEBLib.Graphic
     $mod.Application = $mod.TApplication.$create("Create$1",[null]);
   };
 },["WEBLib.Dialogs","WEBLib.WebTools","WEBLib.JSON","WEBLib.Utils","Math"]);
+rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","WEBLib.Controls","WEBLib.Forms","WEBLib.Dialogs"],function () {
+  "use strict";
+  var $mod = this;
+  rtl.createClass(this,"TMainView",pas["WEBLib.Forms"].TForm,function () {
+    this.$init = function () {
+      pas["WEBLib.Forms"].TForm.$init.call(this);
+      this.FLogado = false;
+    };
+    this.WebFormCreate = function (Sender) {
+      this.FLogado = false;
+    };
+    this.WebFormShow = function (Sender) {
+      if (!this.FLogado) this.ChamarLogin();
+    };
+    this.ChamarLogin = async function () {
+    };
+    this.LoadDFMValues = function () {
+      pas["WEBLib.Forms"].TCustomForm.LoadDFMValues.call(this);
+      try {
+        this.SetName("MainView");
+        this.SetWidth(640);
+        this.SetHeight(480);
+        this.SetEvent(this,"OnCreate","WebFormCreate");
+        this.SetEvent(this,"OnShow","WebFormShow");
+      } finally {
+      };
+    };
+    rtl.addIntf(this,pas["WEBLib.Controls"].IControl);
+    rtl.addIntf(this,pas.System.IUnknown);
+    var $r = this.$rtti;
+    $r.addMethod("WebFormCreate",0,[["Sender",pas.System.$rtti["TObject"]]]);
+    $r.addMethod("WebFormShow",0,[["Sender",pas.System.$rtti["TObject"]]]);
+  });
+  this.MainView = null;
+});
 rtl.module("WEBLib.StdCtrls",["System","Classes","WEBLib.Controls","SysUtils","Web","WEBLib.Graphics","Types","WEBLib.WebTools","WEBLib.Forms","WEBLib.Menus"],function () {
   "use strict";
   var $mod = this;
@@ -49075,6 +49110,7 @@ rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphi
         this.edtSenha.SetFocus();
         return;
       };
+      this.Close();
     };
     this.WebFormShow = function (Sender) {
       this.edtLogin.SetFocus();
@@ -49168,49 +49204,6 @@ rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphi
     $r.addMethod("WebFormShow",0,[["Sender",pas.System.$rtti["TObject"]]]);
   });
   this.LoginView = null;
-});
-rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","WEBLib.Controls","WEBLib.Forms","WEBLib.Dialogs","Login.View"],function () {
-  "use strict";
-  var $mod = this;
-  rtl.createClass(this,"TMainView",pas["WEBLib.Forms"].TForm,function () {
-    this.$init = function () {
-      pas["WEBLib.Forms"].TForm.$init.call(this);
-      this.FLogado = false;
-    };
-    this.WebFormCreate = function (Sender) {
-      this.FLogado = false;
-    };
-    this.WebFormShow = function (Sender) {
-    };
-    this.ChamarLogin = async function () {
-      var LLoginView = null;
-      LLoginView = pas["Login.View"].TLoginView.$create("Create$1",[this]);
-      LLoginView.FPopup = false;
-      await LLoginView.Load();
-      try {
-        await LLoginView.Execute();
-      } finally {
-        LLoginView = rtl.freeLoc(LLoginView);
-      };
-    };
-    this.LoadDFMValues = function () {
-      pas["WEBLib.Forms"].TCustomForm.LoadDFMValues.call(this);
-      try {
-        this.SetName("MainView");
-        this.SetWidth(640);
-        this.SetHeight(480);
-        this.SetEvent(this,"OnCreate","WebFormCreate");
-        this.SetEvent(this,"OnShow","WebFormShow");
-      } finally {
-      };
-    };
-    rtl.addIntf(this,pas["WEBLib.Controls"].IControl);
-    rtl.addIntf(this,pas.System.IUnknown);
-    var $r = this.$rtti;
-    $r.addMethod("WebFormCreate",0,[["Sender",pas.System.$rtti["TObject"]]]);
-    $r.addMethod("WebFormShow",0,[["Sender",pas.System.$rtti["TObject"]]]);
-  });
-  this.MainView = null;
 });
 rtl.module("program",["System","WEBLib.Forms","WEBLib.Forms","Main.View","Login.View"],function () {
   "use strict";

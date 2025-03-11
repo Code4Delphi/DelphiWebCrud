@@ -10,8 +10,7 @@ uses
   WEBLib.Graphics,
   WEBLib.Controls,
   WEBLib.Forms,
-  WEBLib.Dialogs,
-  Login.View;
+  WEBLib.Dialogs;
 
 type
   TMainView = class(TWebForm)
@@ -39,27 +38,28 @@ end;
 
 procedure TMainView.WebFormShow(Sender: TObject);
 begin
-  //if not FLogado then
-  //  Self.ChamarLogin;
+  if not FLogado then
+    Self.ChamarLogin;
 end;
 
 procedure TMainView.ChamarLogin;
-var
-  LLoginView: TLoginView;
 begin
-  LLoginView := TLoginView.Create(Self);
-  LLoginView.Popup := False;
-  // used to manage Back button handling to close subform
-  //window.location.hash := 'subform';
-
-  // load file HTML template + controls
-  TAwait.ExecP<TLoginView>(LLoginView.Load());
-  try
-    // excute form and wait for close
-    TAwait.ExecP<TModalResult>(LLoginView.Execute);
-  finally
-    LLoginView.Free;
-  end;
+//var
+//  LLoginView: TLoginView;
+//begin
+//  LLoginView := TLoginView.Create(Self);
+//  LLoginView.Popup := False;
+//  // used to manage Back button handling to close subform
+//  //window.location.hash := 'subform';
+//
+//  // load file HTML template + controls
+//  TAwait.ExecP<TLoginView>(LLoginView.Load());
+//  try
+//    // excute form and wait for close
+//    TAwait.ExecP<TModalResult>(LLoginView.Execute);
+//  finally
+//    LLoginView.Free;
+//  end;
 end;
 
 end.
