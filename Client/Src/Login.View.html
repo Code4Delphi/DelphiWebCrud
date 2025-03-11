@@ -50,19 +50,19 @@
   <body class="login-page bg-body-secondary">
     <div class="login-box">
       <div class="login-logo">
-        <a href="../index2.html"><b>Admin</b>LTE</a>
+        <a href="#"><b>Delphi</b>Web</a>
       </div>
       <!-- /.login-logo -->
       <div class="card">
         <div class="card-body login-card-body">
-          <p class="login-box-msg">Sign in to start your session</p>
+          <p class="login-box-msg" id="pTitulo">Sign in to start your session</p>
           <form action="../index3.html" method="post">
             <div class="input-group mb-3">
-              <input type="email" class="form-control" placeholder="Email" />
+              <input type="text" class="form-control" placeholder="Login" id="edtLogin"/>
               <div class="input-group-text"><span class="bi bi-envelope"></span></div>
             </div>
             <div class="input-group mb-3">
-              <input type="password" class="form-control" placeholder="Password" />
+              <input type="password" class="form-control" placeholder="Senha" id="edtSenha" />
               <div class="input-group-text"><span class="bi bi-lock-fill"></span></div>
             </div>
             <!--begin::Row-->
@@ -70,13 +70,13 @@
               <div class="col-8">
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                  <label class="form-check-label" for="flexCheckDefault"> Remember Me </label>
+                  <label class="form-check-label" for="flexCheckDefault"> Lembre-me </label>
                 </div>
               </div>
               <!-- /.col -->
               <div class="col-4">
                 <div class="d-grid gap-2">
-                  <button type="submit" class="btn btn-primary">Sign In</button>
+                  <button type="submit" class="btn btn-primary" id="btnEntrar">Entrar</button>
                 </div>
               </div>
               <!-- /.col -->
