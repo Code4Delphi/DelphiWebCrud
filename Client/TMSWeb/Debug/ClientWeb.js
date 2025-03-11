@@ -49073,7 +49073,7 @@ rtl.module("WEBLib.StdCtrls",["System","Classes","WEBLib.Controls","SysUtils","W
     return Result;
   };
 });
-rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","WEBLib.Controls","WEBLib.Forms","WEBLib.Dialogs","WEBLib.StdCtrls","WEBLib.StdCtrls","WEBLib.Controls"],function () {
+rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","WEBLib.Controls","WEBLib.Forms","WEBLib.Dialogs","WEBLib.StdCtrls","WEBLib.StdCtrls","WEBLib.Controls","Main.View"],function () {
   "use strict";
   var $mod = this;
   rtl.createClass(this,"TLoginView",pas["WEBLib.Forms"].TForm,function () {
@@ -49100,6 +49100,7 @@ rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphi
       if (Key.get() === "\r") this.btnEntrar.SetFocus();
     };
     this.btnEntrarClick = function (Sender) {
+      var LMainView = null;
       if (this.edtLogin.GetText() !== "admin") {
         pas["WEBLib.Dialogs"].ShowMessage("Login inválido");
         this.edtLogin.SetFocus();
@@ -49110,7 +49111,8 @@ rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphi
         this.edtSenha.SetFocus();
         return;
       };
-      this.Close();
+      LMainView = pas["Main.View"].TMainView.$create("CreateNew$2");
+      LMainView.ShowModal();
     };
     this.WebFormShow = function (Sender) {
       this.edtLogin.SetFocus();
@@ -49220,10 +49222,10 @@ rtl.module("program",["System","WEBLib.Forms","WEBLib.Forms","Main.View","Login.
   $mod.$main = function () {
     pas["WEBLib.Forms"].Application.Initialize();
     pas["WEBLib.Forms"].Application.FMainFormOnTaskBar = true;
-    pas["WEBLib.Forms"].Application.CreateForm(pas["Main.View"].TMainView,{p: pas["Main.View"], get: function () {
-        return this.p.MainView;
+    pas["WEBLib.Forms"].Application.CreateForm(pas["Login.View"].TLoginView,{p: pas["Login.View"], get: function () {
+        return this.p.LoginView;
       }, set: function (v) {
-        this.p.MainView = v;
+        this.p.LoginView = v;
       }});
     pas["WEBLib.Forms"].Application.Run();
   };

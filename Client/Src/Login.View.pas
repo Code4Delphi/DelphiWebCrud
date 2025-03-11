@@ -13,7 +13,8 @@ uses
   WEBLib.Dialogs,
   Vcl.StdCtrls,
   WEBLib.StdCtrls,
-  Vcl.Controls;
+  Vcl.Controls,
+  Main.View;
 
 type
   TLoginView = class(TWebForm)
@@ -57,6 +58,8 @@ begin
 end;
 
 procedure TLoginView.btnEntrarClick(Sender: TObject);
+var
+  LMainView: TMainView;
 begin
   if edtLogin.Text <> 'admin' then
   begin
@@ -72,7 +75,8 @@ begin
     Exit;
   end;
 
-  Self.Close;
+  LMainView := TMainView.CreateNew;
+  LMainView.ShowModal;
 end;
 
 end.
