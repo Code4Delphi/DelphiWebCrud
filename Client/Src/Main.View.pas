@@ -39,8 +39,8 @@ end;
 
 procedure TMainView.WebFormShow(Sender: TObject);
 begin
-  if not FLogado then
-    Self.ChamarLogin;
+  //if not FLogado then
+  //  Self.ChamarLogin;
 end;
 
 procedure TMainView.ChamarLogin;

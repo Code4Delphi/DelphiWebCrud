@@ -49181,7 +49181,6 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
       this.FLogado = false;
     };
     this.WebFormShow = function (Sender) {
-      if (!this.FLogado) this.ChamarLogin();
     };
     this.ChamarLogin = async function () {
       var LLoginView = null;
@@ -49228,10 +49227,10 @@ rtl.module("program",["System","WEBLib.Forms","WEBLib.Forms","Main.View","Login.
   $mod.$main = function () {
     pas["WEBLib.Forms"].Application.Initialize();
     pas["WEBLib.Forms"].Application.FMainFormOnTaskBar = true;
-    pas["WEBLib.Forms"].Application.CreateForm(pas["Login.View"].TLoginView,{p: pas["Login.View"], get: function () {
-        return this.p.LoginView;
+    pas["WEBLib.Forms"].Application.CreateForm(pas["Main.View"].TMainView,{p: pas["Main.View"], get: function () {
+        return this.p.MainView;
       }, set: function (v) {
-        this.p.LoginView = v;
+        this.p.MainView = v;
       }});
     pas["WEBLib.Forms"].Application.Run();
   };
