@@ -49097,20 +49097,10 @@ rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphi
       if (Key.get() === "\r") this.edtSenha.SetFocus();
     };
     this.edtSenhaKeyPress = function (Sender, Key) {
-      if (Key.get() === "\r") this.btnEntrar.SetFocus();
+      if (Key.get() === "\r") this.btnEntrar.Click();
     };
     this.btnEntrarClick = function (Sender) {
       var LMainView = null;
-      if (this.edtLogin.GetText() !== "admin") {
-        pas["WEBLib.Dialogs"].ShowMessage("Login inválido");
-        this.edtLogin.SetFocus();
-        return;
-      };
-      if (this.edtSenha.GetText() !== "admin") {
-        pas["WEBLib.Dialogs"].ShowMessage("Senha inválida");
-        this.edtSenha.SetFocus();
-        return;
-      };
       LMainView = pas["Main.View"].TMainView.$create("CreateNew$2");
       LMainView.ShowModal();
     };
