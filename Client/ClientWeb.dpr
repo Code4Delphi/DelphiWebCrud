@@ -1,5 +1,9 @@
 program ClientWeb;
 
+
+
+{$R *.dres}
+
 uses
   Vcl.Forms,
   WEBLib.Forms,

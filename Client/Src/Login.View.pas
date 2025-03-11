@@ -42,7 +42,7 @@ implementation
 
 procedure TLoginView.WebFormShow(Sender: TObject);
 begin
-  edtLogin.SetFocus
+  edtLogin.SetFocus ;
 end;
 
 procedure TLoginView.edtLoginKeyPress(Sender: TObject; var Key: Char);
