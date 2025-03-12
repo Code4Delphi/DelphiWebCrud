@@ -73,7 +73,7 @@ begin
     ShowMessage('Senha inválida');
     edtSenha.SetFocus;
     Exit;
-  end;    }
+  end; }
 
   LMainView := TMainView.CreateNew;
   LMainView.ShowModal;
