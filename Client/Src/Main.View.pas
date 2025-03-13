@@ -44,22 +44,28 @@ type
     TMSFNCDataGridDatabaseAdapter1: TTMSFNCDataGridDatabaseAdapter;
     pnBotoes: TWebPanel;
     btnGetNome: TWebButton;
-    WebButton1: TWebButton;
-    ListMemo: TWebMemo;
+    btnList01: TWebButton;
+    btnList02: TWebButton;
+    btnList03: TWebButton;
+    XDataWebDataSet1Id: TIntegerField;
+    XDataWebDataSet1Nome: TStringField;
+    XDataWebDataSet1Profissao: TStringField;
+    XDataWebDataSet1Limite: TFloatField;
+    XDataWebDataSet1Porcentagem: TIntegerField;
+    XDataWebDataSet1Ativo: TStringField;
     procedure aWarningClick(Sender: TObject);
     procedure aErrorClick(Sender: TObject);
     procedure aInformationClick(Sender: TObject);
     procedure aConfirmationClick(Sender: TObject);
     procedure aCustomClick(Sender: TObject);
     procedure btnGetNomeClick(Sender: TObject);
-    procedure XDataWebClient1Load(Response: TXDataClientResponse);
     procedure XDataWebClient1Error(Error: TXDataClientError);
-    procedure WebButton1Click(Sender: TObject);
+    procedure btnList01Click(Sender: TObject);
+     [Async]
+    procedure btnList02Click(Sender: TObject);
   private
-    [Async]
     procedure SuccessProcGetNome(Response: TXDataClientResponse);
-    [Async]
-    procedure SuccessProcList(Response: TXDataClientResponse);
+    procedure CarregarClientes;
   public
 
   end;
@@ -106,45 +112,45 @@ begin
   btnGetNome.Caption := TJSJson.stringify(Response.Result);
 end;
 
-procedure TMainView.XDataWebClient1Load(Response: TXDataClientResponse);
-begin
-  if Response.RequestId = 'list' then
-    ListMemo.Lines.Text := TJSJson.stringify(Response.Result)
-
-  //btnGetNome.Caption := TJSJson.stringify(Response.Result);
-
-//  if Response.RequestId = 'get' then
-//    btnBuscar.Caption := TJSJson.stringify(Response.Result);
-//  else
-//  if Response.RequestId = 'list' then
-//    ListMemo.Lines.Text := TJSJson.stringify(Response.Result)
-//  else
-//  if Response.RequestId = 'post' then
-//    ShowInfo(Format('New entity created in %s collection.', [SelectedEntitySet]))
-//  else
-//  if Response.RequestId = 'put' then
-//    ShowInfo(Format('Entity updated in %s collection.', [SelectedEntitySet]))
-//  else
-//  if Response.RequestId = 'delete' then
-//    ShowInfo(Format('Entity removed from %s collection.', [SelectedEntitySet]));
-end;
-
 procedure TMainView.XDataWebClient1Error(Error: TXDataClientError);
 begin
+//   ListMemo.Lines.Text := Format('%s. RequestId: %s. Code: %s. Request Url: %s',
+//    [Error.ErrorMessage, Error.RequestId, Error.ErrorCode, Error.RequestUrl]);
+
   MessageDlg(Format('%s. RequestId: %s. Code: %s. Request Url: %s',
     [Error.ErrorMessage, Error.RequestId, Error.ErrorCode, Error.RequestUrl]),
     mtError, []
   );
 end;
 
-procedure TMainView.WebButton1Click(Sender: TObject);
+procedure TMainView.btnList01Click(Sender: TObject);
 begin
-  XDataWebClient1.List('ClientesService', '');
+  Self.CarregarClientes;
 end;
 
-procedure TMainView.SuccessProcList(Response: TXDataClientResponse);
+procedure TMainView.CarregarClientes;
+  procedure OnSuccess(Response: TXDataClientResponse);
+  begin
+    //ListMemo.Lines.Text := TJSJson.stringify(Response.Result);
+    XDataWebDataset1.Close;
+    XDataWebDataset1.SetJsonData(TJSObject(Response.Result)['value']);
+    XDataWebDataset1.Open;
+  end;
 begin
-  ListMemo.Lines.Text := TJSJson.stringify(Response.Result)
+  XDataWebClient1.RawInvoke('IClientesService.List', [], @OnSuccess);
+end;
+
+procedure TMainView.btnList02Click(Sender: TObject);
+var
+  Response: TXDataClientResponse;
+  GreetResult: string;
+begin
+  Response := await(XDataWebClient1.RawInvokeAsync('IClientesService.List', []));
+  GreetResult := string(TJSObject(Response.Result)['value']);
+
+  XDataWebDataSet1.Close;
+  XDataWebDataset1.SetJsonData(TJSObject(Response.Result)['value']);
+  XDataWebDataset1.Open;
 end;
 
 end.
