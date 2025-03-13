@@ -45,6 +45,7 @@ type
     pnBotoes: TWebPanel;
     btnGetNome: TWebButton;
     WebButton1: TWebButton;
+    ListMemo: TWebMemo;
     procedure aWarningClick(Sender: TObject);
     procedure aErrorClick(Sender: TObject);
     procedure aInformationClick(Sender: TObject);
@@ -55,8 +56,10 @@ type
     procedure XDataWebClient1Error(Error: TXDataClientError);
     procedure WebButton1Click(Sender: TObject);
   private
-    procedure SuccessProc(Response: TXDataClientResponse);
-
+    [Async]
+    procedure SuccessProcGetNome(Response: TXDataClientResponse);
+    [Async]
+    procedure SuccessProcList(Response: TXDataClientResponse);
   public
 
   end;
@@ -95,17 +98,20 @@ end;
 
 procedure TMainView.btnGetNomeClick(Sender: TObject);
 begin
-  XDataWebClient1.RawInvoke('IClientesService.GetNome', [4], @SuccessProc);
+  XDataWebClient1.RawInvoke('IClientesService.GetNome', [4], @SuccessProcGetNome);
 end;
 
-procedure TMainView.SuccessProc(Response: TXDataClientResponse);
+procedure TMainView.SuccessProcGetNome(Response: TXDataClientResponse);
 begin
-  btnBuscar.Caption := TJSJson.stringify(Response.Result);
+  btnGetNome.Caption := TJSJson.stringify(Response.Result);
 end;
 
 procedure TMainView.XDataWebClient1Load(Response: TXDataClientResponse);
 begin
-  btnBuscar.Caption := TJSJson.stringify(Response.Result);
+  if Response.RequestId = 'list' then
+    ListMemo.Lines.Text := TJSJson.stringify(Response.Result)
+
+  //btnGetNome.Caption := TJSJson.stringify(Response.Result);
 
 //  if Response.RequestId = 'get' then
 //    btnBuscar.Caption := TJSJson.stringify(Response.Result);
@@ -133,7 +139,12 @@ end;
 
 procedure TMainView.WebButton1Click(Sender: TObject);
 begin
-  //
+  XDataWebClient1.List('ClientesService', '');
+end;
+
+procedure TMainView.SuccessProcList(Response: TXDataClientResponse);
+begin
+  ListMemo.Lines.Text := TJSJson.stringify(Response.Result)
 end;
 
 end.

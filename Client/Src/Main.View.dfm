@@ -69,6 +69,11 @@ object MainView: TMainView
         Column = 0
         Row = 0
         Control = TMSFNCDataGrid1
+      end
+      item
+        Column = 0
+        Row = 0
+        Control = ListMemo
       end>
     Color = clWhite
     Layout = <
@@ -628,6 +633,18 @@ object MainView: TMainView
       RowCount = 1
       Stroke.Color = clDarkgray
     end
+    object ListMemo: TWebMemo
+      Left = 380
+      Top = 0
+      Width = 588
+      Height = 217
+      Anchors = []
+      HeightPercent = 100.000000000000000000
+      SelLength = 0
+      SelStart = 0
+      TabOrder = 2
+      WidthPercent = 100.000000000000000000
+    end
   end
   object TMSFNCDataGridDatabaseAdapter1: TTMSFNCDataGridDatabaseAdapter
     Left = 536
@@ -657,7 +674,6 @@ object MainView: TMainView
       HeightPercent = 100.000000000000000000
       WidthPercent = 100.000000000000000000
       OnClick = btnGetNomeClick
-      ExplicitHeight = 49
     end
     object WebButton1: TWebButton
       Left = 97
@@ -665,9 +681,9 @@ object MainView: TMainView
       Width = 97
       Height = 33
       Align = alLeft
-      Caption = 'GetNome'
+      Caption = 'List'
       ChildOrder = 1
-      ElementID = 'btnBuscar'
+      ElementID = 'btnList'
       HeightPercent = 100.000000000000000000
       WidthPercent = 100.000000000000000000
       OnClick = WebButton1Click
