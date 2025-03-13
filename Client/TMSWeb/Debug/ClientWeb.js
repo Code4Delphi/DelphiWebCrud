@@ -43979,6 +43979,7 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
         this.SetName("MainView");
         this.SetWidth(586);
         this.SetHeight(453);
+        this.SetCaption("DelphiWeb - Home");
         this.SetEvent(this,"OnCreate","WebFormCreate");
         this.SetEvent(this,"OnShow","WebFormShow");
       } finally {
@@ -49127,6 +49128,7 @@ rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphi
         this.SetName("LoginView");
         this.SetWidth(618);
         this.SetHeight(467);
+        this.SetCaption("DelphiWeb - Login");
         this.SetEvent(this,"OnCreate","WebFormCreate");
         this.SetEvent(this,"OnShow","WebFormShow");
         this.WebLabel1.SetParentComponent(this);
