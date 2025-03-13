@@ -43977,8 +43977,8 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
       pas["WEBLib.Forms"].TCustomForm.LoadDFMValues.call(this);
       try {
         this.SetName("MainView");
-        this.SetWidth(640);
-        this.SetHeight(480);
+        this.SetWidth(586);
+        this.SetHeight(453);
         this.SetEvent(this,"OnCreate","WebFormCreate");
         this.SetEvent(this,"OnShow","WebFormShow");
       } finally {
@@ -49107,6 +49107,10 @@ rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphi
     this.WebFormShow = function (Sender) {
       this.edtLogin.SetFocus();
     };
+    this.WebFormCreate = function (Sender) {
+      pas["WEBLib.Forms"].Application.FThemeColor = 7171437;
+      pas["WEBLib.Forms"].Application.FThemed = true;
+    };
     this.LoadDFMValues = function () {
       pas["WEBLib.Forms"].TCustomForm.LoadDFMValues.call(this);
       this.WebLabel1 = pas["WEBLib.StdCtrls"].TLabel.$create("Create$2",["pTitulo"]);
@@ -49123,6 +49127,7 @@ rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphi
         this.SetName("LoginView");
         this.SetWidth(618);
         this.SetHeight(467);
+        this.SetEvent(this,"OnCreate","WebFormCreate");
         this.SetEvent(this,"OnShow","WebFormShow");
         this.WebLabel1.SetParentComponent(this);
         this.WebLabel1.SetName("WebLabel1");
@@ -49194,6 +49199,7 @@ rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphi
     $r.addMethod("edtSenhaKeyPress",0,[["Sender",pas.System.$rtti["TObject"]],["Key",rtl.char,1]]);
     $r.addMethod("btnEntrarClick",0,[["Sender",pas.System.$rtti["TObject"]]]);
     $r.addMethod("WebFormShow",0,[["Sender",pas.System.$rtti["TObject"]]]);
+    $r.addMethod("WebFormCreate",0,[["Sender",pas.System.$rtti["TObject"]]]);
   });
   this.LoginView = null;
 });

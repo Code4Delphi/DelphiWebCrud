@@ -194,7 +194,7 @@
   }
 }
 
-body {
+body, .divBody {
   margin: 0;
   font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
@@ -13794,6 +13794,22 @@ body:not(.app-loaded) .app-footer {
   body:not(.app-loaded) .app-sidebar,
   body:not(.app-loaded) .app-main,
   body:not(.app-loaded) .app-footer {
+    transition: none;
+  }
+}
+
+.divBody:not(.app-loaded) .app-header,
+.divBody:not(.app-loaded) .app-sidebar,
+.divBody:not(.app-loaded) .app-main,
+.divBody:not(.app-loaded) .app-footer {
+  transition: none !important;
+  animation-duration: 0s !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .divBody:not(.app-loaded) .app-header,
+  .divBody:not(.app-loaded) .app-sidebar,
+  .divBody:not(.app-loaded) .app-main,
+  .divBody:not(.app-loaded) .app-footer {
     transition: none;
   }
 }

@@ -1,6 +1,7 @@
 object LoginView: TLoginView
   Width = 618
   Height = 467
+  OnCreate = WebFormCreate
   OnShow = WebFormShow
   object WebLabel1: TWebLabel
     Left = 224

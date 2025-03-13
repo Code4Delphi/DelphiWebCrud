@@ -27,6 +27,7 @@ type
     procedure edtSenhaKeyPress(Sender: TObject; var Key: Char);
     procedure btnEntrarClick(Sender: TObject);
     procedure WebFormShow(Sender: TObject);
+    procedure WebFormCreate(Sender: TObject);
   private
 
   public
@@ -39,6 +40,12 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TLoginView.WebFormCreate(Sender: TObject);
+begin
+  Application.ThemeColor := clGrayText;
+  Application.Themed := True;
+end;
 
 procedure TLoginView.WebFormShow(Sender: TObject);
 begin
@@ -63,14 +70,14 @@ var
 begin
  { if edtLogin.Text <> 'admin' then
   begin
-    ShowMessage('Login inválido');
+    MessageDlg('Login inválido', mtWarning, []);
     edtLogin.SetFocus;
     Exit;
   end;
 
   if edtSenha.Text <> 'admin' then
   begin
-    ShowMessage('Senha inválida');
+    MessageDlg('Senha inválida', mtWarning, []);
     edtSenha.SetFocus;
     Exit;
   end; }

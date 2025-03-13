@@ -1,6 +1,6 @@
 object MainView: TMainView
-  Width = 640
-  Height = 480
+  Width = 586
+  Height = 453
   OnCreate = WebFormCreate
   OnShow = WebFormShow
 end

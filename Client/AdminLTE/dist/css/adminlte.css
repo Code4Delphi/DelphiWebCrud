@@ -13798,6 +13798,22 @@ body:not(.app-loaded) .app-footer {
   }
 }
 
+.divBody:not(.app-loaded) .app-header,
+.divBody:not(.app-loaded) .app-sidebar,
+.divBody:not(.app-loaded) .app-main,
+.divBody:not(.app-loaded) .app-footer {
+  transition: none !important;
+  animation-duration: 0s !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .divBody:not(.app-loaded) .app-header,
+  .divBody:not(.app-loaded) .app-sidebar,
+  .divBody:not(.app-loaded) .app-main,
+  .divBody:not(.app-loaded) .app-footer {
+    transition: none;
+  }
+}
+
 .hold-transition .app-header,
 .hold-transition .app-sidebar,
 .hold-transition .app-main,
