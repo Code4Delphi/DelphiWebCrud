@@ -68,7 +68,7 @@ procedure TLoginView.btnEntrarClick(Sender: TObject);
 var
   LMainView: TMainView;
 begin
- { if edtLogin.Text <> 'admin' then
+  if edtLogin.Text <> 'admin' then
   begin
     MessageDlg('Login inválido', mtWarning, []);
     edtLogin.SetFocus;
@@ -80,7 +80,7 @@ begin
     MessageDlg('Senha inválida', mtWarning, []);
     edtSenha.SetFocus;
     Exit;
-  end; }
+  end;
 
   LMainView := TMainView.CreateNew;
   LMainView.ShowModal;

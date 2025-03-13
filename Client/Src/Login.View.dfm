@@ -34,6 +34,7 @@ object LoginView: TLoginView
     ChildOrder = 1
     ElementID = 'edtLogin'
     HeightPercent = 100.000000000000000000
+    Text = 'admin'
     WidthPercent = 100.000000000000000000
     OnKeyPress = edtLoginKeyPress
   end
@@ -45,6 +46,7 @@ object LoginView: TLoginView
     ChildOrder = 2
     ElementID = 'edtSenha'
     HeightPercent = 100.000000000000000000
+    Text = 'admin'
     WidthPercent = 100.000000000000000000
     OnKeyPress = edtSenhaKeyPress
   end

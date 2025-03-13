@@ -10,16 +10,21 @@ uses
   WEBLib.Graphics,
   WEBLib.Controls,
   WEBLib.Forms,
-  WEBLib.Dialogs;
+  WEBLib.Dialogs, Vcl.Controls, Vcl.StdCtrls, WEBLib.StdCtrls;
 
 type
   TMainView = class(TWebForm)
-    procedure WebFormCreate(Sender: TObject);
-    procedure WebFormShow(Sender: TObject);
+    aError: TWebLabel;
+    aWarning: TWebLabel;
+    aInformation: TWebLabel;
+    aConfirmation: TWebLabel;
+    aCustom: TWebLabel;
+    procedure aWarningClick(Sender: TObject);
+    procedure aErrorClick(Sender: TObject);
+    procedure aInformationClick(Sender: TObject);
+    procedure aConfirmationClick(Sender: TObject);
+    procedure aCustomClick(Sender: TObject);
   private
-    FLogado: Boolean;
-    [Async]
-    procedure ChamarLogin;
   public
 
   end;
@@ -31,35 +36,29 @@ implementation
 
 {$R *.dfm}
 
-procedure TMainView.WebFormCreate(Sender: TObject);
+procedure TMainView.aWarningClick(Sender: TObject);
 begin
-  FLogado := False;
+  MessageDlg('Mensagem mtWarning', mtWarning, []);
 end;
 
-procedure TMainView.WebFormShow(Sender: TObject);
+procedure TMainView.aErrorClick(Sender: TObject);
 begin
-  if not FLogado then
-    Self.ChamarLogin;
+  MessageDlg('Mensagem mtError', mtError, []);
 end;
 
-procedure TMainView.ChamarLogin;
+procedure TMainView.aInformationClick(Sender: TObject);
 begin
-//var
-//  LLoginView: TLoginView;
-//begin
-//  LLoginView := TLoginView.Create(Self);
-//  LLoginView.Popup := False;
-//  // used to manage Back button handling to close subform
-//  //window.location.hash := 'subform';
-//
-//  // load file HTML template + controls
-//  TAwait.ExecP<TLoginView>(LLoginView.Load());
-//  try
-//    // excute form and wait for close
-//    TAwait.ExecP<TModalResult>(LLoginView.Execute);
-//  finally
-//    LLoginView.Free;
-//  end;
+  MessageDlg('Mensagem mtInformation', mtInformation, []);
+end;
+
+procedure TMainView.aConfirmationClick(Sender: TObject);
+begin
+  MessageDlg('Mensagem mtConfirmation', mtConfirmation, [mbYes, mbNo, mbCancel]);
+end;
+
+procedure TMainView.aCustomClick(Sender: TObject);
+begin
+  MessageDlg('Mensagem mtCustom', mtCustom, [mbAbort, mbRetry, mbClose]);
 end;
 
 end.

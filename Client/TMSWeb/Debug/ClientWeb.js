@@ -43957,42 +43957,6 @@ rtl.module("WEBLib.Forms",["System","Classes","Types","SysUtils","WEBLib.Graphic
     $mod.Application = $mod.TApplication.$create("Create$1",[null]);
   };
 },["WEBLib.Dialogs","WEBLib.WebTools","WEBLib.JSON","WEBLib.Utils","Math"]);
-rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","WEBLib.Controls","WEBLib.Forms","WEBLib.Dialogs"],function () {
-  "use strict";
-  var $mod = this;
-  rtl.createClass(this,"TMainView",pas["WEBLib.Forms"].TForm,function () {
-    this.$init = function () {
-      pas["WEBLib.Forms"].TForm.$init.call(this);
-      this.FLogado = false;
-    };
-    this.WebFormCreate = function (Sender) {
-      this.FLogado = false;
-    };
-    this.WebFormShow = function (Sender) {
-      if (!this.FLogado) this.ChamarLogin();
-    };
-    this.ChamarLogin = async function () {
-    };
-    this.LoadDFMValues = function () {
-      pas["WEBLib.Forms"].TCustomForm.LoadDFMValues.call(this);
-      try {
-        this.SetName("MainView");
-        this.SetWidth(586);
-        this.SetHeight(453);
-        this.SetCaption("DelphiWeb - Home");
-        this.SetEvent(this,"OnCreate","WebFormCreate");
-        this.SetEvent(this,"OnShow","WebFormShow");
-      } finally {
-      };
-    };
-    rtl.addIntf(this,pas["WEBLib.Controls"].IControl);
-    rtl.addIntf(this,pas.System.IUnknown);
-    var $r = this.$rtti;
-    $r.addMethod("WebFormCreate",0,[["Sender",pas.System.$rtti["TObject"]]]);
-    $r.addMethod("WebFormShow",0,[["Sender",pas.System.$rtti["TObject"]]]);
-  });
-  this.MainView = null;
-});
 rtl.module("WEBLib.StdCtrls",["System","Classes","WEBLib.Controls","SysUtils","Web","WEBLib.Graphics","Types","WEBLib.WebTools","WEBLib.Forms","WEBLib.Menus"],function () {
   "use strict";
   var $mod = this;
@@ -49074,6 +49038,132 @@ rtl.module("WEBLib.StdCtrls",["System","Classes","WEBLib.Controls","SysUtils","W
     return Result;
   };
 });
+rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","WEBLib.Controls","WEBLib.Forms","WEBLib.Dialogs","WEBLib.Controls","WEBLib.StdCtrls","WEBLib.StdCtrls"],function () {
+  "use strict";
+  var $mod = this;
+  rtl.createClass(this,"TMainView",pas["WEBLib.Forms"].TForm,function () {
+    this.$init = function () {
+      pas["WEBLib.Forms"].TForm.$init.call(this);
+      this.aError = null;
+      this.aWarning = null;
+      this.aInformation = null;
+      this.aConfirmation = null;
+      this.aCustom = null;
+    };
+    this.$final = function () {
+      this.aError = undefined;
+      this.aWarning = undefined;
+      this.aInformation = undefined;
+      this.aConfirmation = undefined;
+      this.aCustom = undefined;
+      pas["WEBLib.Forms"].TForm.$final.call(this);
+    };
+    this.aWarningClick = function (Sender) {
+      pas["WEBLib.Dialogs"].MessageDlg("Mensagem mtWarning",pas["WEBLib.Dialogs"].TMsgDlgType.mtWarning,{},null);
+    };
+    this.aErrorClick = function (Sender) {
+      pas["WEBLib.Dialogs"].MessageDlg("Mensagem mtError",pas["WEBLib.Dialogs"].TMsgDlgType.mtError,{},null);
+    };
+    this.aInformationClick = function (Sender) {
+      pas["WEBLib.Dialogs"].MessageDlg("Mensagem mtInformation",pas["WEBLib.Dialogs"].TMsgDlgType.mtInformation,{},null);
+    };
+    this.aConfirmationClick = function (Sender) {
+      pas["WEBLib.Dialogs"].MessageDlg("Mensagem mtConfirmation",pas["WEBLib.Dialogs"].TMsgDlgType.mtConfirmation,rtl.createSet(pas["WEBLib.Dialogs"].TMsgDlgBtn.mbYes,pas["WEBLib.Dialogs"].TMsgDlgBtn.mbNo,pas["WEBLib.Dialogs"].TMsgDlgBtn.mbCancel),null);
+    };
+    this.aCustomClick = function (Sender) {
+      pas["WEBLib.Dialogs"].MessageDlg("Mensagem mtCustom",pas["WEBLib.Dialogs"].TMsgDlgType.mtCustom,rtl.createSet(pas["WEBLib.Dialogs"].TMsgDlgBtn.mbAbort,pas["WEBLib.Dialogs"].TMsgDlgBtn.mbRetry,pas["WEBLib.Dialogs"].TMsgDlgBtn.mbClose),null);
+    };
+    this.LoadDFMValues = function () {
+      pas["WEBLib.Forms"].TCustomForm.LoadDFMValues.call(this);
+      this.aError = pas["WEBLib.StdCtrls"].TLabel.$create("Create$2",["aError"]);
+      this.aWarning = pas["WEBLib.StdCtrls"].TLabel.$create("Create$2",["aWarning"]);
+      this.aInformation = pas["WEBLib.StdCtrls"].TLabel.$create("Create$2",["aInformation"]);
+      this.aConfirmation = pas["WEBLib.StdCtrls"].TLabel.$create("Create$2",["aConfirmation"]);
+      this.aCustom = pas["WEBLib.StdCtrls"].TLabel.$create("Create$2",["aCustom"]);
+      this.aError.BeforeLoadDFMValues();
+      this.aWarning.BeforeLoadDFMValues();
+      this.aInformation.BeforeLoadDFMValues();
+      this.aConfirmation.BeforeLoadDFMValues();
+      this.aCustom.BeforeLoadDFMValues();
+      try {
+        this.SetName("MainView");
+        this.SetWidth(586);
+        this.SetHeight(453);
+        this.SetCaption("DelphiWeb - Home");
+        this.aError.SetParentComponent(this);
+        this.aError.SetName("aError");
+        this.aError.SetLeft(8);
+        this.aError.SetTop(339);
+        this.aError.SetWidth(31);
+        this.aError.SetHeight(15);
+        this.aError.SetCaption("aError");
+        this.aError.SetHeightPercent(100.000000000000000000);
+        this.aError.SetWidthPercent(100.000000000000000000);
+        this.SetEvent$1(this.aError,this,"OnClick","aErrorClick");
+        this.aWarning.SetParentComponent(this);
+        this.aWarning.SetName("aWarning");
+        this.aWarning.SetLeft(8);
+        this.aWarning.SetTop(318);
+        this.aWarning.SetWidth(51);
+        this.aWarning.SetHeight(15);
+        this.aWarning.SetCaption("aWarning");
+        this.aWarning.SetHeightPercent(100.000000000000000000);
+        this.aWarning.SetWidthPercent(100.000000000000000000);
+        this.SetEvent$1(this.aWarning,this,"OnClick","aWarningClick");
+        this.aInformation.SetParentComponent(this);
+        this.aInformation.SetName("aInformation");
+        this.aInformation.SetLeft(8);
+        this.aInformation.SetTop(360);
+        this.aInformation.SetWidth(69);
+        this.aInformation.SetHeight(15);
+        this.aInformation.SetCaption("aInformation");
+        this.aInformation.SetHeightPercent(100.000000000000000000);
+        this.aInformation.SetWidthPercent(100.000000000000000000);
+        this.SetEvent$1(this.aInformation,this,"OnClick","aInformationClick");
+        this.aConfirmation.SetParentComponent(this);
+        this.aConfirmation.SetName("aConfirmation");
+        this.aConfirmation.SetLeft(8);
+        this.aConfirmation.SetTop(381);
+        this.aConfirmation.SetWidth(77);
+        this.aConfirmation.SetHeight(15);
+        this.aConfirmation.SetCaption("aConfirmation");
+        this.aConfirmation.SetHeightPercent(100.000000000000000000);
+        this.aConfirmation.SetWidthPercent(100.000000000000000000);
+        this.SetEvent$1(this.aConfirmation,this,"OnClick","aConfirmationClick");
+        this.aCustom.SetParentComponent(this);
+        this.aCustom.SetName("aCustom");
+        this.aCustom.SetLeft(8);
+        this.aCustom.SetTop(402);
+        this.aCustom.SetWidth(48);
+        this.aCustom.SetHeight(15);
+        this.aCustom.SetCaption("aCustom");
+        this.aCustom.SetHeightPercent(100.000000000000000000);
+        this.aCustom.SetWidthPercent(100.000000000000000000);
+        this.SetEvent$1(this.aCustom,this,"OnClick","aCustomClick");
+      } finally {
+        this.aError.AfterLoadDFMValues();
+        this.aWarning.AfterLoadDFMValues();
+        this.aInformation.AfterLoadDFMValues();
+        this.aConfirmation.AfterLoadDFMValues();
+        this.aCustom.AfterLoadDFMValues();
+      };
+    };
+    rtl.addIntf(this,pas["WEBLib.Controls"].IControl);
+    rtl.addIntf(this,pas.System.IUnknown);
+    var $r = this.$rtti;
+    $r.addField("aError",pas["WEBLib.StdCtrls"].$rtti["TLabel"]);
+    $r.addField("aWarning",pas["WEBLib.StdCtrls"].$rtti["TLabel"]);
+    $r.addField("aInformation",pas["WEBLib.StdCtrls"].$rtti["TLabel"]);
+    $r.addField("aConfirmation",pas["WEBLib.StdCtrls"].$rtti["TLabel"]);
+    $r.addField("aCustom",pas["WEBLib.StdCtrls"].$rtti["TLabel"]);
+    $r.addMethod("aWarningClick",0,[["Sender",pas.System.$rtti["TObject"]]]);
+    $r.addMethod("aErrorClick",0,[["Sender",pas.System.$rtti["TObject"]]]);
+    $r.addMethod("aInformationClick",0,[["Sender",pas.System.$rtti["TObject"]]]);
+    $r.addMethod("aConfirmationClick",0,[["Sender",pas.System.$rtti["TObject"]]]);
+    $r.addMethod("aCustomClick",0,[["Sender",pas.System.$rtti["TObject"]]]);
+  });
+  this.MainView = null;
+});
 rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","WEBLib.Controls","WEBLib.Forms","WEBLib.Dialogs","WEBLib.StdCtrls","WEBLib.StdCtrls","WEBLib.Controls","Main.View"],function () {
   "use strict";
   var $mod = this;
@@ -49102,6 +49192,16 @@ rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphi
     };
     this.btnEntrarClick = function (Sender) {
       var LMainView = null;
+      if (this.edtLogin.GetText() !== "admin") {
+        pas["WEBLib.Dialogs"].MessageDlg("Login inválido",pas["WEBLib.Dialogs"].TMsgDlgType.mtWarning,{},null);
+        this.edtLogin.SetFocus();
+        return;
+      };
+      if (this.edtSenha.GetText() !== "admin") {
+        pas["WEBLib.Dialogs"].MessageDlg("Senha inválida",pas["WEBLib.Dialogs"].TMsgDlgType.mtWarning,{},null);
+        this.edtSenha.SetFocus();
+        return;
+      };
       LMainView = pas["Main.View"].TMainView.$create("CreateNew$2");
       LMainView.ShowModal();
     };
@@ -49159,6 +49259,7 @@ rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphi
         this.edtLogin.SetHeight(22);
         this.edtLogin.SetChildOrderEx(1);
         this.edtLogin.SetHeightPercent(100.000000000000000000);
+        this.edtLogin.SetText("admin");
         this.edtLogin.SetWidthPercent(100.000000000000000000);
         this.SetEvent$1(this.edtLogin,this,"OnKeyPress","edtLoginKeyPress");
         this.edtSenha.SetParentComponent(this);
@@ -49169,6 +49270,7 @@ rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphi
         this.edtSenha.SetHeight(22);
         this.edtSenha.SetChildOrderEx(2);
         this.edtSenha.SetHeightPercent(100.000000000000000000);
+        this.edtSenha.SetText("admin");
         this.edtSenha.SetWidthPercent(100.000000000000000000);
         this.SetEvent$1(this.edtSenha,this,"OnKeyPress","edtSenhaKeyPress");
         this.ckLembreMe.SetParentComponent(this);
