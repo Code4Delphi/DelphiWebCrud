@@ -25,8 +25,17 @@ uses
   VCL.TMSFNCDataGridCore,
   VCL.TMSFNCDataGridRenderer,
   VCL.TMSFNCCustomControl,
-  VCL.TMSFNCDataGrid, WEBLib.ExtCtrls, WEBLib.WebCtrls, VCL.TMSFNCCustomComponent, VCL.TMSFNCDataGridDatabaseAdapter,
-  Data.DB, WEBLib.DB, XData.Web.JsonDataset, XData.Web.Dataset, XData.Web.Client, XData.Web.Connection;
+  VCL.TMSFNCDataGrid,
+  WEBLib.ExtCtrls,
+  WEBLib.WebCtrls,
+  VCL.TMSFNCCustomComponent,
+  VCL.TMSFNCDataGridDatabaseAdapter,
+  Data.DB,
+  WEBLib.DB,
+  XData.Web.JsonDataset,
+  XData.Web.Dataset,
+  XData.Web.Client,
+  XData.Web.Connection;
 
 type
   TMainView = class(TWebForm)
@@ -35,8 +44,6 @@ type
     aInformation: TWebLabel;
     aConfirmation: TWebLabel;
     aCustom: TWebLabel;
-    WebResponsiveGridPanel1: TWebResponsiveGridPanel;
-    TMSFNCDataGrid1: TTMSFNCDataGrid;
     XDataWebConnection1: TXDataWebConnection;
     XDataWebClient1: TXDataWebClient;
     XDataWebDataSet1: TXDataWebDataSet;
@@ -53,6 +60,7 @@ type
     XDataWebDataSet1Limite: TFloatField;
     XDataWebDataSet1Porcentagem: TIntegerField;
     XDataWebDataSet1Ativo: TStringField;
+    TMSFNCDataGrid1: TTMSFNCDataGrid;
     procedure aWarningClick(Sender: TObject);
     procedure aErrorClick(Sender: TObject);
     procedure aInformationClick(Sender: TObject);
@@ -63,9 +71,9 @@ type
     procedure btnList01Click(Sender: TObject);
      [Async]
     procedure btnList02Click(Sender: TObject);
+    procedure TMSFNCDataGrid1GetCellLayout(Sender: TObject; ACell: TTMSFNCDataGridCell);
   private
     procedure SuccessProcGetNome(Response: TXDataClientResponse);
-    procedure CarregarClientes;
   public
 
   end;
@@ -102,36 +110,45 @@ begin
   MessageDlg('Mensagem mtCustom', mtCustom, [mbAbort, mbRetry, mbClose]);
 end;
 
+procedure TMainView.TMSFNCDataGrid1GetCellLayout(Sender: TObject; ACell: TTMSFNCDataGridCell);
+begin
+  ACell.Layout.Font.Color := clWindow;
+  ACell.Layout.Fill.Color := $0035302B;
+  if (ACell.Row mod 2) = 0 then
+    ACell.Layout.Fill.Color := $00403A34;
+
+  //SE LINHA OU COLUNA FIXADA
+  if (ACell.Row < TMSFNCDataGrid1.FixedRowCount) or (ACell.Column < TMSFNCDataGrid1.FixedColumnCount) then
+  begin
+    ACell.Layout.Font.Color := clBlack; //clHotLight
+    ACell.Layout.Font.Style := [TFontStyle.fsBold];
+  end;
+end;
+
+
 procedure TMainView.btnGetNomeClick(Sender: TObject);
 begin
-  XDataWebClient1.RawInvoke('IClientesService.GetNome', [4], @SuccessProcGetNome);
+  XDataWebClient1.RawInvoke('IClientesService.GetNome', [4],
+    procedure(Response: TXDataClientResponse)
+    begin
+      btnGetNome.Caption := TJSJson.stringify(Response.Result);
+    end
+  );
 end;
 
 procedure TMainView.SuccessProcGetNome(Response: TXDataClientResponse);
 begin
   btnGetNome.Caption := TJSJson.stringify(Response.Result);
 end;
-
 procedure TMainView.XDataWebClient1Error(Error: TXDataClientError);
 begin
-//   ListMemo.Lines.Text := Format('%s. RequestId: %s. Code: %s. Request Url: %s',
-//    [Error.ErrorMessage, Error.RequestId, Error.ErrorCode, Error.RequestUrl]);
-
   MessageDlg(Format('%s. RequestId: %s. Code: %s. Request Url: %s',
-    [Error.ErrorMessage, Error.RequestId, Error.ErrorCode, Error.RequestUrl]),
-    mtError, []
-  );
+    [Error.ErrorMessage, Error.RequestId, Error.ErrorCode, Error.RequestUrl]),  mtError, []);
 end;
 
 procedure TMainView.btnList01Click(Sender: TObject);
-begin
-  Self.CarregarClientes;
-end;
-
-procedure TMainView.CarregarClientes;
   procedure OnSuccess(Response: TXDataClientResponse);
   begin
-    //ListMemo.Lines.Text := TJSJson.stringify(Response.Result);
     XDataWebDataset1.Close;
     XDataWebDataset1.SetJsonData(TJSObject(Response.Result)['value']);
     XDataWebDataset1.Open;
@@ -142,14 +159,11 @@ end;
 
 procedure TMainView.btnList02Click(Sender: TObject);
 var
-  Response: TXDataClientResponse;
-  GreetResult: string;
+  LResponse: TXDataClientResponse;
 begin
-  Response := await(XDataWebClient1.RawInvokeAsync('IClientesService.List', []));
-  GreetResult := string(TJSObject(Response.Result)['value']);
-
+  LResponse := await(XDataWebClient1.RawInvokeAsync('IClientesService.List', []));
   XDataWebDataSet1.Close;
-  XDataWebDataset1.SetJsonData(TJSObject(Response.Result)['value']);
+  XDataWebDataset1.SetJsonData(TJSObject(LResponse.Result)['value']);
   XDataWebDataset1.Open;
 end;
 
