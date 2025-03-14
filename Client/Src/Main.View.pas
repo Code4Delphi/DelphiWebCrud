@@ -112,19 +112,20 @@ end;
 
 procedure TMainView.TMSFNCDataGrid1GetCellLayout(Sender: TObject; ACell: TTMSFNCDataGridCell);
 begin
+  //SE LINHA OU COLUNA FIXADA
+  if (ACell.Row < TMSFNCDataGrid1.FixedRowCount) or (ACell.Column < TMSFNCDataGrid1.FixedColumnCount) then
+  begin
+    ACell.Layout.Font.Color := $00D9BD9B;
+    ACell.Layout.Font.Style := [TFontStyle.fsBold];
+    ACell.Layout.Fill.Color := $00544847;
+    Exit;
+  end;
+
   ACell.Layout.Font.Color := clWindow;
   ACell.Layout.Fill.Color := $0035302B;
   if (ACell.Row mod 2) = 0 then
     ACell.Layout.Fill.Color := $00403A34;
-
-  //SE LINHA OU COLUNA FIXADA
-  if (ACell.Row < TMSFNCDataGrid1.FixedRowCount) or (ACell.Column < TMSFNCDataGrid1.FixedColumnCount) then
-  begin
-    ACell.Layout.Font.Color := clBlack; //clHotLight
-    ACell.Layout.Font.Style := [TFontStyle.fsBold];
-  end;
 end;
-
 
 procedure TMainView.btnGetNomeClick(Sender: TObject);
 begin
