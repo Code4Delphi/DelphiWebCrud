@@ -18,7 +18,8 @@
 - [Delphi Web #02 - Endpoint | Verbo Get | Get e List | Consultando dados na API](https://www.youtube.com/watch?v=j5RoRTDNx3o&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=2)
 - [Delphi Web #03 - Inserindo dados na API Rest | Verbos HTTP Post, Put e Delete | Postman](https://www.youtube.com/watch?v=dt23lMZmLpw&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=3)
 - [Delphi Web #04 - Finalizando API + Documentação Swagger + Middlewares](https://www.youtube.com/watch?v=wx0PkzMm2Zw&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=4)
-
+- [Delphi Web #05 - Web Core com Bootstrap primeiros passos](https://www.youtube.com/watch?v=UnICLdUoJP4&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=5)
+- [Delphi Web #06 - Baixando e configurando AdminLTE Bootstrap Template | Criando projeto Web Core](https://www.youtube.com/watch?v=YAjcr_XkFkQ&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=6)
 <br/>
 
 ## 📞 Contatos
