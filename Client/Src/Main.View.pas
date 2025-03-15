@@ -72,6 +72,7 @@ type
      [Async]
     procedure btnList02Click(Sender: TObject);
     procedure TMSFNCDataGrid1GetCellLayout(Sender: TObject; ACell: TTMSFNCDataGridCell);
+    procedure TMSFNCDataGrid1SelectCell(Sender: TObject; AStartCell, AEndCell: TTMSFNCDataGridCellCoord);
   private
     procedure SuccessProcGetNome(Response: TXDataClientResponse);
   public
@@ -111,6 +112,8 @@ begin
 end;
 
 procedure TMainView.TMSFNCDataGrid1GetCellLayout(Sender: TObject; ACell: TTMSFNCDataGridCell);
+var
+  i: Integer;
 begin
   //SE LINHA OU COLUNA FIXADA
   if (ACell.Row < TMSFNCDataGrid1.FixedRowCount) or (ACell.Column < TMSFNCDataGrid1.FixedColumnCount) then
@@ -121,10 +124,32 @@ begin
     Exit;
   end;
 
-  ACell.Layout.Font.Color := clWindow;
-  ACell.Layout.Fill.Color := $0035302B;
-  if (ACell.Row mod 2) = 0 then
-    ACell.Layout.Fill.Color := $00403A34;
+//  if ACell.Row = TMSFNCDataGrid1.SelectedRow then
+//  begin
+//    // Personalize o layout para a linha selecionada
+//    ACell.Layout.Fill.Color := gcRed;
+//    ACell.Layout.Stroke.Color := gcBlack;
+//  end;
+
+//  for i := 0 to TMSFNCDataGrid1.RowSelectionCount - 1 do
+//  begin
+//     TMSFNCDataGrid1.SelectedRow[i];
+//    // do something with the selected row rowindex here
+//  end;
+
+end;
+
+procedure TMainView.TMSFNCDataGrid1SelectCell(Sender: TObject; AStartCell, AEndCell: TTMSFNCDataGridCellCoord);
+var
+  rc,rr: integer;
+begin
+  rc := TMSFNCDataGrid1.FocusedCell.Column;
+  rr := TMSFNCDataGrid1.FocusedCell.Row;
+
+
+
+//  TMSFNCColorPicker1.SelectedColor :=  TMSFNCDataGrid1.Colors[rc, rr];
+//  TMSFNCColorPicker2.SelectedColor :=  TMSFNCDataGrid1.FontColors[rc, rr];
 end;
 
 procedure TMainView.btnGetNomeClick(Sender: TObject);

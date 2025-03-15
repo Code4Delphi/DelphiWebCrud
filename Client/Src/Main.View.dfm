@@ -713,8 +713,11 @@ object MainView: TMainView
       2032392E34342032302E34342032382E35362031392E35362032332032352E31
       32222F3E3C2F673E3C2F7376673E}
     OnGetCellLayout = TMSFNCDataGrid1GetCellLayout
+    OnSelectCell = TMSFNCDataGrid1SelectCell
     Options.Filtering.Advanced = False
+    Options.Filtering.Enabled = True
     Options.Sorting.Enabled = True
+    Options.Editing.Enabled = False
     Options.Selection.Mode = gsmSingleRow
     RowCount = 1
     Stroke.Color = clDarkgray
