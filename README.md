@@ -7,7 +7,7 @@
 
 <br/>
 
-## Frameworks utilizados
+## ✨ Frameworks utilizados
 ### XData
 - Framework Delphi para desenvolvimento de servidores de API REST/JSON
 - Onde baixar: [https://www.tmssoftware.com/site/xdata.asp](https://www.tmssoftware.com/site/xdata.asp)
