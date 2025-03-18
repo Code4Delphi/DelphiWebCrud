@@ -7,9 +7,18 @@
 
 <br/>
 
-## ▶️ Conhecendo as ferramentas e frameworks utilizados
-- [XData: API REST | Instalação e primeiros passos](https://www.youtube.com/watch?v=cwb6_SKbB6A&list=PLLHSz4dOnnN2Xlf7OX47cF20gbmz9-9z0&index=2)
-- [Web Core: Delphi para Web | Instalação e primeiros passos](https://www.youtube.com/watch?v=n51xdFBRzX0&list=PLLHSz4dOnnN2Xlf7OX47cF20gbmz9-9z0&index=6)
+## Frameworks utilizados
+### XData
+- Framework Delphi para desenvolvimento de servidores de API REST/JSON
+- Onde baixar: [https://www.tmssoftware.com/site/xdata.asp](https://www.tmssoftware.com/site/xdata.asp)
+- Documentação oficial: [Documentação oficial](https://download.tmssoftware.com/doc/tmswebcore/)
+- Vídeo de demonstração: [XData: API REST | Instalação e primeiros passos](https://www.youtube.com/watch?v=cwb6_SKbB6A&list=PLLHSz4dOnnN2Xlf7OX47cF20gbmz9-9z0&index=2)
+
+### Web Core
+- Framework para criação de aplicações web modernas em Delphi
+- Onde baixar: [https://www.tmssoftware.com/site/tmswebcore.asp](https://www.tmssoftware.com/site/tmswebcore.asp)
+- Documentação oficial:[https://download.tmssoftware.com/doc/tmswebcore/](https://download.tmssoftware.com/doc/tmswebcore/)
+- Vídeo de demonstração: [Web Core: Delphi para Web | Instalação e primeiros passos](https://www.youtube.com/watch?v=n51xdFBRzX0&list=PLLHSz4dOnnN2Xlf7OX47cF20gbmz9-9z0&index=6)
  
 <br/>
 
