@@ -8,8 +8,8 @@
 <br/>
 
 ## ▶️ Conhecendo as ferramentas e frameworks utilizados
-- [XData | API REST](https://www.youtube.com/watch?v=cwb6_SKbB6A)
-
+- [XData: API REST | Instalação e primeiros passos](https://www.youtube.com/watch?v=cwb6_SKbB6A&list=PLLHSz4dOnnN2Xlf7OX47cF20gbmz9-9z0&index=2)
+- [Web Core: Delphi para Web | Instalação e primeiros passos](https://www.youtube.com/watch?v=n51xdFBRzX0&list=PLLHSz4dOnnN2Xlf7OX47cF20gbmz9-9z0&index=6)
  
 <br/>
 
