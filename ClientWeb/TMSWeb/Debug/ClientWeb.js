@@ -49078,7 +49078,125 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
   });
   this.MainView = null;
 });
-rtl.module("program",["System","WEBLib.Forms","WEBLib.Forms","Main.View"],function () {
+rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","WEBLib.Controls","WEBLib.Forms","WEBLib.Dialogs","WEBLib.Controls","WEBLib.StdCtrls","WEBLib.StdCtrls","Main.View"],function () {
+  "use strict";
+  var $mod = this;
+  rtl.createClass(this,"TLoginView",pas["WEBLib.Forms"].TForm,function () {
+    this.$init = function () {
+      pas["WEBLib.Forms"].TForm.$init.call(this);
+      this.WebLabel1 = null;
+      this.edtLogin = null;
+      this.edtSenha = null;
+      this.WebButton1 = null;
+      this.ckLembrarMe = null;
+    };
+    this.$final = function () {
+      this.WebLabel1 = undefined;
+      this.edtLogin = undefined;
+      this.edtSenha = undefined;
+      this.WebButton1 = undefined;
+      this.ckLembrarMe = undefined;
+      pas["WEBLib.Forms"].TForm.$final.call(this);
+    };
+    this.WebButton1Click = function (Sender) {
+      if (this.edtLogin.GetText() !== "admin") {
+        pas["WEBLib.Dialogs"].ShowMessage("Login inválido");
+        this.edtLogin.SetFocus();
+        return;
+      };
+      if (this.edtSenha.GetText() !== "admin") {
+        pas["WEBLib.Dialogs"].ShowMessage("Senha inválido");
+        this.edtSenha.SetFocus();
+        return;
+      };
+      pas["Main.View"].MainView = pas["Main.View"].TMainView.$create("CreateNew$2");
+      pas["Main.View"].MainView.ShowModal();
+    };
+    this.LoadDFMValues = function () {
+      pas["WEBLib.Forms"].TCustomForm.LoadDFMValues.call(this);
+      this.WebLabel1 = pas["WEBLib.StdCtrls"].TLabel.$create("Create$2",["lbTitulo"]);
+      this.edtLogin = pas["WEBLib.StdCtrls"].TEdit.$create("Create$2",["edtEmail"]);
+      this.edtSenha = pas["WEBLib.StdCtrls"].TEdit.$create("Create$2",["edtPassword"]);
+      this.WebButton1 = pas["WEBLib.StdCtrls"].TButton.$create("Create$2",["btnEntrar"]);
+      this.ckLembrarMe = pas["WEBLib.StdCtrls"].TCheckBox.$create("Create$2",["ckDefault"]);
+      this.WebLabel1.BeforeLoadDFMValues();
+      this.edtLogin.BeforeLoadDFMValues();
+      this.edtSenha.BeforeLoadDFMValues();
+      this.WebButton1.BeforeLoadDFMValues();
+      this.ckLembrarMe.BeforeLoadDFMValues();
+      try {
+        this.SetName("LoginView");
+        this.SetWidth(640);
+        this.SetHeight(480);
+        this.WebLabel1.SetParentComponent(this);
+        this.WebLabel1.SetName("WebLabel1");
+        this.WebLabel1.SetLeft(192);
+        this.WebLabel1.SetTop(80);
+        this.WebLabel1.SetWidth(136);
+        this.WebLabel1.SetHeight(15);
+        this.WebLabel1.SetCaption("Informe seu login e senha");
+        this.WebLabel1.SetHeightPercent(100.000000000000000000);
+        this.WebLabel1.SetWidthPercent(100.000000000000000000);
+        this.edtLogin.SetParentComponent(this);
+        this.edtLogin.SetName("edtLogin");
+        this.edtLogin.SetLeft(216);
+        this.edtLogin.SetTop(160);
+        this.edtLogin.SetWidth(121);
+        this.edtLogin.SetHeight(22);
+        this.edtLogin.SetChildOrderEx(1);
+        this.edtLogin.SetHeightPercent(100.000000000000000000);
+        this.edtLogin.SetWidthPercent(100.000000000000000000);
+        this.edtSenha.SetParentComponent(this);
+        this.edtSenha.SetName("edtSenha");
+        this.edtSenha.SetLeft(232);
+        this.edtSenha.SetTop(216);
+        this.edtSenha.SetWidth(121);
+        this.edtSenha.SetHeight(22);
+        this.edtSenha.SetChildOrderEx(2);
+        this.edtSenha.SetHeightPercent(100.000000000000000000);
+        this.edtSenha.SetWidthPercent(100.000000000000000000);
+        this.WebButton1.SetParentComponent(this);
+        this.WebButton1.SetName("WebButton1");
+        this.WebButton1.SetLeft(232);
+        this.WebButton1.SetTop(272);
+        this.WebButton1.SetWidth(96);
+        this.WebButton1.SetHeight(25);
+        this.WebButton1.SetCaption("Entrar");
+        this.WebButton1.SetChildOrderEx(3);
+        this.WebButton1.SetHeightPercent(100.000000000000000000);
+        this.WebButton1.SetWidthPercent(100.000000000000000000);
+        this.SetEvent$1(this.WebButton1,this,"OnClick","WebButton1Click");
+        this.ckLembrarMe.SetParentComponent(this);
+        this.ckLembrarMe.SetName("ckLembrarMe");
+        this.ckLembrarMe.SetLeft(224);
+        this.ckLembrarMe.SetTop(244);
+        this.ckLembrarMe.SetWidth(113);
+        this.ckLembrarMe.SetHeight(22);
+        this.ckLembrarMe.SetCaption("Lembrar-me");
+        this.ckLembrarMe.SetChildOrderEx(4);
+        this.ckLembrarMe.SetHeightPercent(100.000000000000000000);
+        this.ckLembrarMe.SetWidthPercent(100.000000000000000000);
+      } finally {
+        this.WebLabel1.AfterLoadDFMValues();
+        this.edtLogin.AfterLoadDFMValues();
+        this.edtSenha.AfterLoadDFMValues();
+        this.WebButton1.AfterLoadDFMValues();
+        this.ckLembrarMe.AfterLoadDFMValues();
+      };
+    };
+    rtl.addIntf(this,pas["WEBLib.Controls"].IControl);
+    rtl.addIntf(this,pas.System.IUnknown);
+    var $r = this.$rtti;
+    $r.addField("WebLabel1",pas["WEBLib.StdCtrls"].$rtti["TLabel"]);
+    $r.addField("edtLogin",pas["WEBLib.StdCtrls"].$rtti["TEdit"]);
+    $r.addField("edtSenha",pas["WEBLib.StdCtrls"].$rtti["TEdit"]);
+    $r.addField("WebButton1",pas["WEBLib.StdCtrls"].$rtti["TButton"]);
+    $r.addField("ckLembrarMe",pas["WEBLib.StdCtrls"].$rtti["TCheckBox"]);
+    $r.addMethod("WebButton1Click",0,[["Sender",pas.System.$rtti["TObject"]]]);
+  });
+  this.LoginView = null;
+});
+rtl.module("program",["System","WEBLib.Forms","WEBLib.Forms","Main.View","Login.View"],function () {
   "use strict";
   var $mod = this;
   $mod.$implcode = function () {
@@ -49093,10 +49211,10 @@ rtl.module("program",["System","WEBLib.Forms","WEBLib.Forms","Main.View"],functi
   $mod.$main = function () {
     pas["WEBLib.Forms"].Application.Initialize();
     pas["WEBLib.Forms"].Application.FMainFormOnTaskBar = true;
-    pas["WEBLib.Forms"].Application.CreateForm(pas["Main.View"].TMainView,{p: pas["Main.View"], get: function () {
-        return this.p.MainView;
+    pas["WEBLib.Forms"].Application.CreateForm(pas["Login.View"].TLoginView,{p: pas["Login.View"], get: function () {
+        return this.p.LoginView;
       }, set: function (v) {
-        this.p.MainView = v;
+        this.p.LoginView = v;
       }});
     pas["WEBLib.Forms"].Application.Run();
   };
