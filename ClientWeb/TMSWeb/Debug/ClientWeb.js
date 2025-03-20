@@ -49045,15 +49045,45 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
     this.$init = function () {
       pas["WEBLib.Forms"].TForm.$init.call(this);
       this.WebLabel1 = null;
+      this.lbImportant = null;
+      this.lbWarning = null;
+      this.lbInformational = null;
     };
     this.$final = function () {
       this.WebLabel1 = undefined;
+      this.lbImportant = undefined;
+      this.lbWarning = undefined;
+      this.lbInformational = undefined;
       pas["WEBLib.Forms"].TForm.$final.call(this);
+    };
+    this.lbImportantClick = function (Sender) {
+      pas["WEBLib.Dialogs"].MessageDlg("Minha mensagem",pas["WEBLib.Dialogs"].TMsgDlgType.mtError,{},null);
+    };
+    this.lbWarningClick = async function (Sender) {
+      var LResult = 0;
+      LResult = await pas["WEBLib.Dialogs"].MessageDlgAsync("Pergunta com await?",pas["WEBLib.Dialogs"].TMsgDlgType.mtConfirmation,rtl.createSet(pas["WEBLib.Dialogs"].TMsgDlgBtn.mbYes,pas["WEBLib.Dialogs"].TMsgDlgBtn.mbNo));
+      if (LResult === 6) {
+        pas["WEBLib.Dialogs"].ShowMessage("Respondeu sim")}
+       else pas["WEBLib.Dialogs"].ShowMessage("Respondeu não");
+    };
+    this.lbInformationalClick = function (Sender) {
+      var $Self = this;
+      pas["WEBLib.Dialogs"].MessageDlg("Minha pergunta?",pas["WEBLib.Dialogs"].TMsgDlgType.mtConfirmation,rtl.createSet(pas["WEBLib.Dialogs"].TMsgDlgBtn.mbYes,pas["WEBLib.Dialogs"].TMsgDlgBtn.mbNo),function (AValue) {
+        if (AValue === 6) {
+          pas["WEBLib.Dialogs"].ShowMessage("Clicou em sim")}
+         else pas["WEBLib.Dialogs"].ShowMessage("Clicou em não");
+      });
     };
     this.LoadDFMValues = function () {
       pas["WEBLib.Forms"].TCustomForm.LoadDFMValues.call(this);
       this.WebLabel1 = pas["WEBLib.StdCtrls"].TLabel.$create("Create$2",["lbUsuarioLogado"]);
+      this.lbImportant = pas["WEBLib.StdCtrls"].TLabel.$create("Create$2",["lbImportant"]);
+      this.lbWarning = pas["WEBLib.StdCtrls"].TLabel.$create("Create$2",["lbWarning"]);
+      this.lbInformational = pas["WEBLib.StdCtrls"].TLabel.$create("Create$2",["lbInformational"]);
       this.WebLabel1.BeforeLoadDFMValues();
+      this.lbImportant.BeforeLoadDFMValues();
+      this.lbWarning.BeforeLoadDFMValues();
+      this.lbInformational.BeforeLoadDFMValues();
       try {
         this.SetName("MainView");
         this.SetWidth(640);
@@ -49067,14 +49097,53 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
         this.WebLabel1.SetCaption("César Cardoso Logado");
         this.WebLabel1.SetHeightPercent(100.000000000000000000);
         this.WebLabel1.SetWidthPercent(100.000000000000000000);
+        this.lbImportant.SetParentComponent(this);
+        this.lbImportant.SetName("lbImportant");
+        this.lbImportant.SetLeft(64);
+        this.lbImportant.SetTop(248);
+        this.lbImportant.SetWidth(63);
+        this.lbImportant.SetHeight(15);
+        this.lbImportant.SetCaption("lbImportant");
+        this.lbImportant.SetHeightPercent(100.000000000000000000);
+        this.lbImportant.SetWidthPercent(100.000000000000000000);
+        this.SetEvent$1(this.lbImportant,this,"OnClick","lbImportantClick");
+        this.lbWarning.SetParentComponent(this);
+        this.lbWarning.SetName("lbWarning");
+        this.lbWarning.SetLeft(72);
+        this.lbWarning.SetTop(288);
+        this.lbWarning.SetWidth(55);
+        this.lbWarning.SetHeight(15);
+        this.lbWarning.SetCaption("lbWarning");
+        this.lbWarning.SetHeightPercent(100.000000000000000000);
+        this.lbWarning.SetWidthPercent(100.000000000000000000);
+        this.SetEvent$1(this.lbWarning,this,"OnClick","lbWarningClick");
+        this.lbInformational.SetParentComponent(this);
+        this.lbInformational.SetName("lbInformational");
+        this.lbInformational.SetLeft(64);
+        this.lbInformational.SetTop(328);
+        this.lbInformational.SetWidth(82);
+        this.lbInformational.SetHeight(15);
+        this.lbInformational.SetCaption("lbInformational");
+        this.lbInformational.SetHeightPercent(100.000000000000000000);
+        this.lbInformational.SetWidthPercent(100.000000000000000000);
+        this.SetEvent$1(this.lbInformational,this,"OnClick","lbInformationalClick");
       } finally {
         this.WebLabel1.AfterLoadDFMValues();
+        this.lbImportant.AfterLoadDFMValues();
+        this.lbWarning.AfterLoadDFMValues();
+        this.lbInformational.AfterLoadDFMValues();
       };
     };
     rtl.addIntf(this,pas["WEBLib.Controls"].IControl);
     rtl.addIntf(this,pas.System.IUnknown);
     var $r = this.$rtti;
     $r.addField("WebLabel1",pas["WEBLib.StdCtrls"].$rtti["TLabel"]);
+    $r.addField("lbImportant",pas["WEBLib.StdCtrls"].$rtti["TLabel"]);
+    $r.addField("lbWarning",pas["WEBLib.StdCtrls"].$rtti["TLabel"]);
+    $r.addField("lbInformational",pas["WEBLib.StdCtrls"].$rtti["TLabel"]);
+    $r.addMethod("lbImportantClick",0,[["Sender",pas.System.$rtti["TObject"]]]);
+    $r.addMethod("lbWarningClick",0,[["Sender",pas.System.$rtti["TObject"]]],null,16,{attr: [pas.JS.AsyncAttribute,"Create"]});
+    $r.addMethod("lbInformationalClick",0,[["Sender",pas.System.$rtti["TObject"]]]);
   });
   this.MainView = null;
 });
@@ -49121,6 +49190,10 @@ rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphi
     this.edtSenhaKeyPress = function (Sender, Key) {
       if (Key.get() === "\r") this.btnEntrar.Click();
     };
+    this.WebFormCreate = function (Sender) {
+      pas["WEBLib.Forms"].Application.FThemeColor = 7171437;
+      pas["WEBLib.Forms"].Application.FThemed = true;
+    };
     this.LoadDFMValues = function () {
       pas["WEBLib.Forms"].TCustomForm.LoadDFMValues.call(this);
       this.WebLabel1 = pas["WEBLib.StdCtrls"].TLabel.$create("Create$2",["lbTitulo"]);
@@ -49138,6 +49211,7 @@ rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphi
         this.SetWidth(640);
         this.SetHeight(480);
         this.SetCaption("DelphiWeb - Login");
+        this.SetEvent(this,"OnCreate","WebFormCreate");
         this.SetEvent(this,"OnShow","WebFormShow");
         this.WebLabel1.SetParentComponent(this);
         this.WebLabel1.SetName("WebLabel1");
@@ -49211,6 +49285,7 @@ rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphi
     $r.addMethod("WebFormShow",0,[["Sender",pas.System.$rtti["TObject"]]]);
     $r.addMethod("edtLoginKeyPress",0,[["Sender",pas.System.$rtti["TObject"]],["Key",rtl.char,1]]);
     $r.addMethod("edtSenhaKeyPress",0,[["Sender",pas.System.$rtti["TObject"]],["Key",rtl.char,1]]);
+    $r.addMethod("WebFormCreate",0,[["Sender",pas.System.$rtti["TObject"]]]);
   });
   this.LoginView = null;
 });

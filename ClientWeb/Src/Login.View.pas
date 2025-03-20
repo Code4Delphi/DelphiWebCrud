@@ -27,6 +27,7 @@ type
     procedure WebFormShow(Sender: TObject);
     procedure edtLoginKeyPress(Sender: TObject; var Key: Char);
     procedure edtSenhaKeyPress(Sender: TObject; var Key: Char);
+    procedure WebFormCreate(Sender: TObject);
   private
 
   public
@@ -39,6 +40,12 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TLoginView.WebFormCreate(Sender: TObject);
+begin
+  Application.ThemeColor := clGrayText;
+  Application.Themed := True;
+end;
 
 procedure TLoginView.WebFormShow(Sender: TObject);
 begin

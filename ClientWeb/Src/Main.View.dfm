@@ -11,4 +11,37 @@ object MainView: TMainView
     HeightPercent = 100.000000000000000000
     WidthPercent = 100.000000000000000000
   end
+  object lbImportant: TWebLabel
+    Left = 64
+    Top = 248
+    Width = 63
+    Height = 15
+    Caption = 'lbImportant'
+    ElementID = 'lbImportant'
+    HeightPercent = 100.000000000000000000
+    WidthPercent = 100.000000000000000000
+    OnClick = lbImportantClick
+  end
+  object lbWarning: TWebLabel
+    Left = 72
+    Top = 288
+    Width = 55
+    Height = 15
+    Caption = 'lbWarning'
+    ElementID = 'lbWarning'
+    HeightPercent = 100.000000000000000000
+    WidthPercent = 100.000000000000000000
+    OnClick = lbWarningClick
+  end
+  object lbInformational: TWebLabel
+    Left = 64
+    Top = 328
+    Width = 82
+    Height = 15
+    Caption = 'lbInformational'
+    ElementID = 'lbInformational'
+    HeightPercent = 100.000000000000000000
+    WidthPercent = 100.000000000000000000
+    OnClick = lbInformationalClick
+  end
 end

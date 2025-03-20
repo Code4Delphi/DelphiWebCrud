@@ -2,6 +2,7 @@ object LoginView: TLoginView
   Width = 640
   Height = 480
   Caption = 'DelphiWeb - Login'
+  OnCreate = WebFormCreate
   OnShow = WebFormShow
   object WebLabel1: TWebLabel
     Left = 192
