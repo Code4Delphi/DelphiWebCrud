@@ -49048,16 +49048,18 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
       this.lbImportant = null;
       this.lbWarning = null;
       this.lbInformational = null;
+      this.WebMessageDlg1 = null;
     };
     this.$final = function () {
       this.WebLabel1 = undefined;
       this.lbImportant = undefined;
       this.lbWarning = undefined;
       this.lbInformational = undefined;
+      this.WebMessageDlg1 = undefined;
       pas["WEBLib.Forms"].TForm.$final.call(this);
     };
     this.lbImportantClick = function (Sender) {
-      pas["WEBLib.Dialogs"].MessageDlg("Minha mensagem",pas["WEBLib.Dialogs"].TMsgDlgType.mtError,{},null);
+      this.WebMessageDlg1.ShowDialog$2("Minha menagem componente",pas["WEBLib.Dialogs"].TMsgDlgType.mtWarning,{});
     };
     this.lbWarningClick = async function (Sender) {
       var LResult = 0;
@@ -49080,10 +49082,12 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
       this.lbImportant = pas["WEBLib.StdCtrls"].TLabel.$create("Create$2",["lbImportant"]);
       this.lbWarning = pas["WEBLib.StdCtrls"].TLabel.$create("Create$2",["lbWarning"]);
       this.lbInformational = pas["WEBLib.StdCtrls"].TLabel.$create("Create$2",["lbInformational"]);
+      this.WebMessageDlg1 = pas["WEBLib.Dialogs"].TMessageDlg.$create("Create$1",[this]);
       this.WebLabel1.BeforeLoadDFMValues();
       this.lbImportant.BeforeLoadDFMValues();
       this.lbWarning.BeforeLoadDFMValues();
       this.lbInformational.BeforeLoadDFMValues();
+      this.WebMessageDlg1.BeforeLoadDFMValues();
       try {
         this.SetName("MainView");
         this.SetWidth(640);
@@ -49127,11 +49131,30 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
         this.lbInformational.SetHeightPercent(100.000000000000000000);
         this.lbInformational.SetWidthPercent(100.000000000000000000);
         this.SetEvent$1(this.lbInformational,this,"OnClick","lbInformationalClick");
+        this.WebMessageDlg1.SetParentComponent(this);
+        this.WebMessageDlg1.SetName("WebMessageDlg1");
+        this.WebMessageDlg1.SetLeft(232);
+        this.WebMessageDlg1.SetTop(279);
+        this.WebMessageDlg1.SetWidth(24);
+        this.WebMessageDlg1.SetHeight(24);
+        this.WebMessageDlg1.FButtons = {};
+        this.WebMessageDlg1.FCustomButtons.Clear();
+        var $with = this.WebMessageDlg1.FCustomButtons.Add$1();
+        $with.FCaption = "Sim";
+        $with.FElementClassName = "text-warning";
+        var $with1 = this.WebMessageDlg1.FCustomButtons.Add$1();
+        $with1.FCaption = "Não";
+        $with1.FElementClassName = "text-info";
+        this.WebMessageDlg1.FOpacity = 0.200000000000000000;
+        this.WebMessageDlg1.FElementButtonClassName = "bg-black";
+        this.WebMessageDlg1.FElementDialogClassName = "bg-dark-subtle";
+        this.WebMessageDlg1.FElementTitleClassName = "bg-black";
       } finally {
         this.WebLabel1.AfterLoadDFMValues();
         this.lbImportant.AfterLoadDFMValues();
         this.lbWarning.AfterLoadDFMValues();
         this.lbInformational.AfterLoadDFMValues();
+        this.WebMessageDlg1.AfterLoadDFMValues();
       };
     };
     rtl.addIntf(this,pas["WEBLib.Controls"].IControl);
@@ -49141,6 +49164,7 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
     $r.addField("lbImportant",pas["WEBLib.StdCtrls"].$rtti["TLabel"]);
     $r.addField("lbWarning",pas["WEBLib.StdCtrls"].$rtti["TLabel"]);
     $r.addField("lbInformational",pas["WEBLib.StdCtrls"].$rtti["TLabel"]);
+    $r.addField("WebMessageDlg1",pas["WEBLib.Dialogs"].$rtti["TMessageDlg"]);
     $r.addMethod("lbImportantClick",0,[["Sender",pas.System.$rtti["TObject"]]]);
     $r.addMethod("lbWarningClick",0,[["Sender",pas.System.$rtti["TObject"]]],null,16,{attr: [pas.JS.AsyncAttribute,"Create"]});
     $r.addMethod("lbInformationalClick",0,[["Sender",pas.System.$rtti["TObject"]]]);

@@ -21,6 +21,7 @@ type
     lbImportant: TWebLabel;
     lbWarning: TWebLabel;
     lbInformational: TWebLabel;
+    WebMessageDlg1: TWebMessageDlg;
     procedure lbImportantClick(Sender: TObject);
     [Async]
     procedure lbWarningClick(Sender: TObject);
@@ -40,7 +41,9 @@ implementation
 
 procedure TMainView.lbImportantClick(Sender: TObject);
 begin
-  MessageDlg('Minha mensagem', mtError, []);
+  //MessageDlg('Minha mensagem', mtError, []);
+
+  WebMessageDlg1.ShowDialog('Minha menagem componente', mtWarning, []);
 end;
 
 procedure TMainView.lbWarningClick(Sender: TObject);

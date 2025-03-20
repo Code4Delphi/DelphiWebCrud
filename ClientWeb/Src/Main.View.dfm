@@ -44,4 +44,24 @@ object MainView: TMainView
     WidthPercent = 100.000000000000000000
     OnClick = lbInformationalClick
   end
+  object WebMessageDlg1: TWebMessageDlg
+    Left = 232
+    Top = 279
+    Width = 24
+    Height = 24
+    Buttons = []
+    CustomButtons = <
+      item
+        Caption = 'Sim'
+        ElementClassName = 'text-warning'
+      end
+      item
+        Caption = 'N'#227'o'
+        ElementClassName = 'text-info'
+      end>
+    Opacity = 0.200000000000000000
+    ElementButtonClassName = 'bg-black'
+    ElementDialogClassName = 'bg-dark-subtle'
+    ElementTitleClassName = 'bg-black'
+  end
 end
