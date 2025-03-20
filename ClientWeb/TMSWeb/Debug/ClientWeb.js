@@ -49045,15 +49045,49 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
     this.$init = function () {
       pas["WEBLib.Forms"].TForm.$init.call(this);
       this.WebLabel1 = null;
+      this.lbImportant = null;
+      this.lbWarning = null;
+      this.lbInformational = null;
+      this.WebMessageDlg1 = null;
     };
     this.$final = function () {
       this.WebLabel1 = undefined;
+      this.lbImportant = undefined;
+      this.lbWarning = undefined;
+      this.lbInformational = undefined;
+      this.WebMessageDlg1 = undefined;
       pas["WEBLib.Forms"].TForm.$final.call(this);
+    };
+    this.lbImportantClick = function (Sender) {
+      this.WebMessageDlg1.ShowDialog$2("Minha menagem componente",pas["WEBLib.Dialogs"].TMsgDlgType.mtWarning,{});
+    };
+    this.lbWarningClick = async function (Sender) {
+      var LResult = 0;
+      LResult = await pas["WEBLib.Dialogs"].MessageDlgAsync("Pergunta com await?",pas["WEBLib.Dialogs"].TMsgDlgType.mtConfirmation,rtl.createSet(pas["WEBLib.Dialogs"].TMsgDlgBtn.mbYes,pas["WEBLib.Dialogs"].TMsgDlgBtn.mbNo));
+      if (LResult === 6) {
+        pas["WEBLib.Dialogs"].ShowMessage("Respondeu sim")}
+       else pas["WEBLib.Dialogs"].ShowMessage("Respondeu não");
+    };
+    this.lbInformationalClick = function (Sender) {
+      var $Self = this;
+      pas["WEBLib.Dialogs"].MessageDlg("Minha pergunta?",pas["WEBLib.Dialogs"].TMsgDlgType.mtConfirmation,rtl.createSet(pas["WEBLib.Dialogs"].TMsgDlgBtn.mbYes,pas["WEBLib.Dialogs"].TMsgDlgBtn.mbNo),function (AValue) {
+        if (AValue === 6) {
+          pas["WEBLib.Dialogs"].ShowMessage("Clicou em sim")}
+         else pas["WEBLib.Dialogs"].ShowMessage("Clicou em não");
+      });
     };
     this.LoadDFMValues = function () {
       pas["WEBLib.Forms"].TCustomForm.LoadDFMValues.call(this);
       this.WebLabel1 = pas["WEBLib.StdCtrls"].TLabel.$create("Create$2",["lbUsuarioLogado"]);
+      this.lbImportant = pas["WEBLib.StdCtrls"].TLabel.$create("Create$2",["lbImportant"]);
+      this.lbWarning = pas["WEBLib.StdCtrls"].TLabel.$create("Create$2",["lbWarning"]);
+      this.lbInformational = pas["WEBLib.StdCtrls"].TLabel.$create("Create$2",["lbInformational"]);
+      this.WebMessageDlg1 = pas["WEBLib.Dialogs"].TMessageDlg.$create("Create$1",[this]);
       this.WebLabel1.BeforeLoadDFMValues();
+      this.lbImportant.BeforeLoadDFMValues();
+      this.lbWarning.BeforeLoadDFMValues();
+      this.lbInformational.BeforeLoadDFMValues();
+      this.WebMessageDlg1.BeforeLoadDFMValues();
       try {
         this.SetName("MainView");
         this.SetWidth(640);
@@ -49067,14 +49101,73 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
         this.WebLabel1.SetCaption("César Cardoso Logado");
         this.WebLabel1.SetHeightPercent(100.000000000000000000);
         this.WebLabel1.SetWidthPercent(100.000000000000000000);
+        this.lbImportant.SetParentComponent(this);
+        this.lbImportant.SetName("lbImportant");
+        this.lbImportant.SetLeft(64);
+        this.lbImportant.SetTop(248);
+        this.lbImportant.SetWidth(63);
+        this.lbImportant.SetHeight(15);
+        this.lbImportant.SetCaption("lbImportant");
+        this.lbImportant.SetHeightPercent(100.000000000000000000);
+        this.lbImportant.SetWidthPercent(100.000000000000000000);
+        this.SetEvent$1(this.lbImportant,this,"OnClick","lbImportantClick");
+        this.lbWarning.SetParentComponent(this);
+        this.lbWarning.SetName("lbWarning");
+        this.lbWarning.SetLeft(72);
+        this.lbWarning.SetTop(288);
+        this.lbWarning.SetWidth(55);
+        this.lbWarning.SetHeight(15);
+        this.lbWarning.SetCaption("lbWarning");
+        this.lbWarning.SetHeightPercent(100.000000000000000000);
+        this.lbWarning.SetWidthPercent(100.000000000000000000);
+        this.SetEvent$1(this.lbWarning,this,"OnClick","lbWarningClick");
+        this.lbInformational.SetParentComponent(this);
+        this.lbInformational.SetName("lbInformational");
+        this.lbInformational.SetLeft(64);
+        this.lbInformational.SetTop(328);
+        this.lbInformational.SetWidth(82);
+        this.lbInformational.SetHeight(15);
+        this.lbInformational.SetCaption("lbInformational");
+        this.lbInformational.SetHeightPercent(100.000000000000000000);
+        this.lbInformational.SetWidthPercent(100.000000000000000000);
+        this.SetEvent$1(this.lbInformational,this,"OnClick","lbInformationalClick");
+        this.WebMessageDlg1.SetParentComponent(this);
+        this.WebMessageDlg1.SetName("WebMessageDlg1");
+        this.WebMessageDlg1.SetLeft(232);
+        this.WebMessageDlg1.SetTop(279);
+        this.WebMessageDlg1.SetWidth(24);
+        this.WebMessageDlg1.SetHeight(24);
+        this.WebMessageDlg1.FButtons = {};
+        this.WebMessageDlg1.FCustomButtons.Clear();
+        var $with = this.WebMessageDlg1.FCustomButtons.Add$1();
+        $with.FCaption = "Sim";
+        $with.FElementClassName = "text-warning";
+        var $with1 = this.WebMessageDlg1.FCustomButtons.Add$1();
+        $with1.FCaption = "Não";
+        $with1.FElementClassName = "text-info";
+        this.WebMessageDlg1.FOpacity = 0.200000000000000000;
+        this.WebMessageDlg1.FElementButtonClassName = "bg-black";
+        this.WebMessageDlg1.FElementDialogClassName = "bg-dark-subtle";
+        this.WebMessageDlg1.FElementTitleClassName = "bg-black";
       } finally {
         this.WebLabel1.AfterLoadDFMValues();
+        this.lbImportant.AfterLoadDFMValues();
+        this.lbWarning.AfterLoadDFMValues();
+        this.lbInformational.AfterLoadDFMValues();
+        this.WebMessageDlg1.AfterLoadDFMValues();
       };
     };
     rtl.addIntf(this,pas["WEBLib.Controls"].IControl);
     rtl.addIntf(this,pas.System.IUnknown);
     var $r = this.$rtti;
     $r.addField("WebLabel1",pas["WEBLib.StdCtrls"].$rtti["TLabel"]);
+    $r.addField("lbImportant",pas["WEBLib.StdCtrls"].$rtti["TLabel"]);
+    $r.addField("lbWarning",pas["WEBLib.StdCtrls"].$rtti["TLabel"]);
+    $r.addField("lbInformational",pas["WEBLib.StdCtrls"].$rtti["TLabel"]);
+    $r.addField("WebMessageDlg1",pas["WEBLib.Dialogs"].$rtti["TMessageDlg"]);
+    $r.addMethod("lbImportantClick",0,[["Sender",pas.System.$rtti["TObject"]]]);
+    $r.addMethod("lbWarningClick",0,[["Sender",pas.System.$rtti["TObject"]]],null,16,{attr: [pas.JS.AsyncAttribute,"Create"]});
+    $r.addMethod("lbInformationalClick",0,[["Sender",pas.System.$rtti["TObject"]]]);
   });
   this.MainView = null;
 });
@@ -49087,18 +49180,18 @@ rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphi
       this.WebLabel1 = null;
       this.edtLogin = null;
       this.edtSenha = null;
-      this.WebButton1 = null;
+      this.btnEntrar = null;
       this.ckLembrarMe = null;
     };
     this.$final = function () {
       this.WebLabel1 = undefined;
       this.edtLogin = undefined;
       this.edtSenha = undefined;
-      this.WebButton1 = undefined;
+      this.btnEntrar = undefined;
       this.ckLembrarMe = undefined;
       pas["WEBLib.Forms"].TForm.$final.call(this);
     };
-    this.WebButton1Click = function (Sender) {
+    this.btnEntrarClick = function (Sender) {
       if (this.edtLogin.GetText() !== "admin") {
         pas["WEBLib.Dialogs"].ShowMessage("Login inválido");
         this.edtLogin.SetFocus();
@@ -49112,22 +49205,38 @@ rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphi
       pas["Main.View"].MainView = pas["Main.View"].TMainView.$create("CreateNew$2");
       pas["Main.View"].MainView.ShowModal();
     };
+    this.WebFormShow = function (Sender) {
+      this.edtLogin.SetFocus();
+    };
+    this.edtLoginKeyPress = function (Sender, Key) {
+      if (Key.get() === "\r") this.edtSenha.SetFocus();
+    };
+    this.edtSenhaKeyPress = function (Sender, Key) {
+      if (Key.get() === "\r") this.btnEntrar.Click();
+    };
+    this.WebFormCreate = function (Sender) {
+      pas["WEBLib.Forms"].Application.FThemeColor = 7171437;
+      pas["WEBLib.Forms"].Application.FThemed = true;
+    };
     this.LoadDFMValues = function () {
       pas["WEBLib.Forms"].TCustomForm.LoadDFMValues.call(this);
       this.WebLabel1 = pas["WEBLib.StdCtrls"].TLabel.$create("Create$2",["lbTitulo"]);
       this.edtLogin = pas["WEBLib.StdCtrls"].TEdit.$create("Create$2",["edtEmail"]);
       this.edtSenha = pas["WEBLib.StdCtrls"].TEdit.$create("Create$2",["edtPassword"]);
-      this.WebButton1 = pas["WEBLib.StdCtrls"].TButton.$create("Create$2",["btnEntrar"]);
+      this.btnEntrar = pas["WEBLib.StdCtrls"].TButton.$create("Create$2",["btnEntrar"]);
       this.ckLembrarMe = pas["WEBLib.StdCtrls"].TCheckBox.$create("Create$2",["ckDefault"]);
       this.WebLabel1.BeforeLoadDFMValues();
       this.edtLogin.BeforeLoadDFMValues();
       this.edtSenha.BeforeLoadDFMValues();
-      this.WebButton1.BeforeLoadDFMValues();
+      this.btnEntrar.BeforeLoadDFMValues();
       this.ckLembrarMe.BeforeLoadDFMValues();
       try {
         this.SetName("LoginView");
         this.SetWidth(640);
         this.SetHeight(480);
+        this.SetCaption("DelphiWeb - Login");
+        this.SetEvent(this,"OnCreate","WebFormCreate");
+        this.SetEvent(this,"OnShow","WebFormShow");
         this.WebLabel1.SetParentComponent(this);
         this.WebLabel1.SetName("WebLabel1");
         this.WebLabel1.SetLeft(192);
@@ -49145,7 +49254,9 @@ rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphi
         this.edtLogin.SetHeight(22);
         this.edtLogin.SetChildOrderEx(1);
         this.edtLogin.SetHeightPercent(100.000000000000000000);
+        this.edtLogin.SetText("admin");
         this.edtLogin.SetWidthPercent(100.000000000000000000);
+        this.SetEvent$1(this.edtLogin,this,"OnKeyPress","edtLoginKeyPress");
         this.edtSenha.SetParentComponent(this);
         this.edtSenha.SetName("edtSenha");
         this.edtSenha.SetLeft(232);
@@ -49154,18 +49265,20 @@ rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphi
         this.edtSenha.SetHeight(22);
         this.edtSenha.SetChildOrderEx(2);
         this.edtSenha.SetHeightPercent(100.000000000000000000);
+        this.edtSenha.SetText("admin");
         this.edtSenha.SetWidthPercent(100.000000000000000000);
-        this.WebButton1.SetParentComponent(this);
-        this.WebButton1.SetName("WebButton1");
-        this.WebButton1.SetLeft(232);
-        this.WebButton1.SetTop(272);
-        this.WebButton1.SetWidth(96);
-        this.WebButton1.SetHeight(25);
-        this.WebButton1.SetCaption("Entrar");
-        this.WebButton1.SetChildOrderEx(3);
-        this.WebButton1.SetHeightPercent(100.000000000000000000);
-        this.WebButton1.SetWidthPercent(100.000000000000000000);
-        this.SetEvent$1(this.WebButton1,this,"OnClick","WebButton1Click");
+        this.SetEvent$1(this.edtSenha,this,"OnKeyPress","edtSenhaKeyPress");
+        this.btnEntrar.SetParentComponent(this);
+        this.btnEntrar.SetName("btnEntrar");
+        this.btnEntrar.SetLeft(232);
+        this.btnEntrar.SetTop(272);
+        this.btnEntrar.SetWidth(96);
+        this.btnEntrar.SetHeight(25);
+        this.btnEntrar.SetCaption("Entrar");
+        this.btnEntrar.SetChildOrderEx(3);
+        this.btnEntrar.SetHeightPercent(100.000000000000000000);
+        this.btnEntrar.SetWidthPercent(100.000000000000000000);
+        this.SetEvent$1(this.btnEntrar,this,"OnClick","btnEntrarClick");
         this.ckLembrarMe.SetParentComponent(this);
         this.ckLembrarMe.SetName("ckLembrarMe");
         this.ckLembrarMe.SetLeft(224);
@@ -49180,7 +49293,7 @@ rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphi
         this.WebLabel1.AfterLoadDFMValues();
         this.edtLogin.AfterLoadDFMValues();
         this.edtSenha.AfterLoadDFMValues();
-        this.WebButton1.AfterLoadDFMValues();
+        this.btnEntrar.AfterLoadDFMValues();
         this.ckLembrarMe.AfterLoadDFMValues();
       };
     };
@@ -49190,9 +49303,13 @@ rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphi
     $r.addField("WebLabel1",pas["WEBLib.StdCtrls"].$rtti["TLabel"]);
     $r.addField("edtLogin",pas["WEBLib.StdCtrls"].$rtti["TEdit"]);
     $r.addField("edtSenha",pas["WEBLib.StdCtrls"].$rtti["TEdit"]);
-    $r.addField("WebButton1",pas["WEBLib.StdCtrls"].$rtti["TButton"]);
+    $r.addField("btnEntrar",pas["WEBLib.StdCtrls"].$rtti["TButton"]);
     $r.addField("ckLembrarMe",pas["WEBLib.StdCtrls"].$rtti["TCheckBox"]);
-    $r.addMethod("WebButton1Click",0,[["Sender",pas.System.$rtti["TObject"]]]);
+    $r.addMethod("btnEntrarClick",0,[["Sender",pas.System.$rtti["TObject"]]]);
+    $r.addMethod("WebFormShow",0,[["Sender",pas.System.$rtti["TObject"]]]);
+    $r.addMethod("edtLoginKeyPress",0,[["Sender",pas.System.$rtti["TObject"]],["Key",rtl.char,1]]);
+    $r.addMethod("edtSenhaKeyPress",0,[["Sender",pas.System.$rtti["TObject"]],["Key",rtl.char,1]]);
+    $r.addMethod("WebFormCreate",0,[["Sender",pas.System.$rtti["TObject"]]]);
   });
   this.LoginView = null;
 });

@@ -1,6 +1,9 @@
 object LoginView: TLoginView
   Width = 640
   Height = 480
+  Caption = 'DelphiWeb - Login'
+  OnCreate = WebFormCreate
+  OnShow = WebFormShow
   object WebLabel1: TWebLabel
     Left = 192
     Top = 80
@@ -19,7 +22,9 @@ object LoginView: TLoginView
     ChildOrder = 1
     ElementID = 'edtEmail'
     HeightPercent = 100.000000000000000000
+    Text = 'admin'
     WidthPercent = 100.000000000000000000
+    OnKeyPress = edtLoginKeyPress
   end
   object edtSenha: TWebEdit
     Left = 232
@@ -29,9 +34,11 @@ object LoginView: TLoginView
     ChildOrder = 2
     ElementID = 'edtPassword'
     HeightPercent = 100.000000000000000000
+    Text = 'admin'
     WidthPercent = 100.000000000000000000
+    OnKeyPress = edtSenhaKeyPress
   end
-  object WebButton1: TWebButton
+  object btnEntrar: TWebButton
     Left = 232
     Top = 272
     Width = 96
@@ -41,7 +48,7 @@ object LoginView: TLoginView
     ElementID = 'btnEntrar'
     HeightPercent = 100.000000000000000000
     WidthPercent = 100.000000000000000000
-    OnClick = WebButton1Click
+    OnClick = btnEntrarClick
   end
   object ckLembrarMe: TWebCheckBox
     Left = 224
