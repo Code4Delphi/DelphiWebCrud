@@ -3,8 +3,17 @@ unit Login.View;
 interface
 
 uses
-  System.SysUtils, System.Classes, JS, Web, WEBLib.Graphics, WEBLib.Controls,
-  WEBLib.Forms, WEBLib.Dialogs, Vcl.Controls, Vcl.StdCtrls, WEBLib.StdCtrls,
+  System.SysUtils,
+  System.Classes,
+  JS,
+  Web,
+  WEBLib.Graphics,
+  WEBLib.Controls,
+  WEBLib.Forms,
+  WEBLib.Dialogs,
+  Vcl.Controls,
+  Vcl.StdCtrls,
+  WEBLib.StdCtrls,
   Main.View;
 
 type
@@ -12,13 +21,16 @@ type
     WebLabel1: TWebLabel;
     edtLogin: TWebEdit;
     edtSenha: TWebEdit;
-    WebButton1: TWebButton;
+    btnEntrar: TWebButton;
     ckLembrarMe: TWebCheckBox;
-    procedure WebButton1Click(Sender: TObject);
+    procedure btnEntrarClick(Sender: TObject);
+    procedure WebFormShow(Sender: TObject);
+    procedure edtLoginKeyPress(Sender: TObject; var Key: Char);
+    procedure edtSenhaKeyPress(Sender: TObject; var Key: Char);
   private
-    { Private declarations }
+
   public
-    { Public declarations }
+
   end;
 
 var
@@ -28,7 +40,24 @@ implementation
 
 {$R *.dfm}
 
-procedure TLoginView.WebButton1Click(Sender: TObject);
+procedure TLoginView.WebFormShow(Sender: TObject);
+begin
+  edtLogin.SetFocus;
+end;
+
+procedure TLoginView.edtLoginKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+    edtSenha.SetFocus;
+end;
+
+procedure TLoginView.edtSenhaKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+    btnEntrar.Click;
+end;
+
+procedure TLoginView.btnEntrarClick(Sender: TObject);
 begin
   if edtLogin.Text <> 'admin' then
   begin

@@ -49087,18 +49087,18 @@ rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphi
       this.WebLabel1 = null;
       this.edtLogin = null;
       this.edtSenha = null;
-      this.WebButton1 = null;
+      this.btnEntrar = null;
       this.ckLembrarMe = null;
     };
     this.$final = function () {
       this.WebLabel1 = undefined;
       this.edtLogin = undefined;
       this.edtSenha = undefined;
-      this.WebButton1 = undefined;
+      this.btnEntrar = undefined;
       this.ckLembrarMe = undefined;
       pas["WEBLib.Forms"].TForm.$final.call(this);
     };
-    this.WebButton1Click = function (Sender) {
+    this.btnEntrarClick = function (Sender) {
       if (this.edtLogin.GetText() !== "admin") {
         pas["WEBLib.Dialogs"].ShowMessage("Login inválido");
         this.edtLogin.SetFocus();
@@ -49112,22 +49112,33 @@ rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphi
       pas["Main.View"].MainView = pas["Main.View"].TMainView.$create("CreateNew$2");
       pas["Main.View"].MainView.ShowModal();
     };
+    this.WebFormShow = function (Sender) {
+      this.edtLogin.SetFocus();
+    };
+    this.edtLoginKeyPress = function (Sender, Key) {
+      if (Key.get() === "\r") this.edtSenha.SetFocus();
+    };
+    this.edtSenhaKeyPress = function (Sender, Key) {
+      if (Key.get() === "\r") this.btnEntrar.Click();
+    };
     this.LoadDFMValues = function () {
       pas["WEBLib.Forms"].TCustomForm.LoadDFMValues.call(this);
       this.WebLabel1 = pas["WEBLib.StdCtrls"].TLabel.$create("Create$2",["lbTitulo"]);
       this.edtLogin = pas["WEBLib.StdCtrls"].TEdit.$create("Create$2",["edtEmail"]);
       this.edtSenha = pas["WEBLib.StdCtrls"].TEdit.$create("Create$2",["edtPassword"]);
-      this.WebButton1 = pas["WEBLib.StdCtrls"].TButton.$create("Create$2",["btnEntrar"]);
+      this.btnEntrar = pas["WEBLib.StdCtrls"].TButton.$create("Create$2",["btnEntrar"]);
       this.ckLembrarMe = pas["WEBLib.StdCtrls"].TCheckBox.$create("Create$2",["ckDefault"]);
       this.WebLabel1.BeforeLoadDFMValues();
       this.edtLogin.BeforeLoadDFMValues();
       this.edtSenha.BeforeLoadDFMValues();
-      this.WebButton1.BeforeLoadDFMValues();
+      this.btnEntrar.BeforeLoadDFMValues();
       this.ckLembrarMe.BeforeLoadDFMValues();
       try {
         this.SetName("LoginView");
         this.SetWidth(640);
         this.SetHeight(480);
+        this.SetCaption("DelphiWeb - Login");
+        this.SetEvent(this,"OnShow","WebFormShow");
         this.WebLabel1.SetParentComponent(this);
         this.WebLabel1.SetName("WebLabel1");
         this.WebLabel1.SetLeft(192);
@@ -49145,7 +49156,9 @@ rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphi
         this.edtLogin.SetHeight(22);
         this.edtLogin.SetChildOrderEx(1);
         this.edtLogin.SetHeightPercent(100.000000000000000000);
+        this.edtLogin.SetText("admin");
         this.edtLogin.SetWidthPercent(100.000000000000000000);
+        this.SetEvent$1(this.edtLogin,this,"OnKeyPress","edtLoginKeyPress");
         this.edtSenha.SetParentComponent(this);
         this.edtSenha.SetName("edtSenha");
         this.edtSenha.SetLeft(232);
@@ -49154,18 +49167,20 @@ rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphi
         this.edtSenha.SetHeight(22);
         this.edtSenha.SetChildOrderEx(2);
         this.edtSenha.SetHeightPercent(100.000000000000000000);
+        this.edtSenha.SetText("admin");
         this.edtSenha.SetWidthPercent(100.000000000000000000);
-        this.WebButton1.SetParentComponent(this);
-        this.WebButton1.SetName("WebButton1");
-        this.WebButton1.SetLeft(232);
-        this.WebButton1.SetTop(272);
-        this.WebButton1.SetWidth(96);
-        this.WebButton1.SetHeight(25);
-        this.WebButton1.SetCaption("Entrar");
-        this.WebButton1.SetChildOrderEx(3);
-        this.WebButton1.SetHeightPercent(100.000000000000000000);
-        this.WebButton1.SetWidthPercent(100.000000000000000000);
-        this.SetEvent$1(this.WebButton1,this,"OnClick","WebButton1Click");
+        this.SetEvent$1(this.edtSenha,this,"OnKeyPress","edtSenhaKeyPress");
+        this.btnEntrar.SetParentComponent(this);
+        this.btnEntrar.SetName("btnEntrar");
+        this.btnEntrar.SetLeft(232);
+        this.btnEntrar.SetTop(272);
+        this.btnEntrar.SetWidth(96);
+        this.btnEntrar.SetHeight(25);
+        this.btnEntrar.SetCaption("Entrar");
+        this.btnEntrar.SetChildOrderEx(3);
+        this.btnEntrar.SetHeightPercent(100.000000000000000000);
+        this.btnEntrar.SetWidthPercent(100.000000000000000000);
+        this.SetEvent$1(this.btnEntrar,this,"OnClick","btnEntrarClick");
         this.ckLembrarMe.SetParentComponent(this);
         this.ckLembrarMe.SetName("ckLembrarMe");
         this.ckLembrarMe.SetLeft(224);
@@ -49180,7 +49195,7 @@ rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphi
         this.WebLabel1.AfterLoadDFMValues();
         this.edtLogin.AfterLoadDFMValues();
         this.edtSenha.AfterLoadDFMValues();
-        this.WebButton1.AfterLoadDFMValues();
+        this.btnEntrar.AfterLoadDFMValues();
         this.ckLembrarMe.AfterLoadDFMValues();
       };
     };
@@ -49190,9 +49205,12 @@ rtl.module("Login.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphi
     $r.addField("WebLabel1",pas["WEBLib.StdCtrls"].$rtti["TLabel"]);
     $r.addField("edtLogin",pas["WEBLib.StdCtrls"].$rtti["TEdit"]);
     $r.addField("edtSenha",pas["WEBLib.StdCtrls"].$rtti["TEdit"]);
-    $r.addField("WebButton1",pas["WEBLib.StdCtrls"].$rtti["TButton"]);
+    $r.addField("btnEntrar",pas["WEBLib.StdCtrls"].$rtti["TButton"]);
     $r.addField("ckLembrarMe",pas["WEBLib.StdCtrls"].$rtti["TCheckBox"]);
-    $r.addMethod("WebButton1Click",0,[["Sender",pas.System.$rtti["TObject"]]]);
+    $r.addMethod("btnEntrarClick",0,[["Sender",pas.System.$rtti["TObject"]]]);
+    $r.addMethod("WebFormShow",0,[["Sender",pas.System.$rtti["TObject"]]]);
+    $r.addMethod("edtLoginKeyPress",0,[["Sender",pas.System.$rtti["TObject"]],["Key",rtl.char,1]]);
+    $r.addMethod("edtSenhaKeyPress",0,[["Sender",pas.System.$rtti["TObject"]],["Key",rtl.char,1]]);
   });
   this.LoginView = null;
 });
