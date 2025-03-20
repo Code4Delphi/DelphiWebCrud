@@ -30,6 +30,7 @@
 - [Delphi Web #05 - Web Core com Bootstrap primeiros passos](https://www.youtube.com/watch?v=UnICLdUoJP4&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=5)
 - [Delphi Web #06 - Baixando e configurando AdminLTE Bootstrap Template | Criando projeto Web Core](https://www.youtube.com/watch?v=YAjcr_XkFkQ&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=6)
 - [Delphi Web #07 - Criando tela de login](https://www.youtube.com/watch?v=594ffUxi4Cc&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=7)
+- [Delphi Web #08 - Configurando home | Criando mensagens customizadas](https://www.youtube.com/watch?v=Fk3Ep3BudS4&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=8)
 <br/>
 
 ## 📞 Contatos
