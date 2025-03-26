@@ -13,7 +13,8 @@ uses
   WEBLib.Dialogs,
   Vcl.Controls,
   Vcl.StdCtrls,
-  WEBLib.StdCtrls, WEBLib.ExtCtrls;
+  WEBLib.StdCtrls, WEBLib.ExtCtrls, Data.DB, XData.Web.JsonDataset, XData.Web.Dataset, XData.Web.Client,
+  XData.Web.Connection;
 
 type
   TMainView = class(TWebForm)
@@ -27,10 +28,15 @@ type
     edtCodigo: TWebEdit;
     btnGetNome: TWebButton;
     btnGet: TWebButton;
+    XDataWebConnection1: TXDataWebConnection;
+    XDataWebClient1: TXDataWebClient;
+    XDataWebDataSet1: TXDataWebDataSet;
+    mmTeste: TWebMemo;
     procedure lbImportantClick(Sender: TObject);
     [Async]
     procedure lbWarningClick(Sender: TObject);
     procedure lbInformationalClick(Sender: TObject);
+    procedure btnGetNomeClick(Sender: TObject);
   private
 
   public
@@ -72,6 +78,15 @@ begin
         ShowMessage('Clicou em sim')
       else
         ShowMessage('Clicou em não');
+    end);
+end;
+
+procedure TMainView.btnGetNomeClick(Sender: TObject);
+begin
+  XDataWebClient1.RawInvoke('IClientesService.GetNome', [StrToIntDef(edtCodigo.Text, 0)],
+    procedure(Response: TXDataClientResponse)
+    begin
+      mmTeste.Lines.Add(Response.ResponseText);
     end);
 end;
 
