@@ -49092,6 +49092,7 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
         this.SetName("MainView");
         this.SetWidth(640);
         this.SetHeight(480);
+        this.SetCaption("Delphi Web - Home");
         this.WebLabel1.SetParentComponent(this);
         this.WebLabel1.SetName("WebLabel1");
         this.WebLabel1.SetLeft(144);
