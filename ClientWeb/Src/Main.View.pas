@@ -13,7 +13,7 @@ uses
   WEBLib.Dialogs,
   Vcl.Controls,
   Vcl.StdCtrls,
-  WEBLib.StdCtrls;
+  WEBLib.StdCtrls, WEBLib.ExtCtrls;
 
 type
   TMainView = class(TWebForm)
@@ -22,6 +22,11 @@ type
     lbWarning: TWebLabel;
     lbInformational: TWebLabel;
     WebMessageDlg1: TWebMessageDlg;
+    WebPanel1: TWebPanel;
+    lbCodigo: TWebLabel;
+    edtCodigo: TWebEdit;
+    btnGetNome: TWebButton;
+    btnGet: TWebButton;
     procedure lbImportantClick(Sender: TObject);
     [Async]
     procedure lbWarningClick(Sender: TObject);

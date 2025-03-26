@@ -65,4 +65,64 @@ object MainView: TMainView
     ElementDialogClassName = 'bg-dark-subtle'
     ElementTitleClassName = 'bg-black'
   end
+  object WebPanel1: TWebPanel
+    Left = 112
+    Top = 160
+    Width = 489
+    Height = 33
+    ChildOrder = 5
+    TabOrder = 1
+    object lbCodigo: TWebLabel
+      Left = 0
+      Top = 0
+      Width = 42
+      Height = 33
+      Align = alLeft
+      Caption = 'C'#243'digo:'
+      HeightPercent = 100.000000000000000000
+      WidthPercent = 100.000000000000000000
+      ExplicitHeight = 15
+    end
+    object edtCodigo: TWebEdit
+      Left = 42
+      Top = 0
+      Width = 121
+      Height = 33
+      Align = alLeft
+      ChildOrder = 1
+      HeightPercent = 100.000000000000000000
+      Text = '40'
+      WidthPercent = 100.000000000000000000
+      ExplicitLeft = 88
+      ExplicitHeight = 22
+    end
+    object btnGetNome: TWebButton
+      Left = 163
+      Top = 0
+      Width = 96
+      Height = 33
+      Align = alLeft
+      Caption = 'GetNome'
+      ChildOrder = 2
+      HeightPercent = 100.000000000000000000
+      WidthPercent = 100.000000000000000000
+      ExplicitLeft = 200
+      ExplicitTop = 5
+      ExplicitHeight = 25
+    end
+    object btnGet: TWebButton
+      Left = 259
+      Top = 0
+      Width = 96
+      Height = 33
+      Align = alLeft
+      Caption = 'Get'
+      ChildOrder = 3
+      HeightPercent = 100.000000000000000000
+      WidthPercent = 100.000000000000000000
+      ExplicitLeft = 320
+      ExplicitTop = 3
+      ExplicitHeight = 25
+    end
+  end
 end
