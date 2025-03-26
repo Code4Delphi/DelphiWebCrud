@@ -79265,6 +79265,9 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
         $Self.mmTeste.FLines.Add(Response.GetResponseText());
       },null);
     };
+    this.WebFormCreate = function (Sender) {
+      if (!this.XDataWebConnection1.GetConnected()) this.XDataWebConnection1.SetConnected(true);
+    };
     this.LoadDFMValues = function () {
       pas["WEBLib.Forms"].TCustomForm.LoadDFMValues.call(this);
       this.WebLabel1 = pas["WEBLib.StdCtrls"].TLabel.$create("Create$2",["lbUsuarioLogado"]);
@@ -79302,6 +79305,7 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
         this.SetWidth(640);
         this.SetHeight(480);
         this.SetCaption("Delphi Web - Home");
+        this.SetEvent(this,"OnCreate","WebFormCreate");
         this.WebLabel1.SetParentComponent(this);
         this.WebLabel1.SetName("WebLabel1");
         this.WebLabel1.SetLeft(144);
@@ -79431,7 +79435,6 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
         this.XDataWebConnection1.SetParentComponent(this);
         this.XDataWebConnection1.SetName("XDataWebConnection1");
         this.XDataWebConnection1.SetURL("http://localhost:8000/tms/xdata");
-        this.XDataWebConnection1.SetConnected(true);
         this.XDataWebConnection1.SetLeft(96);
         this.XDataWebConnection1.SetTop(16);
         this.XDataWebClient1.SetParentComponent(this);
@@ -79489,6 +79492,7 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
     $r.addMethod("lbWarningClick",0,[["Sender",pas.System.$rtti["TObject"]]],null,16,{attr: [pas.JS.AsyncAttribute,"Create"]});
     $r.addMethod("lbInformationalClick",0,[["Sender",pas.System.$rtti["TObject"]]]);
     $r.addMethod("btnGetNomeClick",0,[["Sender",pas.System.$rtti["TObject"]]]);
+    $r.addMethod("WebFormCreate",0,[["Sender",pas.System.$rtti["TObject"]]]);
   });
   this.MainView = null;
 });

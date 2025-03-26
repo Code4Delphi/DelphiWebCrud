@@ -2,6 +2,7 @@ object MainView: TMainView
   Width = 640
   Height = 480
   Caption = 'Delphi Web - Home'
+  OnCreate = WebFormCreate
   object WebLabel1: TWebLabel
     Left = 144
     Top = 80
@@ -83,7 +84,7 @@ object MainView: TMainView
       ElementID = 'lbLabel'
       HeightPercent = 100.000000000000000000
       WidthPercent = 100.000000000000000000
-      ExplicitLeft = -6
+      ExplicitHeight = 15
     end
     object edtCodigo: TWebEdit
       Left = 42
@@ -96,7 +97,6 @@ object MainView: TMainView
       HeightPercent = 100.000000000000000000
       Text = '50'
       WidthPercent = 100.000000000000000000
-      ExplicitLeft = 48
     end
     object btnGetNome: TWebButton
       Left = 163
@@ -110,7 +110,6 @@ object MainView: TMainView
       HeightPercent = 100.000000000000000000
       WidthPercent = 100.000000000000000000
       OnClick = btnGetNomeClick
-      ExplicitLeft = 157
     end
     object btnGet: TWebButton
       Left = 259
@@ -123,7 +122,6 @@ object MainView: TMainView
       ElementID = 'btnGet'
       HeightPercent = 100.000000000000000000
       WidthPercent = 100.000000000000000000
-      ExplicitLeft = 265
     end
   end
   object mmTeste: TWebMemo
@@ -141,7 +139,6 @@ object MainView: TMainView
   end
   object XDataWebConnection1: TXDataWebConnection
     URL = 'http://localhost:8000/tms/xdata'
-    Connected = True
     Left = 96
     Top = 16
   end
