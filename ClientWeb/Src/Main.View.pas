@@ -14,7 +14,7 @@ uses
   Vcl.Controls,
   Vcl.StdCtrls,
   WEBLib.StdCtrls, WEBLib.ExtCtrls, Data.DB, XData.Web.JsonDataset, XData.Web.Dataset, XData.Web.Client,
-  XData.Web.Connection;
+  XData.Web.Connection, WEBLib.DB;
 
 type
   TMainView = class(TWebForm)
@@ -32,6 +32,7 @@ type
     XDataWebClient1: TXDataWebClient;
     XDataWebDataSet1: TXDataWebDataSet;
     mmTeste: TWebMemo;
+    WebDataSource1: TWebDataSource;
     procedure lbImportantClick(Sender: TObject);
     [Async]
     procedure lbWarningClick(Sender: TObject);

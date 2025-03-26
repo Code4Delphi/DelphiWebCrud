@@ -79194,7 +79194,14 @@ rtl.module("XData.Web.Dataset",["System","Classes","DB","SysUtils","Types","XDat
     };
   });
 });
-rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","WEBLib.Controls","WEBLib.Forms","WEBLib.Dialogs","WEBLib.Controls","WEBLib.StdCtrls","WEBLib.StdCtrls","WEBLib.ExtCtrls","DB","XData.Web.JsonDataset","XData.Web.Dataset","XData.Web.Client","XData.Web.Connection"],function () {
+rtl.module("WEBLib.DB",["System","Classes","DB","JSONDataset"],function () {
+  "use strict";
+  var $mod = this;
+  rtl.createClass(this,"TWebDataSource",pas.DB.TDataSource,function () {
+    rtl.addIntf(this,pas.System.IUnknown);
+  });
+});
+rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphics","WEBLib.Controls","WEBLib.Forms","WEBLib.Dialogs","WEBLib.Controls","WEBLib.StdCtrls","WEBLib.StdCtrls","WEBLib.ExtCtrls","DB","XData.Web.JsonDataset","XData.Web.Dataset","XData.Web.Client","XData.Web.Connection","WEBLib.DB"],function () {
   "use strict";
   var $mod = this;
   rtl.createClass(this,"TMainView",pas["WEBLib.Forms"].TForm,function () {
@@ -79214,6 +79221,7 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
       this.XDataWebClient1 = null;
       this.XDataWebDataSet1 = null;
       this.mmTeste = null;
+      this.WebDataSource1 = null;
     };
     this.$final = function () {
       this.WebLabel1 = undefined;
@@ -79230,6 +79238,7 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
       this.XDataWebClient1 = undefined;
       this.XDataWebDataSet1 = undefined;
       this.mmTeste = undefined;
+      this.WebDataSource1 = undefined;
       pas["WEBLib.Forms"].TForm.$final.call(this);
     };
     this.lbImportantClick = function (Sender) {
@@ -79272,6 +79281,7 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
       this.XDataWebConnection1 = pas["XData.Web.Connection"].TXDataWebConnection.$create("Create$1",[this]);
       this.XDataWebClient1 = pas["XData.Web.Client"].TXDataWebClient.$create("Create$1",[this]);
       this.XDataWebDataSet1 = pas["XData.Web.Dataset"].TXDataWebDataSet.$create("Create$1",[this]);
+      this.WebDataSource1 = pas.DB.TDataSource.$create("Create$1",[this]);
       this.WebLabel1.BeforeLoadDFMValues();
       this.lbImportant.BeforeLoadDFMValues();
       this.lbWarning.BeforeLoadDFMValues();
@@ -79286,6 +79296,7 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
       this.XDataWebConnection1.BeforeLoadDFMValues();
       this.XDataWebClient1.BeforeLoadDFMValues();
       this.XDataWebDataSet1.BeforeLoadDFMValues();
+      this.WebDataSource1.BeforeLoadDFMValues();
       try {
         this.SetName("MainView");
         this.SetWidth(640);
@@ -79433,6 +79444,11 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
         this.XDataWebDataSet1.SetConnection(this.XDataWebConnection1);
         this.XDataWebDataSet1.SetLeft(360);
         this.XDataWebDataSet1.SetTop(16);
+        this.WebDataSource1.SetParentComponent(this);
+        this.WebDataSource1.SetName("WebDataSource1");
+        this.WebDataSource1.SetDataSet(this.XDataWebDataSet1);
+        this.WebDataSource1.SetLeft(488);
+        this.WebDataSource1.SetTop(16);
       } finally {
         this.WebLabel1.AfterLoadDFMValues();
         this.lbImportant.AfterLoadDFMValues();
@@ -79448,6 +79464,7 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
         this.XDataWebConnection1.AfterLoadDFMValues();
         this.XDataWebClient1.AfterLoadDFMValues();
         this.XDataWebDataSet1.AfterLoadDFMValues();
+        this.WebDataSource1.AfterLoadDFMValues();
       };
     };
     rtl.addIntf(this,pas["WEBLib.Controls"].IControl);
@@ -79467,6 +79484,7 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
     $r.addField("XDataWebClient1",pas["XData.Web.Client"].$rtti["TXDataWebClient"]);
     $r.addField("XDataWebDataSet1",pas["XData.Web.Dataset"].$rtti["TXDataWebDataSet"]);
     $r.addField("mmTeste",pas["WEBLib.StdCtrls"].$rtti["TMemo"]);
+    $r.addField("WebDataSource1",pas.DB.$rtti["TDataSource"]);
     $r.addMethod("lbImportantClick",0,[["Sender",pas.System.$rtti["TObject"]]]);
     $r.addMethod("lbWarningClick",0,[["Sender",pas.System.$rtti["TObject"]]],null,16,{attr: [pas.JS.AsyncAttribute,"Create"]});
     $r.addMethod("lbInformationalClick",0,[["Sender",pas.System.$rtti["TObject"]]]);

@@ -155,4 +155,9 @@ object MainView: TMainView
     Left = 360
     Top = 16
   end
+  object WebDataSource1: TWebDataSource
+    DataSet = XDataWebDataSet1
+    Left = 488
+    Top = 16
+  end
 end
