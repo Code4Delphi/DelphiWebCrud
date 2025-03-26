@@ -93,8 +93,6 @@ object MainView: TMainView
       HeightPercent = 100.000000000000000000
       Text = '40'
       WidthPercent = 100.000000000000000000
-      ExplicitLeft = 88
-      ExplicitHeight = 22
     end
     object btnGetNome: TWebButton
       Left = 163
@@ -106,9 +104,6 @@ object MainView: TMainView
       ChildOrder = 2
       HeightPercent = 100.000000000000000000
       WidthPercent = 100.000000000000000000
-      ExplicitLeft = 200
-      ExplicitTop = 5
-      ExplicitHeight = 25
     end
     object btnGet: TWebButton
       Left = 259
@@ -120,9 +115,6 @@ object MainView: TMainView
       ChildOrder = 3
       HeightPercent = 100.000000000000000000
       WidthPercent = 100.000000000000000000
-      ExplicitLeft = 320
-      ExplicitTop = 3
-      ExplicitHeight = 25
     end
   end
 end

@@ -1,7 +1,5 @@
 program ClientWeb;
 
-
-
 {$R *.dres}
 
 uses
