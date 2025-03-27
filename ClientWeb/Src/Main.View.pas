@@ -38,7 +38,6 @@ type
     procedure lbWarningClick(Sender: TObject);
     procedure lbInformationalClick(Sender: TObject);
     procedure btnGetNomeClick(Sender: TObject);
-    procedure WebFormCreate(Sender: TObject);
   private
 
   public
@@ -51,12 +50,6 @@ var
 implementation
 
 {$R *.dfm}
-
-procedure TMainView.WebFormCreate(Sender: TObject);
-begin
-  if not XDataWebConnection1.Connected then
-    XDataWebConnection1.Connected := True;
-end;
 
 procedure TMainView.lbImportantClick(Sender: TObject);
 begin
