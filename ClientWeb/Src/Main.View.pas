@@ -5,16 +5,22 @@ interface
 uses
   System.SysUtils,
   System.Classes,
+  Vcl.Controls,
+  Vcl.StdCtrls,
+  Data.DB,
+  XData.Web.JsonDataset,
+  XData.Web.Dataset,
+  XData.Web.Client,
+  XData.Web.Connection,
   JS,
   Web,
   WEBLib.Graphics,
   WEBLib.Controls,
   WEBLib.Forms,
   WEBLib.Dialogs,
-  Vcl.Controls,
-  Vcl.StdCtrls,
-  WEBLib.StdCtrls, WEBLib.ExtCtrls, Data.DB, XData.Web.JsonDataset, XData.Web.Dataset, XData.Web.Client,
-  XData.Web.Connection, WEBLib.DB;
+  WEBLib.StdCtrls,
+  WEBLib.ExtCtrls,
+  WEBLib.DB;
 
 type
   TMainView = class(TWebForm)
