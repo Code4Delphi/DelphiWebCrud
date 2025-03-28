@@ -79222,6 +79222,13 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
       this.XDataWebDataSet1 = null;
       this.mmTeste = null;
       this.WebDataSource1 = null;
+      this.XDataWebDataSet1Id = null;
+      this.XDataWebDataSet1IdCidade = null;
+      this.XDataWebDataSet1Nome = null;
+      this.XDataWebDataSet1Profissao = null;
+      this.XDataWebDataSet1Limite = null;
+      this.XDataWebDataSet1Porcentagem = null;
+      this.XDataWebDataSet1Ativo = null;
     };
     this.$final = function () {
       this.WebLabel1 = undefined;
@@ -79239,6 +79246,13 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
       this.XDataWebDataSet1 = undefined;
       this.mmTeste = undefined;
       this.WebDataSource1 = undefined;
+      this.XDataWebDataSet1Id = undefined;
+      this.XDataWebDataSet1IdCidade = undefined;
+      this.XDataWebDataSet1Nome = undefined;
+      this.XDataWebDataSet1Profissao = undefined;
+      this.XDataWebDataSet1Limite = undefined;
+      this.XDataWebDataSet1Porcentagem = undefined;
+      this.XDataWebDataSet1Ativo = undefined;
       pas["WEBLib.Forms"].TForm.$final.call(this);
     };
     this.lbImportantClick = function (Sender) {
@@ -79270,7 +79284,10 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
     this.btnGetClick = async function (Sender) {
       var LResponse = null;
       LResponse = await this.XDataWebClient1.RawInvokeAsync("IClientesService.Get",[pas.SysUtils.StrToIntDef(this.edtCodigo.GetText(),0)]);
-      this.mmTeste.FLines.Add(LResponse.GetResponseText());
+      this.XDataWebDataSet1.Close();
+      this.XDataWebDataSet1.SetJsonData(LResponse.FResult);
+      this.XDataWebDataSet1.Open();
+      this.mmTeste.FLines.Add(this.XDataWebDataSet1Id.GetAsString() + " - " + this.XDataWebDataSet1Nome.GetAsString() + " - " + this.XDataWebDataSet1Profissao.GetAsString());
     };
     this.LoadDFMValues = function () {
       pas["WEBLib.Forms"].TCustomForm.LoadDFMValues.call(this);
@@ -79288,6 +79305,13 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
       this.XDataWebConnection1 = pas["XData.Web.Connection"].TXDataWebConnection.$create("Create$1",[this]);
       this.XDataWebClient1 = pas["XData.Web.Client"].TXDataWebClient.$create("Create$1",[this]);
       this.XDataWebDataSet1 = pas["XData.Web.Dataset"].TXDataWebDataSet.$create("Create$1",[this]);
+      this.XDataWebDataSet1Id = pas.DB.TIntegerField.$create("Create$1",[this]);
+      this.XDataWebDataSet1IdCidade = pas.DB.TIntegerField.$create("Create$1",[this]);
+      this.XDataWebDataSet1Nome = pas.DB.TStringField.$create("Create$1",[this]);
+      this.XDataWebDataSet1Profissao = pas.DB.TStringField.$create("Create$1",[this]);
+      this.XDataWebDataSet1Limite = pas.DB.TFloatField.$create("Create$1",[this]);
+      this.XDataWebDataSet1Porcentagem = pas.DB.TFloatField.$create("Create$1",[this]);
+      this.XDataWebDataSet1Ativo = pas.DB.TStringField.$create("Create$1",[this]);
       this.WebDataSource1 = pas.DB.TDataSource.$create("Create$1",[this]);
       this.WebLabel1.BeforeLoadDFMValues();
       this.lbImportant.BeforeLoadDFMValues();
@@ -79303,6 +79327,13 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
       this.XDataWebConnection1.BeforeLoadDFMValues();
       this.XDataWebClient1.BeforeLoadDFMValues();
       this.XDataWebDataSet1.BeforeLoadDFMValues();
+      this.XDataWebDataSet1Id.BeforeLoadDFMValues();
+      this.XDataWebDataSet1IdCidade.BeforeLoadDFMValues();
+      this.XDataWebDataSet1Nome.BeforeLoadDFMValues();
+      this.XDataWebDataSet1Profissao.BeforeLoadDFMValues();
+      this.XDataWebDataSet1Limite.BeforeLoadDFMValues();
+      this.XDataWebDataSet1Porcentagem.BeforeLoadDFMValues();
+      this.XDataWebDataSet1Ativo.BeforeLoadDFMValues();
       this.WebDataSource1.BeforeLoadDFMValues();
       try {
         this.SetName("MainView");
@@ -79452,6 +79483,30 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
         this.XDataWebDataSet1.SetConnection(this.XDataWebConnection1);
         this.XDataWebDataSet1.SetLeft(360);
         this.XDataWebDataSet1.SetTop(16);
+        this.XDataWebDataSet1Id.SetParentComponent(this.XDataWebDataSet1);
+        this.XDataWebDataSet1Id.SetName("XDataWebDataSet1Id");
+        this.XDataWebDataSet1Id.FFieldName = "Id";
+        this.XDataWebDataSet1IdCidade.SetParentComponent(this.XDataWebDataSet1);
+        this.XDataWebDataSet1IdCidade.SetName("XDataWebDataSet1IdCidade");
+        this.XDataWebDataSet1IdCidade.FFieldName = "IdCidade";
+        this.XDataWebDataSet1Nome.SetParentComponent(this.XDataWebDataSet1);
+        this.XDataWebDataSet1Nome.SetName("XDataWebDataSet1Nome");
+        this.XDataWebDataSet1Nome.FFieldName = "Nome";
+        this.XDataWebDataSet1Nome.SetSize(50);
+        this.XDataWebDataSet1Profissao.SetParentComponent(this.XDataWebDataSet1);
+        this.XDataWebDataSet1Profissao.SetName("XDataWebDataSet1Profissao");
+        this.XDataWebDataSet1Profissao.FFieldName = "Profissao";
+        this.XDataWebDataSet1Profissao.SetSize(50);
+        this.XDataWebDataSet1Limite.SetParentComponent(this.XDataWebDataSet1);
+        this.XDataWebDataSet1Limite.SetName("XDataWebDataSet1Limite");
+        this.XDataWebDataSet1Limite.FFieldName = "Limite";
+        this.XDataWebDataSet1Porcentagem.SetParentComponent(this.XDataWebDataSet1);
+        this.XDataWebDataSet1Porcentagem.SetName("XDataWebDataSet1Porcentagem");
+        this.XDataWebDataSet1Porcentagem.FFieldName = "Porcentagem";
+        this.XDataWebDataSet1Ativo.SetParentComponent(this.XDataWebDataSet1);
+        this.XDataWebDataSet1Ativo.SetName("XDataWebDataSet1Ativo");
+        this.XDataWebDataSet1Ativo.FFieldName = "Ativo";
+        this.XDataWebDataSet1Ativo.SetSize(5);
         this.WebDataSource1.SetParentComponent(this);
         this.WebDataSource1.SetName("WebDataSource1");
         this.WebDataSource1.SetDataSet(this.XDataWebDataSet1);
@@ -79472,6 +79527,13 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
         this.XDataWebConnection1.AfterLoadDFMValues();
         this.XDataWebClient1.AfterLoadDFMValues();
         this.XDataWebDataSet1.AfterLoadDFMValues();
+        this.XDataWebDataSet1Id.AfterLoadDFMValues();
+        this.XDataWebDataSet1IdCidade.AfterLoadDFMValues();
+        this.XDataWebDataSet1Nome.AfterLoadDFMValues();
+        this.XDataWebDataSet1Profissao.AfterLoadDFMValues();
+        this.XDataWebDataSet1Limite.AfterLoadDFMValues();
+        this.XDataWebDataSet1Porcentagem.AfterLoadDFMValues();
+        this.XDataWebDataSet1Ativo.AfterLoadDFMValues();
         this.WebDataSource1.AfterLoadDFMValues();
       };
     };
@@ -79493,6 +79555,13 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
     $r.addField("XDataWebDataSet1",pas["XData.Web.Dataset"].$rtti["TXDataWebDataSet"]);
     $r.addField("mmTeste",pas["WEBLib.StdCtrls"].$rtti["TMemo"]);
     $r.addField("WebDataSource1",pas.DB.$rtti["TDataSource"]);
+    $r.addField("XDataWebDataSet1Id",pas.DB.$rtti["TIntegerField"]);
+    $r.addField("XDataWebDataSet1IdCidade",pas.DB.$rtti["TIntegerField"]);
+    $r.addField("XDataWebDataSet1Nome",pas.DB.$rtti["TStringField"]);
+    $r.addField("XDataWebDataSet1Profissao",pas.DB.$rtti["TStringField"]);
+    $r.addField("XDataWebDataSet1Limite",pas.DB.$rtti["TFloatField"]);
+    $r.addField("XDataWebDataSet1Porcentagem",pas.DB.$rtti["TFloatField"]);
+    $r.addField("XDataWebDataSet1Ativo",pas.DB.$rtti["TStringField"]);
     $r.addMethod("lbImportantClick",0,[["Sender",pas.System.$rtti["TObject"]]]);
     $r.addMethod("lbWarningClick",0,[["Sender",pas.System.$rtti["TObject"]]],null,16,{attr: [pas.JS.AsyncAttribute,"Create"]});
     $r.addMethod("lbInformationalClick",0,[["Sender",pas.System.$rtti["TObject"]]]);

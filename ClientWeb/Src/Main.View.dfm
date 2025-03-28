@@ -152,6 +152,30 @@ object MainView: TMainView
     Connection = XDataWebConnection1
     Left = 360
     Top = 16
+    object XDataWebDataSet1Id: TIntegerField
+      FieldName = 'Id'
+    end
+    object XDataWebDataSet1IdCidade: TIntegerField
+      FieldName = 'IdCidade'
+    end
+    object XDataWebDataSet1Nome: TStringField
+      FieldName = 'Nome'
+      Size = 50
+    end
+    object XDataWebDataSet1Profissao: TStringField
+      FieldName = 'Profissao'
+      Size = 50
+    end
+    object XDataWebDataSet1Limite: TFloatField
+      FieldName = 'Limite'
+    end
+    object XDataWebDataSet1Porcentagem: TFloatField
+      FieldName = 'Porcentagem'
+    end
+    object XDataWebDataSet1Ativo: TStringField
+      FieldName = 'Ativo'
+      Size = 5
+    end
   end
   object WebDataSource1: TWebDataSource
     DataSet = XDataWebDataSet1

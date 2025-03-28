@@ -33,6 +33,13 @@ type
     XDataWebDataSet1: TXDataWebDataSet;
     mmTeste: TWebMemo;
     WebDataSource1: TWebDataSource;
+    XDataWebDataSet1Id: TIntegerField;
+    XDataWebDataSet1IdCidade: TIntegerField;
+    XDataWebDataSet1Nome: TStringField;
+    XDataWebDataSet1Profissao: TStringField;
+    XDataWebDataSet1Limite: TFloatField;
+    XDataWebDataSet1Porcentagem: TFloatField;
+    XDataWebDataSet1Ativo: TStringField;
     procedure lbImportantClick(Sender: TObject);
     [Async]
     procedure lbWarningClick(Sender: TObject);
@@ -108,7 +115,12 @@ begin
   LResponse := TAwait.Exec<TXDataClientResponse>(
     XDataWebClient1.RawInvokeAsync('IClientesService.Get', [StrToIntDef(edtCodigo.Text, 0)]));
 
-  mmTeste.Lines.Add(LResponse.ResponseText);
+  XDataWebDataSet1.Close;
+  XDataWebDataSet1.SetJsonData(LResponse.Result);
+  XDataWebDataSet1.Open;
+
+  mmTeste.Lines.Add(XDataWebDataSet1Id.AsString + ' - ' +
+    XDataWebDataSet1Nome.AsString + ' - ' + XDataWebDataSet1Profissao.AsString);
 end;
 
 
