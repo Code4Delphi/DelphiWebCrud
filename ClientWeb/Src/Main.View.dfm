@@ -2,6 +2,7 @@ object MainView: TMainView
   Width = 640
   Height = 480
   Caption = 'Delphi Web - Home'
+  OnCreate = WebFormCreate
   object WebLabel1: TWebLabel
     Left = 144
     Top = 80
@@ -109,6 +110,7 @@ object MainView: TMainView
       HeightPercent = 100.000000000000000000
       WidthPercent = 100.000000000000000000
       OnClick = btnGetNomeClick
+      ExplicitLeft = 157
     end
     object btnGet: TWebButton
       Left = 259

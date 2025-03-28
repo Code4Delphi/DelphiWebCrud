@@ -43,7 +43,9 @@ type
     [Async]
     procedure lbWarningClick(Sender: TObject);
     procedure lbInformationalClick(Sender: TObject);
+    [Async]
     procedure btnGetNomeClick(Sender: TObject);
+    procedure WebFormCreate(Sender: TObject);
   private
 
   public
@@ -76,6 +78,11 @@ begin
     ShowMessage('Respondeu não');
 end;
 
+procedure TMainView.WebFormCreate(Sender: TObject);
+begin
+  XDataWebConnection1.Open;
+end;
+
 procedure TMainView.lbInformationalClick(Sender: TObject);
 begin
   MessageDlg('Minha pergunta?', mtConfirmation, [mbYes, mbNo],
@@ -89,12 +96,13 @@ begin
 end;
 
 procedure TMainView.btnGetNomeClick(Sender: TObject);
+var
+  LResponse: TXDataClientResponse;
 begin
-  XDataWebClient1.RawInvoke('IClientesService.GetNome', [StrToIntDef(edtCodigo.Text, 0)],
-    procedure(Response: TXDataClientResponse)
-    begin
-      mmTeste.Lines.Add(Response.ResponseText);
-    end);
+  LResponse := TAwait.Exec<TXDataClientResponse>(
+    XDataWebClient1.RawInvokeAsync('IClientesService.GetNome', [StrToIntDef(edtCodigo.Text, 0)]));
+
+  mmTeste.Lines.Add(LResponse.ResponseText);
 end;
 
 end.
