@@ -79259,11 +79259,18 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
          else pas["WEBLib.Dialogs"].ShowMessage("Clicou em não");
       });
     };
-    this.btnGetNomeClick = function (Sender) {
-      var $Self = this;
-      this.XDataWebClient1.RawInvoke$2("IClientesService.GetNome",[pas.SysUtils.StrToIntDef(this.edtCodigo.GetText(),0)],function (Response) {
-        $Self.mmTeste.FLines.Add(Response.GetResponseText());
-      },null);
+    this.btnGetNomeClick = async function (Sender) {
+      var LResponse = null;
+      LResponse = await this.XDataWebClient1.RawInvokeAsync("IClientesService.GetNome",[pas.SysUtils.StrToIntDef(this.edtCodigo.GetText(),0)]);
+      this.mmTeste.FLines.Add(LResponse.GetResponseText());
+    };
+    this.WebFormCreate = function (Sender) {
+      this.XDataWebConnection1.Open(null,null);
+    };
+    this.btnGetClick = async function (Sender) {
+      var LResponse = null;
+      LResponse = await this.XDataWebClient1.RawInvokeAsync("IClientesService.Get",[pas.SysUtils.StrToIntDef(this.edtCodigo.GetText(),0)]);
+      this.mmTeste.FLines.Add(LResponse.GetResponseText());
     };
     this.LoadDFMValues = function () {
       pas["WEBLib.Forms"].TCustomForm.LoadDFMValues.call(this);
@@ -79302,6 +79309,7 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
         this.SetWidth(640);
         this.SetHeight(480);
         this.SetCaption("Delphi Web - Home");
+        this.SetEvent(this,"OnCreate","WebFormCreate");
         this.WebLabel1.SetParentComponent(this);
         this.WebLabel1.SetName("WebLabel1");
         this.WebLabel1.SetLeft(144);
@@ -79411,6 +79419,7 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
         this.btnGet.SetChildOrderEx(3);
         this.btnGet.SetHeightPercent(100.000000000000000000);
         this.btnGet.SetWidthPercent(100.000000000000000000);
+        this.SetEvent$1(this.btnGet,this,"OnClick","btnGetClick");
         this.mmTeste.SetParentComponent(this);
         this.mmTeste.SetName("mmTeste");
         this.mmTeste.SetLeft(232);
@@ -79487,7 +79496,9 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
     $r.addMethod("lbImportantClick",0,[["Sender",pas.System.$rtti["TObject"]]]);
     $r.addMethod("lbWarningClick",0,[["Sender",pas.System.$rtti["TObject"]]],null,16,{attr: [pas.JS.AsyncAttribute,"Create"]});
     $r.addMethod("lbInformationalClick",0,[["Sender",pas.System.$rtti["TObject"]]]);
-    $r.addMethod("btnGetNomeClick",0,[["Sender",pas.System.$rtti["TObject"]]]);
+    $r.addMethod("btnGetNomeClick",0,[["Sender",pas.System.$rtti["TObject"]]],null,16,{attr: [pas.JS.AsyncAttribute,"Create"]});
+    $r.addMethod("WebFormCreate",0,[["Sender",pas.System.$rtti["TObject"]]]);
+    $r.addMethod("btnGetClick",0,[["Sender",pas.System.$rtti["TObject"]]],null,16,{attr: [pas.JS.AsyncAttribute,"Create"]});
   });
   this.MainView = null;
 });
