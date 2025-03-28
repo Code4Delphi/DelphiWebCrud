@@ -40,6 +40,7 @@ type
     XDataWebDataSet1Limite: TFloatField;
     XDataWebDataSet1Porcentagem: TFloatField;
     XDataWebDataSet1Ativo: TStringField;
+    btnListar: TWebButton;
     procedure lbImportantClick(Sender: TObject);
     [Async]
     procedure lbWarningClick(Sender: TObject);
@@ -49,6 +50,8 @@ type
     procedure WebFormCreate(Sender: TObject);
     [Async]
     procedure btnGetClick(Sender: TObject);
+    [Async]
+    procedure btnListarClick(Sender: TObject);
   private
 
   public
@@ -123,5 +126,24 @@ begin
     XDataWebDataSet1Nome.AsString + ' - ' + XDataWebDataSet1Profissao.AsString);
 end;
 
+procedure TMainView.btnListarClick(Sender: TObject);
+var
+  LResponse: TXDataClientResponse;
+begin
+  LResponse := TAwait.Exec<TXDataClientResponse>(
+    XDataWebClient1.RawInvokeAsync('IClientesService.List', []));
+
+  XDataWebDataSet1.Close;
+  XDataWebDataSet1.SetJsonData(TJSObject(LResponse.Result)['value']);
+  XDataWebDataSet1.Open;
+
+  XDataWebDataSet1.First;
+  while not XDataWebDataSet1.Eof do
+  begin
+    mmTeste.Lines.Add(XDataWebDataSet1Id.AsString + ' - ' +
+      XDataWebDataSet1Nome.AsString + ' - ' + XDataWebDataSet1Profissao.AsString);
+    XDataWebDataSet1.Next;
+  end;
+end;
 
 end.

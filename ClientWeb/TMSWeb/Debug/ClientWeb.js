@@ -79229,6 +79229,7 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
       this.XDataWebDataSet1Limite = null;
       this.XDataWebDataSet1Porcentagem = null;
       this.XDataWebDataSet1Ativo = null;
+      this.btnListar = null;
     };
     this.$final = function () {
       this.WebLabel1 = undefined;
@@ -79253,6 +79254,7 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
       this.XDataWebDataSet1Limite = undefined;
       this.XDataWebDataSet1Porcentagem = undefined;
       this.XDataWebDataSet1Ativo = undefined;
+      this.btnListar = undefined;
       pas["WEBLib.Forms"].TForm.$final.call(this);
     };
     this.lbImportantClick = function (Sender) {
@@ -79289,6 +79291,18 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
       this.XDataWebDataSet1.Open();
       this.mmTeste.FLines.Add(this.XDataWebDataSet1Id.GetAsString() + " - " + this.XDataWebDataSet1Nome.GetAsString() + " - " + this.XDataWebDataSet1Profissao.GetAsString());
     };
+    this.btnListarClick = async function (Sender) {
+      var LResponse = null;
+      LResponse = await this.XDataWebClient1.RawInvokeAsync("IClientesService.List",[]);
+      this.XDataWebDataSet1.Close();
+      this.XDataWebDataSet1.SetJsonData(LResponse.FResult["value"]);
+      this.XDataWebDataSet1.Open();
+      this.XDataWebDataSet1.First();
+      while (!this.XDataWebDataSet1.GetEOF()) {
+        this.mmTeste.FLines.Add(this.XDataWebDataSet1Id.GetAsString() + " - " + this.XDataWebDataSet1Nome.GetAsString() + " - " + this.XDataWebDataSet1Profissao.GetAsString());
+        this.XDataWebDataSet1.Next();
+      };
+    };
     this.LoadDFMValues = function () {
       pas["WEBLib.Forms"].TCustomForm.LoadDFMValues.call(this);
       this.WebLabel1 = pas["WEBLib.StdCtrls"].TLabel.$create("Create$2",["lbUsuarioLogado"]);
@@ -79301,6 +79315,7 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
       this.edtCodigo = pas["WEBLib.StdCtrls"].TEdit.$create("Create$2",["edtId"]);
       this.btnGetNome = pas["WEBLib.StdCtrls"].TButton.$create("Create$2",["btnGetNome"]);
       this.btnGet = pas["WEBLib.StdCtrls"].TButton.$create("Create$2",["btnGet"]);
+      this.btnListar = pas["WEBLib.StdCtrls"].TButton.$create("Create$2",["btnListar"]);
       this.mmTeste = pas["WEBLib.StdCtrls"].TMemo.$create("Create$2",["mmTeste"]);
       this.XDataWebConnection1 = pas["XData.Web.Connection"].TXDataWebConnection.$create("Create$1",[this]);
       this.XDataWebClient1 = pas["XData.Web.Client"].TXDataWebClient.$create("Create$1",[this]);
@@ -79323,6 +79338,7 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
       this.edtCodigo.BeforeLoadDFMValues();
       this.btnGetNome.BeforeLoadDFMValues();
       this.btnGet.BeforeLoadDFMValues();
+      this.btnListar.BeforeLoadDFMValues();
       this.mmTeste.BeforeLoadDFMValues();
       this.XDataWebConnection1.BeforeLoadDFMValues();
       this.XDataWebClient1.BeforeLoadDFMValues();
@@ -79451,6 +79467,18 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
         this.btnGet.SetHeightPercent(100.000000000000000000);
         this.btnGet.SetWidthPercent(100.000000000000000000);
         this.SetEvent$1(this.btnGet,this,"OnClick","btnGetClick");
+        this.btnListar.SetParentComponent(this.WebPanel1);
+        this.btnListar.SetName("btnListar");
+        this.btnListar.SetLeft(355);
+        this.btnListar.SetTop(0);
+        this.btnListar.SetWidth(96);
+        this.btnListar.SetHeight(33);
+        this.btnListar.SetAlign(pas["WEBLib.Controls"].TAlign.alLeft);
+        this.btnListar.SetCaption("Listar");
+        this.btnListar.SetChildOrderEx(4);
+        this.btnListar.SetHeightPercent(100.000000000000000000);
+        this.btnListar.SetWidthPercent(100.000000000000000000);
+        this.SetEvent$1(this.btnListar,this,"OnClick","btnListarClick");
         this.mmTeste.SetParentComponent(this);
         this.mmTeste.SetName("mmTeste");
         this.mmTeste.SetLeft(232);
@@ -79523,6 +79551,7 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
         this.edtCodigo.AfterLoadDFMValues();
         this.btnGetNome.AfterLoadDFMValues();
         this.btnGet.AfterLoadDFMValues();
+        this.btnListar.AfterLoadDFMValues();
         this.mmTeste.AfterLoadDFMValues();
         this.XDataWebConnection1.AfterLoadDFMValues();
         this.XDataWebClient1.AfterLoadDFMValues();
@@ -79562,12 +79591,14 @@ rtl.module("Main.View",["System","SysUtils","Classes","JS","Web","WEBLib.Graphic
     $r.addField("XDataWebDataSet1Limite",pas.DB.$rtti["TFloatField"]);
     $r.addField("XDataWebDataSet1Porcentagem",pas.DB.$rtti["TFloatField"]);
     $r.addField("XDataWebDataSet1Ativo",pas.DB.$rtti["TStringField"]);
+    $r.addField("btnListar",pas["WEBLib.StdCtrls"].$rtti["TButton"]);
     $r.addMethod("lbImportantClick",0,[["Sender",pas.System.$rtti["TObject"]]]);
     $r.addMethod("lbWarningClick",0,[["Sender",pas.System.$rtti["TObject"]]],null,16,{attr: [pas.JS.AsyncAttribute,"Create"]});
     $r.addMethod("lbInformationalClick",0,[["Sender",pas.System.$rtti["TObject"]]]);
     $r.addMethod("btnGetNomeClick",0,[["Sender",pas.System.$rtti["TObject"]]],null,16,{attr: [pas.JS.AsyncAttribute,"Create"]});
     $r.addMethod("WebFormCreate",0,[["Sender",pas.System.$rtti["TObject"]]]);
     $r.addMethod("btnGetClick",0,[["Sender",pas.System.$rtti["TObject"]]],null,16,{attr: [pas.JS.AsyncAttribute,"Create"]});
+    $r.addMethod("btnListarClick",0,[["Sender",pas.System.$rtti["TObject"]]],null,16,{attr: [pas.JS.AsyncAttribute,"Create"]});
   });
   this.MainView = null;
 });

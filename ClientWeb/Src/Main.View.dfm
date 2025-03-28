@@ -124,6 +124,19 @@ object MainView: TMainView
       WidthPercent = 100.000000000000000000
       OnClick = btnGetClick
     end
+    object btnListar: TWebButton
+      Left = 355
+      Top = 0
+      Width = 96
+      Height = 33
+      Align = alLeft
+      Caption = 'Listar'
+      ChildOrder = 4
+      ElementID = 'btnListar'
+      HeightPercent = 100.000000000000000000
+      WidthPercent = 100.000000000000000000
+      OnClick = btnListarClick
+    end
   end
   object mmTeste: TWebMemo
     Left = 232
