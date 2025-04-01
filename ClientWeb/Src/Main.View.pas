@@ -61,6 +61,8 @@ type
     procedure btnGetClick(Sender: TObject);
     [Async]
     procedure btnListarClick(Sender: TObject);
+    [Async]
+    procedure btnPostClick(Sender: TObject);
   private
 
   public
@@ -159,6 +161,25 @@ begin
       XDataWebDataSet1Nome.AsString + ' - ' + XDataWebDataSet1Profissao.AsString);
     XDataWebDataSet1.Next;
   end;
+end;
+
+procedure TMainView.btnPostClick(Sender: TObject);
+var
+  LResponse: TXDataClientResponse;
+  LCliente: TJSObject;
+begin
+  LCliente := TJSObject.new;
+  LCliente['IdCidade'] := 10;
+  LCliente['Nome'] := 'Nome teste ' + FormatDateTime('zzz', Now);
+  LCliente['Profissao'] := 'Dev';
+  LCliente['Limite'] := 1000;
+  LCliente['Porcentagem'] := 88;
+  LCliente['Ativo'] := True;
+
+  LResponse := TAwait.Exec<TXDataClientResponse>(
+    XDataWebClient1.RawInvokeAsync('IClientesService.Post', [LCliente]));
+
+  mmTeste.Lines.Text := LResponse.ResponseText;
 end;
 
 end.
