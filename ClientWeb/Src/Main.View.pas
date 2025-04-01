@@ -65,6 +65,9 @@ type
     procedure btnPostClick(Sender: TObject);
     [Async]
     procedure btnAlterarClick(Sender: TObject);
+    [Async]
+    procedure btnDeleteClick(Sender: TObject);
+    procedure XDataWebClient1Error(Error: TXDataClientError);
   private
     function GetClientePreenchido: TJSObject;
 
@@ -101,6 +104,16 @@ end;
 procedure TMainView.WebFormCreate(Sender: TObject);
 begin
   XDataWebConnection1.Open;
+end;
+
+procedure TMainView.XDataWebClient1Error(Error: TXDataClientError);
+begin
+  mmTeste.Lines.Clear;
+  mmTeste.Lines.Add('StatusCode: ' + Error.StatusCode.ToString);
+  mmTeste.Lines.Add('RequestUrl: ' + Error.RequestUrl);
+  mmTeste.Lines.Add('RequestId: ' + Error.RequestId);
+  mmTeste.Lines.Add('ErrorCode: ' + Error.ErrorCode);
+  mmTeste.Lines.Add('ErrorMessage: ' + Error.ErrorMessage);
 end;
 
 procedure TMainView.lbInformationalClick(Sender: TObject);
@@ -196,6 +209,18 @@ begin
       [StrToIntDef(edtCodigo.Text, 0), Self.GetClientePreenchido]));
 
   mmTeste.Lines.Text := LResponse.ResponseText;
+end;
+
+procedure TMainView.btnDeleteClick(Sender: TObject);
+var
+  LResponse: TXDataClientResponse;
+begin
+  LResponse := TAwait.Exec<TXDataClientResponse>(
+    XDataWebClient1.RawInvokeAsync('IClientesService.Delete', [StrToIntDef(edtCodigo.Text, 0)]));
+
+  mmTeste.Lines.Clear;
+  mmTeste.Lines.Add('StatusCode: ' + LResponse.StatusCode.ToString);
+  mmTeste.Lines.Add('ResponseText: ' + LResponse.ResponseText);
 end;
 
 end.

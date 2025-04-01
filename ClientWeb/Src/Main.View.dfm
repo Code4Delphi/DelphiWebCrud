@@ -175,6 +175,8 @@ object MainView: TMainView
       ElementID = 'btnDelete'
       HeightPercent = 100.000000000000000000
       WidthPercent = 100.000000000000000000
+      OnClick = btnDeleteClick
+      ExplicitLeft = 729
     end
   end
   object mmTeste: TWebMemo
@@ -195,6 +197,7 @@ object MainView: TMainView
   end
   object XDataWebClient1: TXDataWebClient
     Connection = XDataWebConnection1
+    OnError = XDataWebClient1Error
     Left = 240
     Top = 16
   end
