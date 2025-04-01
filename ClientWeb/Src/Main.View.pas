@@ -45,8 +45,11 @@ type
     XDataWebDataSet1Profissao: TStringField;
     XDataWebDataSet1Limite: TFloatField;
     XDataWebDataSet1Porcentagem: TFloatField;
-    XDataWebDataSet1Ativo: TStringField;
     btnListar: TWebButton;
+    XDataWebDataSet1Ativo: TBooleanField;
+    btnPost: TWebButton;
+    btnAlterar: TWebButton;
+    btnDelete: TWebButton;
     procedure lbImportantClick(Sender: TObject);
     [Async]
     procedure lbWarningClick(Sender: TObject);

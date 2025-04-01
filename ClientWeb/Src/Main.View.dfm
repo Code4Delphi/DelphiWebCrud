@@ -1,5 +1,5 @@
 object MainView: TMainView
-  Width = 640
+  Width = 1118
   Height = 480
   Caption = 'Delphi Web - Home'
   OnCreate = WebFormCreate
@@ -69,7 +69,7 @@ object MainView: TMainView
   object WebPanel1: TWebPanel
     Left = 112
     Top = 160
-    Width = 489
+    Width = 945
     Height = 33
     ElementID = 'divContainerBotoes01'
     ChildOrder = 5
@@ -137,6 +137,46 @@ object MainView: TMainView
       WidthPercent = 100.000000000000000000
       OnClick = btnListarClick
     end
+    object btnPost: TWebButton
+      Left = 451
+      Top = 0
+      Width = 136
+      Height = 33
+      Align = alLeft
+      Caption = 'Cadastrar / Post '
+      ChildOrder = 1
+      ElementID = 'btnPost'
+      HeightPercent = 100.000000000000000000
+      WidthPercent = 100.000000000000000000
+      ExplicitLeft = 445
+      ExplicitTop = 3
+    end
+    object btnAlterar: TWebButton
+      Left = 587
+      Top = 0
+      Width = 136
+      Height = 33
+      Align = alLeft
+      Caption = 'Alterar / PUT'
+      ChildOrder = 1
+      ElementID = 'btnAlterar'
+      HeightPercent = 100.000000000000000000
+      WidthPercent = 100.000000000000000000
+      ExplicitLeft = 593
+    end
+    object btnDelete: TWebButton
+      Left = 723
+      Top = 0
+      Width = 136
+      Height = 33
+      Align = alLeft
+      Caption = 'Delete'
+      ChildOrder = 1
+      ElementID = 'btnDelete'
+      HeightPercent = 100.000000000000000000
+      WidthPercent = 100.000000000000000000
+      ExplicitLeft = 729
+    end
   end
   object mmTeste: TWebMemo
     Left = 232
@@ -183,9 +223,8 @@ object MainView: TMainView
     object XDataWebDataSet1Porcentagem: TFloatField
       FieldName = 'Porcentagem'
     end
-    object XDataWebDataSet1Ativo: TStringField
+    object XDataWebDataSet1Ativo: TBooleanField
       FieldName = 'Ativo'
-      Size = 5
     end
   end
   object WebDataSource1: TWebDataSource
