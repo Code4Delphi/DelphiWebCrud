@@ -161,6 +161,8 @@ object MainView: TMainView
       ElementID = 'btnAlterar'
       HeightPercent = 100.000000000000000000
       WidthPercent = 100.000000000000000000
+      OnClick = btnAlterarClick
+      ExplicitLeft = 581
     end
     object btnDelete: TWebButton
       Left = 723

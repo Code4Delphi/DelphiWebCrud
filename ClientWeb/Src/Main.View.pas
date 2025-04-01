@@ -63,7 +63,10 @@ type
     procedure btnListarClick(Sender: TObject);
     [Async]
     procedure btnPostClick(Sender: TObject);
+    [Async]
+    procedure btnAlterarClick(Sender: TObject);
   private
+    function GetClientePreenchido: TJSObject;
 
   public
 
@@ -166,18 +169,31 @@ end;
 procedure TMainView.btnPostClick(Sender: TObject);
 var
   LResponse: TXDataClientResponse;
-  LCliente: TJSObject;
 begin
-  LCliente := TJSObject.new;
-  LCliente['IdCidade'] := 10;
-  LCliente['Nome'] := 'Nome teste ' + FormatDateTime('zzz', Now);
-  LCliente['Profissao'] := 'Dev';
-  LCliente['Limite'] := 1000;
-  LCliente['Porcentagem'] := 88;
-  LCliente['Ativo'] := True;
-
   LResponse := TAwait.Exec<TXDataClientResponse>(
-    XDataWebClient1.RawInvokeAsync('IClientesService.Post', [LCliente]));
+    XDataWebClient1.RawInvokeAsync('IClientesService.Post', [Self.GetClientePreenchido]));
+
+  mmTeste.Lines.Text := LResponse.ResponseText;
+end;
+
+function TMainView.GetClientePreenchido: TJSObject;
+begin
+  Result := TJSObject.new;
+  Result['IdCidade'] := 10;
+  Result['Nome'] := 'Nome teste ' + FormatDateTime('zzz', Now);
+  Result['Profissao'] := 'Dev';
+  Result['Limite'] := 590;
+  Result['Porcentagem'] := 54;
+  Result['Ativo'] := True;
+end;
+
+procedure TMainView.btnAlterarClick(Sender: TObject);
+var
+  LResponse: TXDataClientResponse;
+begin
+  LResponse := TAwait.Exec<TXDataClientResponse>(
+    XDataWebClient1.RawInvokeAsync('IClientesService.Update',
+      [StrToIntDef(edtCodigo.Text, 0), Self.GetClientePreenchido]));
 
   mmTeste.Lines.Text := LResponse.ResponseText;
 end;
