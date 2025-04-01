@@ -5,7 +5,6 @@ interface
 uses
   System.SysUtils,
   System.Classes,
-  JS,
   Web,
   WEBLib.Graphics,
   WEBLib.Controls,
@@ -13,8 +12,15 @@ uses
   WEBLib.Dialogs,
   Vcl.Controls,
   Vcl.StdCtrls,
-  WEBLib.StdCtrls, WEBLib.ExtCtrls, Data.DB, XData.Web.JsonDataset, XData.Web.Dataset, XData.Web.Client,
-  XData.Web.Connection, WEBLib.DB;
+  WEBLib.StdCtrls,
+  WEBLib.ExtCtrls,
+  Data.DB,
+  XData.Web.JsonDataset,
+  XData.Web.Dataset,
+  XData.Web.Client,
+  XData.Web.Connection,
+  WEBLib.DB,
+  JS;
 
 type
   TMainView = class(TWebForm)
@@ -122,8 +128,14 @@ begin
   XDataWebDataSet1.SetJsonData(LResponse.Result);
   XDataWebDataSet1.Open;
 
-  mmTeste.Lines.Add(XDataWebDataSet1Id.AsString + ' - ' +
-    XDataWebDataSet1Nome.AsString + ' - ' + XDataWebDataSet1Profissao.AsString);
+  mmTeste.Lines.Clear;
+  mmTeste.Lines.Add('Id: ' + XDataWebDataSet1Id.AsString);
+  mmTeste.Lines.Add('Id Cidade: ' + XDataWebDataSet1IdCidade.AsString);
+  mmTeste.Lines.Add('Nome: ' +  XDataWebDataSet1Nome.AsString);
+  mmTeste.Lines.Add('Profissão: ' +  XDataWebDataSet1Profissao.AsString);
+  mmTeste.Lines.Add('Limite: ' +  XDataWebDataSet1Limite.AsString);
+  mmTeste.Lines.Add('Porcentagem: ' +  XDataWebDataSet1Porcentagem.AsString);
+  mmTeste.Lines.Add('Ativo: ' +  XDataWebDataSet1Ativo.AsString);
 end;
 
 procedure TMainView.btnListarClick(Sender: TObject);

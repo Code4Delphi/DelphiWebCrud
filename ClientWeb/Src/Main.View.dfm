@@ -145,8 +145,6 @@ object MainView: TMainView
     Height = 132
     ElementID = 'mmTeste'
     HeightPercent = 100.000000000000000000
-    Lines.Strings = (
-      'mmTeste')
     SelLength = 0
     SelStart = 0
     WidthPercent = 100.000000000000000000
