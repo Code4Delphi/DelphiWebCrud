@@ -5,7 +5,6 @@ interface
 uses
   System.SysUtils,
   System.Classes,
-  JS,
   Web,
   WEBLib.Graphics,
   WEBLib.Controls,
@@ -13,8 +12,15 @@ uses
   WEBLib.Dialogs,
   Vcl.Controls,
   Vcl.StdCtrls,
-  WEBLib.StdCtrls, WEBLib.ExtCtrls, Data.DB, XData.Web.JsonDataset, XData.Web.Dataset, XData.Web.Client,
-  XData.Web.Connection, WEBLib.DB;
+  WEBLib.StdCtrls,
+  WEBLib.ExtCtrls,
+  Data.DB,
+  XData.Web.JsonDataset,
+  XData.Web.Dataset,
+  XData.Web.Client,
+  XData.Web.Connection,
+  WEBLib.DB,
+  JS;
 
 type
   TMainView = class(TWebForm)
@@ -39,8 +45,11 @@ type
     XDataWebDataSet1Profissao: TStringField;
     XDataWebDataSet1Limite: TFloatField;
     XDataWebDataSet1Porcentagem: TFloatField;
-    XDataWebDataSet1Ativo: TStringField;
     btnListar: TWebButton;
+    XDataWebDataSet1Ativo: TBooleanField;
+    btnPost: TWebButton;
+    btnAlterar: TWebButton;
+    btnDelete: TWebButton;
     procedure lbImportantClick(Sender: TObject);
     [Async]
     procedure lbWarningClick(Sender: TObject);
@@ -52,7 +61,15 @@ type
     procedure btnGetClick(Sender: TObject);
     [Async]
     procedure btnListarClick(Sender: TObject);
+    [Async]
+    procedure btnPostClick(Sender: TObject);
+    [Async]
+    procedure btnAlterarClick(Sender: TObject);
+    [Async]
+    procedure btnDeleteClick(Sender: TObject);
+    procedure XDataWebClient1Error(Error: TXDataClientError);
   private
+    function GetClientePreenchido: TJSObject;
 
   public
 
@@ -89,6 +106,16 @@ begin
   XDataWebConnection1.Open;
 end;
 
+procedure TMainView.XDataWebClient1Error(Error: TXDataClientError);
+begin
+  mmTeste.Lines.Clear;
+  mmTeste.Lines.Add('StatusCode: ' + Error.StatusCode.ToString);
+  mmTeste.Lines.Add('RequestUrl: ' + Error.RequestUrl);
+  mmTeste.Lines.Add('RequestId: ' + Error.RequestId);
+  mmTeste.Lines.Add('ErrorCode: ' + Error.ErrorCode);
+  mmTeste.Lines.Add('ErrorMessage: ' + Error.ErrorMessage);
+end;
+
 procedure TMainView.lbInformationalClick(Sender: TObject);
 begin
   MessageDlg('Minha pergunta?', mtConfirmation, [mbYes, mbNo],
@@ -122,8 +149,14 @@ begin
   XDataWebDataSet1.SetJsonData(LResponse.Result);
   XDataWebDataSet1.Open;
 
-  mmTeste.Lines.Add(XDataWebDataSet1Id.AsString + ' - ' +
-    XDataWebDataSet1Nome.AsString + ' - ' + XDataWebDataSet1Profissao.AsString);
+  mmTeste.Lines.Clear;
+  mmTeste.Lines.Add('Id: ' + XDataWebDataSet1Id.AsString);
+  mmTeste.Lines.Add('Id Cidade: ' + XDataWebDataSet1IdCidade.AsString);
+  mmTeste.Lines.Add('Nome: ' +  XDataWebDataSet1Nome.AsString);
+  mmTeste.Lines.Add('Profissão: ' +  XDataWebDataSet1Profissao.AsString);
+  mmTeste.Lines.Add('Limite: ' +  XDataWebDataSet1Limite.AsString);
+  mmTeste.Lines.Add('Porcentagem: ' +  XDataWebDataSet1Porcentagem.AsString);
+  mmTeste.Lines.Add('Ativo: ' +  XDataWebDataSet1Ativo.AsString);
 end;
 
 procedure TMainView.btnListarClick(Sender: TObject);
@@ -144,6 +177,50 @@ begin
       XDataWebDataSet1Nome.AsString + ' - ' + XDataWebDataSet1Profissao.AsString);
     XDataWebDataSet1.Next;
   end;
+end;
+
+procedure TMainView.btnPostClick(Sender: TObject);
+var
+  LResponse: TXDataClientResponse;
+begin
+  LResponse := TAwait.Exec<TXDataClientResponse>(
+    XDataWebClient1.RawInvokeAsync('IClientesService.Post', [Self.GetClientePreenchido]));
+
+  mmTeste.Lines.Text := LResponse.ResponseText;
+end;
+
+function TMainView.GetClientePreenchido: TJSObject;
+begin
+  Result := TJSObject.new;
+  Result['IdCidade'] := 10;
+  Result['Nome'] := 'Nome teste ' + FormatDateTime('zzz', Now);
+  Result['Profissao'] := 'Dev';
+  Result['Limite'] := 590;
+  Result['Porcentagem'] := 54;
+  Result['Ativo'] := True;
+end;
+
+procedure TMainView.btnAlterarClick(Sender: TObject);
+var
+  LResponse: TXDataClientResponse;
+begin
+  LResponse := TAwait.Exec<TXDataClientResponse>(
+    XDataWebClient1.RawInvokeAsync('IClientesService.Update',
+      [StrToIntDef(edtCodigo.Text, 0), Self.GetClientePreenchido]));
+
+  mmTeste.Lines.Text := LResponse.ResponseText;
+end;
+
+procedure TMainView.btnDeleteClick(Sender: TObject);
+var
+  LResponse: TXDataClientResponse;
+begin
+  LResponse := TAwait.Exec<TXDataClientResponse>(
+    XDataWebClient1.RawInvokeAsync('IClientesService.Delete', [StrToIntDef(edtCodigo.Text, 0)]));
+
+  mmTeste.Lines.Clear;
+  mmTeste.Lines.Add('StatusCode: ' + LResponse.StatusCode.ToString);
+  mmTeste.Lines.Add('ResponseText: ' + LResponse.ResponseText);
 end;
 
 end.
