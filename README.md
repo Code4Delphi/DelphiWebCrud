@@ -34,6 +34,7 @@
 - [Delphi Web #09 - Adicionando componentes a tela principal | Consumindo o endpoint GetNome](https://www.youtube.com/watch?v=VaDklAuqtaU&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=9)
 - [Delphi Web #10 - Get e List - Carregando dados no DataSet](https://www.youtube.com/watch?v=gzAnr3pdqdI&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=10)
 - [Delphi Web #11 - Post, Put e Delete - Inserindo alterando e deletando dados](https://www.youtube.com/watch?v=JZHxRuId1vc&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=11)
+- [Delphi Web #12 - Criando formulário popup para cadastro de clientes com IA](https://www.youtube.com/watch?v=JZHxRuId1vc&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=11)
 
 <br/>
 
