@@ -226,8 +226,25 @@ begin
 end;}
 
 procedure TMainView.btnPostClick(Sender: TObject);
+var
+  LView: TClientesCadastrarView;
 begin
-  //
+  LView := TClientesCadastrarView.Create(Self);
+  try
+    LView.Popup := True;
+    LView.Border := fbDialogSizeable;
+
+    //CARREGAR ARQUIVO HTML TEMPLATE + CONTROLES
+    TAwait.ExecP<TClientesCadastrarView>(LView.Load());
+
+    //EXECUTAR FORMULARIO E AGUARDAR FECHAMENTO
+    TAwait.ExecP<TModalResult>(LView.Execute);
+
+    mmTeste.Lines.Clear;
+    mmTeste.Lines.Add('Formulário fechado');
+  finally
+    LView.Free;
+  end;
 end;
 
 end.
