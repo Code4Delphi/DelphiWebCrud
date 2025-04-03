@@ -241,7 +241,11 @@ begin
     TAwait.ExecP<TModalResult>(LView.Execute);
 
     mmTeste.Lines.Clear;
-    mmTeste.Lines.Add('Formulário fechado');
+    mmTeste.Lines.Add('Nome: ' + LView.edtNome.Text);
+    mmTeste.Lines.Add('Profissão: ' + LView.edtProfissao.Text);
+    mmTeste.Lines.Add('Porcentagem: ' + LView.edtPorcentagem.Text);
+    mmTeste.Lines.Add('Limite: ' + LView.edtLimite.Text);
+    mmTeste.Lines.Add('Id cidade: ' + LView.edtIdCidade.Text);
   finally
     LView.Free;
   end;
