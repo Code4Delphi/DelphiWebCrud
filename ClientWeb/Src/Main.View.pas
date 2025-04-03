@@ -20,7 +20,8 @@ uses
   XData.Web.Client,
   XData.Web.Connection,
   WEBLib.DB,
-  JS;
+  JS,
+  Clientes.Cadastrar.View;
 
 type
   TMainView = class(TWebForm)
@@ -179,16 +180,6 @@ begin
   end;
 end;
 
-procedure TMainView.btnPostClick(Sender: TObject);
-var
-  LResponse: TXDataClientResponse;
-begin
-  LResponse := TAwait.Exec<TXDataClientResponse>(
-    XDataWebClient1.RawInvokeAsync('IClientesService.Post', [Self.GetClientePreenchido]));
-
-  mmTeste.Lines.Text := LResponse.ResponseText;
-end;
-
 function TMainView.GetClientePreenchido: TJSObject;
 begin
   Result := TJSObject.new;
@@ -221,6 +212,22 @@ begin
   mmTeste.Lines.Clear;
   mmTeste.Lines.Add('StatusCode: ' + LResponse.StatusCode.ToString);
   mmTeste.Lines.Add('ResponseText: ' + LResponse.ResponseText);
+end;
+
+{
+procedure TMainView.btnPostClick(Sender: TObject);
+var
+  LResponse: TXDataClientResponse;
+begin
+  LResponse := TAwait.Exec<TXDataClientResponse>(
+    XDataWebClient1.RawInvokeAsync('IClientesService.Post', [Self.GetClientePreenchido]));
+
+  mmTeste.Lines.Text := LResponse.ResponseText;
+end;}
+
+procedure TMainView.btnPostClick(Sender: TObject);
+begin
+  //
 end;
 
 end.

@@ -118,6 +118,11 @@
             <FormType>dfm</FormType>
             <DesignClass>TWebForm</DesignClass>
         </DCCReference>
+        <DCCReference Include="Src\ClientesCadastrar\Clientes.Cadastrar.View.pas">
+            <Form>ClientesCadastrarView</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TWebForm</DesignClass>
+        </DCCReference>
         <None Include="Index.html"/>
         <None Include="Index.css"/>
         <None Include="AdminLTE\dist\css\adminlte.css"/>

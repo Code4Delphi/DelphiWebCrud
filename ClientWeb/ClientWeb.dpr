@@ -6,7 +6,8 @@ uses
   Vcl.Forms,
   WEBLib.Forms,
   Main.View in 'Src\Main.View.pas' {MainView: TWebForm} {*.html},
-  Login.View in 'Src\Login.View.pas' {LoginView: TWebForm} {*.html};
+  Login.View in 'Src\Login.View.pas' {LoginView: TWebForm} {*.html},
+  Clientes.Cadastrar.View in 'Src\ClientesCadastrar\Clientes.Cadastrar.View.pas' {ClientesCadastrarView: TWebForm} {*.html};
 
 {$R *.res}
 
