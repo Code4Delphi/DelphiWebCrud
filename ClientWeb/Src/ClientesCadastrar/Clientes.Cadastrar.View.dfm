@@ -1,7 +1,7 @@
 object ClientesCadastrarView: TClientesCadastrarView
   Width = 1055
   Height = 704
-  Caption = 'Cadastro de clientes'
+  Caption = 'Delphi Web - Cadastro de clientes'
   ElementFont = efCSS
   ElementPopupClassName = 'bg-dark'
   Font.Charset = DEFAULT_CHARSET
