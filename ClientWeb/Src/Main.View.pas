@@ -70,7 +70,7 @@ type
     procedure btnDeleteClick(Sender: TObject);
     procedure XDataWebClient1Error(Error: TXDataClientError);
   private
-    function GetClientePreenchido: TJSObject;
+    function GetClientePreenchido(const AView: TClientesCadastrarView): TJSObject;
 
   public
 
@@ -194,26 +194,15 @@ begin
   end;
 end;
 
-function TMainView.GetClientePreenchido: TJSObject;
-begin
-  Result := TJSObject.new;
-  Result['IdCidade'] := 10;
-  Result['Nome'] := 'Nome teste ' + FormatDateTime('zzz', Now);
-  Result['Profissao'] := 'Dev';
-  Result['Limite'] := 590;
-  Result['Porcentagem'] := 54;
-  Result['Ativo'] := True;
-end;
-
 procedure TMainView.btnAlterarClick(Sender: TObject);
-var
-  LResponse: TXDataClientResponse;
+//var
+//  LResponse: TXDataClientResponse;
 begin
-  LResponse := TAwait.Exec<TXDataClientResponse>(
-    XDataWebClient1.RawInvokeAsync('IClientesService.Update',
-      [StrToIntDef(edtCodigo.Text, 0), Self.GetClientePreenchido]));
-
-  mmTeste.Lines.Text := LResponse.ResponseText;
+//  LResponse := TAwait.Exec<TXDataClientResponse>(
+//    XDataWebClient1.RawInvokeAsync('IClientesService.Update',
+//      [StrToIntDef(edtCodigo.Text, 0), Self.GetClientePreenchido]));
+//
+//  mmTeste.Lines.Text := LResponse.ResponseText;
 end;
 
 procedure TMainView.btnDeleteClick(Sender: TObject);
@@ -242,6 +231,8 @@ end;}
 procedure TMainView.btnPostClick(Sender: TObject);
 var
   LView: TClientesCadastrarView;
+  LResponse: TXDataClientResponse;
+  LCliente: TJSObject;
 begin
   LView := TClientesCadastrarView.Create(Self);
   try
@@ -255,15 +246,26 @@ begin
     if TAwait.ExecP<TModalResult>(LView.Execute) <> mrOk then
       Exit;
 
-    mmTeste.Lines.Clear;
-    mmTeste.Lines.Add('Nome: ' + LView.edtNome.Text);
-    mmTeste.Lines.Add('Profissão: ' + LView.edtProfissao.Text);
-    mmTeste.Lines.Add('Porcentagem: ' + LView.edtPorcentagem.Text);
-    mmTeste.Lines.Add('Limite: ' + LView.edtLimite.Text);
-    mmTeste.Lines.Add('Id cidade: ' + LView.edtIdCidade.Text);
+    LCliente := Self.GetClientePreenchido(LView);
   finally
     LView.Free;
   end;
+
+  LResponse := TAwait.Exec<TXDataClientResponse>(
+    XDataWebClient1.RawInvokeAsync('IClientesService.Post', [LCliente]));
+
+  mmTeste.Lines.Text := LResponse.ResponseText;
+end;
+
+function TMainView.GetClientePreenchido(const AView: TClientesCadastrarView): TJSObject;
+begin
+  Result := TJSObject.new;
+  Result['IdCidade'] := AView.edtIdCidade.Value;
+  Result['Nome'] := AView.edtNome.Text;
+  Result['Profissao'] := AView.edtProfissao.Text;
+  Result['Limite'] := AView.edtLimite.Value;
+  Result['Porcentagem'] := AView.edtPorcentagem.Value;
+  Result['Ativo'] := AView.ckAtivo.Checked;
 end;
 
 end.
