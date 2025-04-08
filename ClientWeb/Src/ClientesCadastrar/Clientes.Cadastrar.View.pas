@@ -78,6 +78,7 @@ begin
     Exit;
   end;
 
+  Self.ModalResult := mrOk;
   Self.Close;
 end;
 

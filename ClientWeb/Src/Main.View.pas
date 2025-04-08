@@ -252,7 +252,8 @@ begin
     TAwait.ExecP<TClientesCadastrarView>(LView.Load());
 
     //EXECUTAR FORMULARIO E AGUARDAR FECHAMENTO
-    TAwait.ExecP<TModalResult>(LView.Execute);
+    if TAwait.ExecP<TModalResult>(LView.Execute) <> mrOk then
+      Exit;
 
     mmTeste.Lines.Clear;
     mmTeste.Lines.Add('Nome: ' + LView.edtNome.Text);

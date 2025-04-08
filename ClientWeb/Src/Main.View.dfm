@@ -123,7 +123,6 @@ object MainView: TMainView
       HeightPercent = 100.000000000000000000
       WidthPercent = 100.000000000000000000
       OnClick = btnGetClick
-      ExplicitLeft = 265
     end
     object btnListar: TWebButton
       Left = 355
