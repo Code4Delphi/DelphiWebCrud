@@ -235,7 +235,7 @@ object ClientesCadastrarView: TClientesCadastrarView
     ElementFont = efCSS
     ElementPosition = epIgnore
     Increment = 1
-    MaxValue = 100
+    MaxValue = 0
     MinValue = 0
     Role = ''
     Value = 0
@@ -255,7 +255,7 @@ object ClientesCadastrarView: TClientesCadastrarView
     ElementFont = efCSS
     ElementPosition = epIgnore
     Increment = 1
-    MaxValue = 100
+    MaxValue = 0
     MinValue = 0
     Role = ''
     Value = 0
