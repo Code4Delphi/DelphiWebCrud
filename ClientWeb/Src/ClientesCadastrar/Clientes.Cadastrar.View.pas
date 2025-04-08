@@ -43,25 +43,7 @@ implementation
 procedure TClientesCadastrarView.WebFormShow(Sender: TObject);
 begin
   Self.LimparTela;
-end;
-
-procedure TClientesCadastrarView.btnGravarClick(Sender: TObject);
-begin
-  if Trim(edtIdCidade.Text).IsEmpty then
-  begin
-    ShowMessage('Campo obrigatorio, id cidade');
-    edtIdCidade.SetFocus;
-    Exit;
-  end;
-
-  if Trim(edtNome.Text).IsEmpty then
-  begin
-    ShowMessage('Campo obrigatorio, nome');
-    edtNome.SetFocus;
-    Exit;
-  end;
-
-  Self.Close;
+  edtNome.SetFocus;
 end;
 
 procedure TClientesCadastrarView.btnLimparClick(Sender: TObject);
@@ -78,6 +60,25 @@ begin
   edtLimite.Value := 0;
   edtIdCidade.Value := 0;
   ckAtivo.Checked := False;
+end;
+
+procedure TClientesCadastrarView.btnGravarClick(Sender: TObject);
+begin
+  if edtIdCidade.Value <= 0 then
+  begin
+    ShowMessage('Preenchar o campo código da cidade');
+    edtIdCidade.SetFocus;
+    Exit;
+  end;
+
+  if Trim(edtNome.Text).IsEmpty then
+  begin
+    ShowMessage('Preenchar o campo nome');
+    edtNome.SetFocus;
+    Exit;
+  end;
+
+  Self.Close;
 end;
 
 end.

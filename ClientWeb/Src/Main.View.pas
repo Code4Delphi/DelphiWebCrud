@@ -83,6 +83,11 @@ implementation
 
 {$R *.dfm}
 
+procedure TMainView.WebFormCreate(Sender: TObject);
+begin
+  XDataWebConnection1.Open;
+end;
+
 procedure TMainView.lbImportantClick(Sender: TObject);
 begin
   //MessageDlg('Minha mensagem', mtError, []);
@@ -102,21 +107,6 @@ begin
     ShowMessage('Respondeu não');
 end;
 
-procedure TMainView.WebFormCreate(Sender: TObject);
-begin
-  XDataWebConnection1.Open;
-end;
-
-procedure TMainView.XDataWebClient1Error(Error: TXDataClientError);
-begin
-  mmTeste.Lines.Clear;
-  mmTeste.Lines.Add('StatusCode: ' + Error.StatusCode.ToString);
-  mmTeste.Lines.Add('RequestUrl: ' + Error.RequestUrl);
-  mmTeste.Lines.Add('RequestId: ' + Error.RequestId);
-  mmTeste.Lines.Add('ErrorCode: ' + Error.ErrorCode);
-  mmTeste.Lines.Add('ErrorMessage: ' + Error.ErrorMessage);
-end;
-
 procedure TMainView.lbInformationalClick(Sender: TObject);
 begin
   MessageDlg('Minha pergunta?', mtConfirmation, [mbYes, mbNo],
@@ -129,10 +119,27 @@ begin
     end);
 end;
 
+procedure TMainView.XDataWebClient1Error(Error: TXDataClientError);
+begin
+  mmTeste.Lines.Clear;
+  mmTeste.Lines.Add('StatusCode: ' + Error.StatusCode.ToString);
+  mmTeste.Lines.Add('RequestUrl: ' + Error.RequestUrl);
+  mmTeste.Lines.Add('RequestId: ' + Error.RequestId);
+  mmTeste.Lines.Add('ErrorCode: ' + Error.ErrorCode);
+  mmTeste.Lines.Add('ErrorMessage: ' + Error.ErrorMessage);
+end;
+
 procedure TMainView.btnGetNomeClick(Sender: TObject);
 var
   LResponse: TXDataClientResponse;
 begin
+  if StrToIntDef(edtCodigo.Text, 0) <= 0 then
+  begin
+    MessageDlg('Informe o código desejado', mtInformation, []);
+    edtCodigo.SetFocus;
+    Exit;
+  end;
+
   LResponse := TAwait.Exec<TXDataClientResponse>(
     XDataWebClient1.RawInvokeAsync('IClientesService.GetNome', [StrToIntDef(edtCodigo.Text, 0)]));
 
@@ -143,6 +150,13 @@ procedure TMainView.btnGetClick(Sender: TObject);
 var
   LResponse: TXDataClientResponse;
 begin
+  if StrToIntDef(edtCodigo.Text, 0) <= 0 then
+  begin
+    MessageDlg('Informe o código desejado', mtInformation, []);
+    edtCodigo.SetFocus;
+    Exit;
+  end;
+
   LResponse := TAwait.Exec<TXDataClientResponse>(
     XDataWebClient1.RawInvokeAsync('IClientesService.Get', [StrToIntDef(edtCodigo.Text, 0)]));
 
