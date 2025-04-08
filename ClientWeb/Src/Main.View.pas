@@ -194,17 +194,6 @@ begin
   end;
 end;
 
-procedure TMainView.btnAlterarClick(Sender: TObject);
-//var
-//  LResponse: TXDataClientResponse;
-begin
-//  LResponse := TAwait.Exec<TXDataClientResponse>(
-//    XDataWebClient1.RawInvokeAsync('IClientesService.Update',
-//      [StrToIntDef(edtCodigo.Text, 0), Self.GetClientePreenchido]));
-//
-//  mmTeste.Lines.Text := LResponse.ResponseText;
-end;
-
 procedure TMainView.btnDeleteClick(Sender: TObject);
 var
   LResponse: TXDataClientResponse;
@@ -253,6 +242,50 @@ begin
 
   LResponse := TAwait.Exec<TXDataClientResponse>(
     XDataWebClient1.RawInvokeAsync('IClientesService.Post', [LCliente]));
+
+  mmTeste.Lines.Text := LResponse.ResponseText;
+end;
+
+procedure TMainView.btnAlterarClick(Sender: TObject);
+var
+  LView: TClientesCadastrarView;
+  LResponse: TXDataClientResponse;
+  LCliente: TJSObject;
+begin
+   if XDataWebDataSet1Id.AsInteger <= 0 then
+  begin
+    MessageDlg('Informe o código desejado', mtInformation, []);
+    edtCodigo.SetFocus;
+    Exit;
+  end;
+
+  LView := TClientesCadastrarView.Create(Self);
+  try
+    LView.Popup := True;
+    LView.Border := fbDialogSizeable;
+
+    //CARREGAR ARQUIVO HTML TEMPLATE + CONTROLES
+    TAwait.ExecP<TClientesCadastrarView>(LView.Load());
+
+    LView.edtCodigo.Text := XDataWebDataSet1Id.AsString;
+    LView.edtNome.Text := XDataWebDataSet1Nome.AsString;
+    LView.edtIdCidade.Value := XDataWebDataSet1IdCidade.AsInteger;
+    LView.edtProfissao.Text := XDataWebDataSet1Profissao.AsString;
+    LView.edtPorcentagem.Value := XDataWebDataSet1Porcentagem.AsInteger;
+    LView.edtLimite.Text := XDataWebDataSet1Limite.AsString;
+    LView.ckAtivo.Checked := XDataWebDataSet1Ativo.AsBoolean;
+
+    //EXECUTAR FORMULARIO E AGUARDAR FECHAMENTO
+    if TAwait.ExecP<TModalResult>(LView.Execute) <> mrOk then
+      Exit;
+
+    LCliente := Self.GetClientePreenchido(LView);
+  finally
+    LView.Free;
+  end;
+
+  LResponse := TAwait.Exec<TXDataClientResponse>(
+    XDataWebClient1.RawInvokeAsync('IClientesService.Update', [XDataWebDataSet1Id.AsInteger, LCliente]));
 
   mmTeste.Lines.Text := LResponse.ResponseText;
 end;
