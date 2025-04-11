@@ -149,7 +149,6 @@ object MainView: TMainView
       HeightPercent = 100.000000000000000000
       WidthPercent = 100.000000000000000000
       OnClick = btnPostClick
-      ExplicitLeft = 445
     end
     object btnAlterar: TWebButton
       Left = 587
@@ -163,7 +162,6 @@ object MainView: TMainView
       HeightPercent = 100.000000000000000000
       WidthPercent = 100.000000000000000000
       OnClick = btnAlterarClick
-      ExplicitLeft = 581
     end
     object btnDelete: TWebButton
       Left = 723
@@ -177,7 +175,6 @@ object MainView: TMainView
       HeightPercent = 100.000000000000000000
       WidthPercent = 100.000000000000000000
       OnClick = btnDeleteClick
-      ExplicitLeft = 729
     end
   end
   object mmTeste: TWebMemo
