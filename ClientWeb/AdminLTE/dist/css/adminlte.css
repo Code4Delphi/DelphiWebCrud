@@ -15392,4 +15392,9 @@ html.maximized-card {
   width: 32px;
 }
 
+
+.btn-igual {
+  flex: 1;
+  min-width: 150px;
+}
 /*# sourceMappingURL=adminlte.css.map */

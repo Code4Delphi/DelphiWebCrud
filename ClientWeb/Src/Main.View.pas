@@ -71,7 +71,6 @@ type
     procedure XDataWebClient1Error(Error: TXDataClientError);
   private
     function GetClientePreenchido(const AView: TClientesCadastrarView): TJSObject;
-
   public
 
   end;
@@ -91,7 +90,6 @@ end;
 procedure TMainView.lbImportantClick(Sender: TObject);
 begin
   //MessageDlg('Minha mensagem', mtError, []);
-
   WebMessageDlg1.ShowDialog('Minha menagem componente', mtWarning, []);
 end;
 
@@ -198,6 +196,9 @@ procedure TMainView.btnDeleteClick(Sender: TObject);
 var
   LResponse: TXDataClientResponse;
 begin
+  if await(TModalResult, MessageDlgAsync('Confirma realmente deletar o registro?', mtConfirmation, [mbYes, mbNo])) <> mrYes then
+    Exit;
+
   LResponse := TAwait.Exec<TXDataClientResponse>(
     XDataWebClient1.RawInvokeAsync('IClientesService.Delete', [StrToIntDef(edtCodigo.Text, 0)]));
 
@@ -205,17 +206,6 @@ begin
   mmTeste.Lines.Add('StatusCode: ' + LResponse.StatusCode.ToString);
   mmTeste.Lines.Add('ResponseText: ' + LResponse.ResponseText);
 end;
-
-{
-procedure TMainView.btnPostClick(Sender: TObject);
-var
-  LResponse: TXDataClientResponse;
-begin
-  LResponse := TAwait.Exec<TXDataClientResponse>(
-    XDataWebClient1.RawInvokeAsync('IClientesService.Post', [Self.GetClientePreenchido]));
-
-  mmTeste.Lines.Text := LResponse.ResponseText;
-end;}
 
 procedure TMainView.btnPostClick(Sender: TObject);
 var
