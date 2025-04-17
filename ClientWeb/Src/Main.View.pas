@@ -21,7 +21,9 @@ uses
   XData.Web.Connection,
   WEBLib.DB,
   JS,
-  Clientes.Cadastrar.View;
+  Clientes.Cadastrar.View, VCL.TMSFNCTypes, VCL.TMSFNCUtils, VCL.TMSFNCGraphics, VCL.TMSFNCGraphicsTypes, System.Rtti,
+  VCL.TMSFNCDataGridCell, VCL.TMSFNCDataGridData, VCL.TMSFNCDataGridBase, VCL.TMSFNCDataGridCore,
+  VCL.TMSFNCDataGridRenderer, VCL.TMSFNCCustomControl, VCL.TMSFNCDataGrid;
 
 type
   TMainView = class(TWebForm)

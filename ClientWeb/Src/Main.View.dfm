@@ -1,11 +1,11 @@
 object MainView: TMainView
-  Width = 1118
-  Height = 480
+  Width = 1237
+  Height = 743
   Caption = 'Delphi Web - Home'
   OnCreate = WebFormCreate
   object WebLabel1: TWebLabel
-    Left = 144
-    Top = 80
+    Left = 1055
+    Top = 152
     Width = 119
     Height = 15
     Caption = 'C'#233'sar Cardoso Logado'
@@ -14,8 +14,8 @@ object MainView: TMainView
     WidthPercent = 100.000000000000000000
   end
   object lbImportant: TWebLabel
-    Left = 64
-    Top = 248
+    Left = 24
+    Top = 280
     Width = 63
     Height = 15
     Caption = 'lbImportant'
@@ -25,8 +25,8 @@ object MainView: TMainView
     OnClick = lbImportantClick
   end
   object lbWarning: TWebLabel
-    Left = 72
-    Top = 288
+    Left = 32
+    Top = 320
     Width = 55
     Height = 15
     Caption = 'lbWarning'
@@ -36,8 +36,8 @@ object MainView: TMainView
     OnClick = lbWarningClick
   end
   object lbInformational: TWebLabel
-    Left = 64
-    Top = 328
+    Left = 24
+    Top = 360
     Width = 82
     Height = 15
     Caption = 'lbInformational'
@@ -47,8 +47,8 @@ object MainView: TMainView
     OnClick = lbInformationalClick
   end
   object WebMessageDlg1: TWebMessageDlg
-    Left = 232
-    Top = 279
+    Left = 584
+    Top = 31
     Width = 24
     Height = 24
     Buttons = []
@@ -67,9 +67,9 @@ object MainView: TMainView
     ElementTitleClassName = 'bg-black'
   end
   object WebPanel1: TWebPanel
-    Left = 112
-    Top = 160
-    Width = 945
+    Left = 270
+    Top = 304
+    Width = 916
     Height = 33
     ElementID = 'divContainerBotoes01'
     ChildOrder = 5
@@ -84,7 +84,8 @@ object MainView: TMainView
       ElementID = 'lbLabel'
       HeightPercent = 100.000000000000000000
       WidthPercent = 100.000000000000000000
-      ExplicitHeight = 15
+      ExplicitLeft = -6
+      ExplicitTop = 1
     end
     object edtCodigo: TWebEdit
       Left = 42
@@ -178,8 +179,8 @@ object MainView: TMainView
     end
   end
   object mmTeste: TWebMemo
-    Left = 232
-    Top = 229
+    Left = 270
+    Top = 340
     Width = 321
     Height = 132
     ElementID = 'mmTeste'
