@@ -21,7 +21,10 @@ uses
   XData.Web.Connection,
   WEBLib.DB,
   JS,
-  Clientes.Cadastrar.View;
+  Clientes.Cadastrar.View, VCL.TMSFNCTypes, VCL.TMSFNCUtils, VCL.TMSFNCGraphics, VCL.TMSFNCGraphicsTypes, System.Rtti,
+  VCL.TMSFNCDataGridCell, VCL.TMSFNCDataGridData, VCL.TMSFNCDataGridBase, VCL.TMSFNCDataGridCore,
+  VCL.TMSFNCDataGridRenderer, VCL.TMSFNCCustomControl, VCL.TMSFNCDataGrid, VCL.TMSFNCCustomComponent,
+  VCL.TMSFNCDataGridDatabaseAdapter;
 
 type
   TMainView = class(TWebForm)
@@ -38,7 +41,6 @@ type
     XDataWebConnection1: TXDataWebConnection;
     XDataWebClient1: TXDataWebClient;
     XDataWebDataSet1: TXDataWebDataSet;
-    mmTeste: TWebMemo;
     WebDataSource1: TWebDataSource;
     XDataWebDataSet1Id: TIntegerField;
     XDataWebDataSet1IdCidade: TIntegerField;
@@ -51,6 +53,8 @@ type
     btnPost: TWebButton;
     btnAlterar: TWebButton;
     btnDelete: TWebButton;
+    TMSFNCDataGrid1: TTMSFNCDataGrid;
+    TMSFNCDataGridDatabaseAdapter1: TTMSFNCDataGridDatabaseAdapter;
     procedure lbImportantClick(Sender: TObject);
     [Async]
     procedure lbWarningClick(Sender: TObject);
@@ -119,12 +123,12 @@ end;
 
 procedure TMainView.XDataWebClient1Error(Error: TXDataClientError);
 begin
-  mmTeste.Lines.Clear;
-  mmTeste.Lines.Add('StatusCode: ' + Error.StatusCode.ToString);
-  mmTeste.Lines.Add('RequestUrl: ' + Error.RequestUrl);
-  mmTeste.Lines.Add('RequestId: ' + Error.RequestId);
-  mmTeste.Lines.Add('ErrorCode: ' + Error.ErrorCode);
-  mmTeste.Lines.Add('ErrorMessage: ' + Error.ErrorMessage);
+  ShowMessage(
+    'StatusCode: ' + Error.StatusCode.ToString + sLineBreak +
+    'RequestUrl: ' + Error.RequestUrl + sLineBreak +
+    'RequestId: ' + Error.RequestId + sLineBreak +
+    'ErrorCode: ' + Error.ErrorCode + sLineBreak +
+    'ErrorMessage: ' + Error.ErrorMessage);
 end;
 
 procedure TMainView.btnGetNomeClick(Sender: TObject);
@@ -141,7 +145,7 @@ begin
   LResponse := TAwait.Exec<TXDataClientResponse>(
     XDataWebClient1.RawInvokeAsync('IClientesService.GetNome', [StrToIntDef(edtCodigo.Text, 0)]));
 
-  mmTeste.Lines.Add(LResponse.ResponseText);
+  ShowMessage(LResponse.ResponseText);
 end;
 
 procedure TMainView.btnGetClick(Sender: TObject);
@@ -162,14 +166,14 @@ begin
   XDataWebDataSet1.SetJsonData(LResponse.Result);
   XDataWebDataSet1.Open;
 
-  mmTeste.Lines.Clear;
-  mmTeste.Lines.Add('Id: ' + XDataWebDataSet1Id.AsString);
-  mmTeste.Lines.Add('Id Cidade: ' + XDataWebDataSet1IdCidade.AsString);
-  mmTeste.Lines.Add('Nome: ' +  XDataWebDataSet1Nome.AsString);
-  mmTeste.Lines.Add('Profissão: ' +  XDataWebDataSet1Profissao.AsString);
-  mmTeste.Lines.Add('Limite: ' +  XDataWebDataSet1Limite.AsString);
-  mmTeste.Lines.Add('Porcentagem: ' +  XDataWebDataSet1Porcentagem.AsString);
-  mmTeste.Lines.Add('Ativo: ' +  XDataWebDataSet1Ativo.AsString);
+//  mmTeste.Lines.Clear;
+//  mmTeste.Lines.Add('Id: ' + XDataWebDataSet1Id.AsString);
+//  mmTeste.Lines.Add('Id Cidade: ' + XDataWebDataSet1IdCidade.AsString);
+//  mmTeste.Lines.Add('Nome: ' +  XDataWebDataSet1Nome.AsString);
+//  mmTeste.Lines.Add('Profissão: ' +  XDataWebDataSet1Profissao.AsString);
+//  mmTeste.Lines.Add('Limite: ' +  XDataWebDataSet1Limite.AsString);
+//  mmTeste.Lines.Add('Porcentagem: ' +  XDataWebDataSet1Porcentagem.AsString);
+//  mmTeste.Lines.Add('Ativo: ' +  XDataWebDataSet1Ativo.AsString);
 end;
 
 procedure TMainView.btnListarClick(Sender: TObject);
@@ -183,13 +187,13 @@ begin
   XDataWebDataSet1.SetJsonData(TJSObject(LResponse.Result)['value']);
   XDataWebDataSet1.Open;
 
-  XDataWebDataSet1.First;
-  while not XDataWebDataSet1.Eof do
-  begin
-    mmTeste.Lines.Add(XDataWebDataSet1Id.AsString + ' - ' +
-      XDataWebDataSet1Nome.AsString + ' - ' + XDataWebDataSet1Profissao.AsString);
-    XDataWebDataSet1.Next;
-  end;
+//  XDataWebDataSet1.First;
+//  while not XDataWebDataSet1.Eof do
+//  begin
+//    mmTeste.Lines.Add(XDataWebDataSet1Id.AsString + ' - ' +
+//      XDataWebDataSet1Nome.AsString + ' - ' + XDataWebDataSet1Profissao.AsString);
+//    XDataWebDataSet1.Next;
+//  end;
 end;
 
 procedure TMainView.btnDeleteClick(Sender: TObject);
@@ -202,9 +206,8 @@ begin
   LResponse := TAwait.Exec<TXDataClientResponse>(
     XDataWebClient1.RawInvokeAsync('IClientesService.Delete', [StrToIntDef(edtCodigo.Text, 0)]));
 
-  mmTeste.Lines.Clear;
-  mmTeste.Lines.Add('StatusCode: ' + LResponse.StatusCode.ToString);
-  mmTeste.Lines.Add('ResponseText: ' + LResponse.ResponseText);
+  ShowMessage('StatusCode: ' + LResponse.StatusCode.ToString + sLineBreak +
+   'ResponseText: ' + LResponse.ResponseText);
 end;
 
 procedure TMainView.btnPostClick(Sender: TObject);
@@ -233,7 +236,7 @@ begin
   LResponse := TAwait.Exec<TXDataClientResponse>(
     XDataWebClient1.RawInvokeAsync('IClientesService.Post', [LCliente]));
 
-  mmTeste.Lines.Text := LResponse.ResponseText;
+  ShowMessage(LResponse.ResponseText);
 end;
 
 procedure TMainView.btnAlterarClick(Sender: TObject);
@@ -277,7 +280,7 @@ begin
   LResponse := TAwait.Exec<TXDataClientResponse>(
     XDataWebClient1.RawInvokeAsync('IClientesService.Update', [XDataWebDataSet1Id.AsInteger, LCliente]));
 
-  mmTeste.Lines.Text := LResponse.ResponseText;
+  ShowMessage(LResponse.ResponseText);
 end;
 
 function TMainView.GetClientePreenchido(const AView: TClientesCadastrarView): TJSObject;
