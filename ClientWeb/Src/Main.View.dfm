@@ -1,5 +1,5 @@
 object MainView: TMainView
-  Width = 1237
+  Width = 1525
   Height = 743
   Caption = 'Delphi Web - Home'
   OnCreate = WebFormCreate
@@ -69,7 +69,7 @@ object MainView: TMainView
   object WebPanel1: TWebPanel
     Left = 270
     Top = 304
-    Width = 916
+    Width = 1007
     Height = 33
     ElementID = 'divContainerBotoes01'
     ChildOrder = 5
@@ -95,7 +95,7 @@ object MainView: TMainView
       ChildOrder = 1
       ElementID = 'edtId'
       HeightPercent = 100.000000000000000000
-      Text = '50'
+      Text = '20'
       WidthPercent = 100.000000000000000000
     end
     object btnGetNome: TWebButton
@@ -123,8 +123,6 @@ object MainView: TMainView
       HeightPercent = 100.000000000000000000
       WidthPercent = 100.000000000000000000
       OnClick = btnGetClick
-      ExplicitLeft = 265
-      ExplicitTop = -3
     end
     object btnListar: TWebButton
       Left = 355
@@ -182,10 +180,20 @@ object MainView: TMainView
   object TMSFNCDataGrid1: TTMSFNCDataGrid
     Left = 270
     Top = 343
-    Width = 916
-    Height = 370
+    Width = 1211
+    Height = 538
+    BevelEdges = []
+    BevelInner = bvNone
+    BevelOuter = bvNone
     ParentDoubleBuffered = False
+    Color = 3485739
     DoubleBuffered = True
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -15
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 2
     Adapter = TMSFNCDataGridDatabaseAdapter1
     CellAppearance.BandLayout.Font.Charset = DEFAULT_CHARSET
@@ -193,36 +201,44 @@ object MainView: TMainView
     CellAppearance.BandLayout.Font.Height = -11
     CellAppearance.BandLayout.Font.Name = 'Segoe UI'
     CellAppearance.BandLayout.Font.Style = []
+    CellAppearance.FixedLayout.Fill.Color = 5523527
     CellAppearance.FixedLayout.Font.Charset = DEFAULT_CHARSET
-    CellAppearance.FixedLayout.Font.Color = clWindowText
-    CellAppearance.FixedLayout.Font.Height = -11
+    CellAppearance.FixedLayout.Font.Color = clSkyBlue
+    CellAppearance.FixedLayout.Font.Height = -12
     CellAppearance.FixedLayout.Font.Name = 'Segoe UI'
-    CellAppearance.FixedLayout.Font.Style = []
+    CellAppearance.FixedLayout.Font.Style = [fsBold]
+    CellAppearance.FixedLayout.Stroke.Color = 4273203
     CellAppearance.FixedSelectedLayout.Font.Charset = DEFAULT_CHARSET
     CellAppearance.FixedSelectedLayout.Font.Color = clWindowText
     CellAppearance.FixedSelectedLayout.Font.Height = -11
     CellAppearance.FixedSelectedLayout.Font.Name = 'Segoe UI'
     CellAppearance.FixedSelectedLayout.Font.Style = []
+    CellAppearance.FocusedLayout.Fill.Color = 15039832
     CellAppearance.FocusedLayout.Font.Charset = DEFAULT_CHARSET
-    CellAppearance.FocusedLayout.Font.Color = clWindowText
-    CellAppearance.FocusedLayout.Font.Height = -11
+    CellAppearance.FocusedLayout.Font.Color = clWhite
+    CellAppearance.FocusedLayout.Font.Height = -13
     CellAppearance.FocusedLayout.Font.Name = 'Segoe UI'
     CellAppearance.FocusedLayout.Font.Style = []
+    CellAppearance.FocusedLayout.Stroke.Color = 15839041
     CellAppearance.GroupLayout.Font.Charset = DEFAULT_CHARSET
     CellAppearance.GroupLayout.Font.Color = clWindowText
     CellAppearance.GroupLayout.Font.Height = -11
     CellAppearance.GroupLayout.Font.Name = 'Segoe UI'
     CellAppearance.GroupLayout.Font.Style = []
+    CellAppearance.NormalLayout.Fill.Color = 4273203
     CellAppearance.NormalLayout.Font.Charset = DEFAULT_CHARSET
-    CellAppearance.NormalLayout.Font.Color = clWindowText
-    CellAppearance.NormalLayout.Font.Height = -11
+    CellAppearance.NormalLayout.Font.Color = clWhite
+    CellAppearance.NormalLayout.Font.Height = -13
     CellAppearance.NormalLayout.Font.Name = 'Segoe UI'
     CellAppearance.NormalLayout.Font.Style = []
+    CellAppearance.NormalLayout.Stroke.Color = 10125694
+    CellAppearance.SelectedLayout.Fill.Color = 8873272
     CellAppearance.SelectedLayout.Font.Charset = DEFAULT_CHARSET
-    CellAppearance.SelectedLayout.Font.Color = clWindowText
-    CellAppearance.SelectedLayout.Font.Height = -11
+    CellAppearance.SelectedLayout.Font.Color = clWhite
+    CellAppearance.SelectedLayout.Font.Height = -13
     CellAppearance.SelectedLayout.Font.Name = 'Segoe UI'
     CellAppearance.SelectedLayout.Font.Style = []
+    CellAppearance.SelectedLayout.Stroke.Color = 15839041
     CellAppearance.SummaryLayout.Font.Charset = DEFAULT_CHARSET
     CellAppearance.SummaryLayout.Font.Color = clWindowText
     CellAppearance.SummaryLayout.Font.Height = -11
@@ -315,181 +331,6 @@ object MainView: TMainView
         Appearance.SummaryLayout.Font.Name = 'Segoe UI'
         Appearance.SummaryLayout.Font.Style = []
         Header = 'C'#243'd. Cidade'
-        Width = 80.000000000000000000
-      end
-      item
-        Appearance.BandLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.BandLayout.Font.Color = clWindowText
-        Appearance.BandLayout.Font.Height = -11
-        Appearance.BandLayout.Font.Name = 'Segoe UI'
-        Appearance.BandLayout.Font.Style = []
-        Appearance.FixedLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.FixedLayout.Font.Color = clWindowText
-        Appearance.FixedLayout.Font.Height = -11
-        Appearance.FixedLayout.Font.Name = 'Segoe UI'
-        Appearance.FixedLayout.Font.Style = []
-        Appearance.FixedSelectedLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.FixedSelectedLayout.Font.Color = clWindowText
-        Appearance.FixedSelectedLayout.Font.Height = -11
-        Appearance.FixedSelectedLayout.Font.Name = 'Segoe UI'
-        Appearance.FixedSelectedLayout.Font.Style = []
-        Appearance.FocusedLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.FocusedLayout.Font.Color = clWindowText
-        Appearance.FocusedLayout.Font.Height = -11
-        Appearance.FocusedLayout.Font.Name = 'Segoe UI'
-        Appearance.FocusedLayout.Font.Style = []
-        Appearance.GroupLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.GroupLayout.Font.Color = clWindowText
-        Appearance.GroupLayout.Font.Height = -11
-        Appearance.GroupLayout.Font.Name = 'Segoe UI'
-        Appearance.GroupLayout.Font.Style = []
-        Appearance.NormalLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.NormalLayout.Font.Color = clWindowText
-        Appearance.NormalLayout.Font.Height = -11
-        Appearance.NormalLayout.Font.Name = 'Segoe UI'
-        Appearance.NormalLayout.Font.Style = []
-        Appearance.SelectedLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.SelectedLayout.Font.Color = clWindowText
-        Appearance.SelectedLayout.Font.Height = -11
-        Appearance.SelectedLayout.Font.Name = 'Segoe UI'
-        Appearance.SelectedLayout.Font.Style = []
-        Appearance.SummaryLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.SummaryLayout.Font.Color = clWindowText
-        Appearance.SummaryLayout.Font.Height = -11
-        Appearance.SummaryLayout.Font.Name = 'Segoe UI'
-        Appearance.SummaryLayout.Font.Style = []
-        Header = 'Nome'
-        Width = 250.000000000000000000
-      end
-      item
-        Appearance.BandLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.BandLayout.Font.Color = clWindowText
-        Appearance.BandLayout.Font.Height = -11
-        Appearance.BandLayout.Font.Name = 'Segoe UI'
-        Appearance.BandLayout.Font.Style = []
-        Appearance.FixedLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.FixedLayout.Font.Color = clWindowText
-        Appearance.FixedLayout.Font.Height = -11
-        Appearance.FixedLayout.Font.Name = 'Segoe UI'
-        Appearance.FixedLayout.Font.Style = []
-        Appearance.FixedSelectedLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.FixedSelectedLayout.Font.Color = clWindowText
-        Appearance.FixedSelectedLayout.Font.Height = -11
-        Appearance.FixedSelectedLayout.Font.Name = 'Segoe UI'
-        Appearance.FixedSelectedLayout.Font.Style = []
-        Appearance.FocusedLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.FocusedLayout.Font.Color = clWindowText
-        Appearance.FocusedLayout.Font.Height = -11
-        Appearance.FocusedLayout.Font.Name = 'Segoe UI'
-        Appearance.FocusedLayout.Font.Style = []
-        Appearance.GroupLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.GroupLayout.Font.Color = clWindowText
-        Appearance.GroupLayout.Font.Height = -11
-        Appearance.GroupLayout.Font.Name = 'Segoe UI'
-        Appearance.GroupLayout.Font.Style = []
-        Appearance.NormalLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.NormalLayout.Font.Color = clWindowText
-        Appearance.NormalLayout.Font.Height = -11
-        Appearance.NormalLayout.Font.Name = 'Segoe UI'
-        Appearance.NormalLayout.Font.Style = []
-        Appearance.SelectedLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.SelectedLayout.Font.Color = clWindowText
-        Appearance.SelectedLayout.Font.Height = -11
-        Appearance.SelectedLayout.Font.Name = 'Segoe UI'
-        Appearance.SelectedLayout.Font.Style = []
-        Appearance.SummaryLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.SummaryLayout.Font.Color = clWindowText
-        Appearance.SummaryLayout.Font.Height = -11
-        Appearance.SummaryLayout.Font.Name = 'Segoe UI'
-        Appearance.SummaryLayout.Font.Style = []
-        Header = 'Profiss'#227'o'
-        Width = 150.000000000000000000
-      end
-      item
-        Appearance.BandLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.BandLayout.Font.Color = clWindowText
-        Appearance.BandLayout.Font.Height = -11
-        Appearance.BandLayout.Font.Name = 'Segoe UI'
-        Appearance.BandLayout.Font.Style = []
-        Appearance.FixedLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.FixedLayout.Font.Color = clWindowText
-        Appearance.FixedLayout.Font.Height = -11
-        Appearance.FixedLayout.Font.Name = 'Segoe UI'
-        Appearance.FixedLayout.Font.Style = []
-        Appearance.FixedSelectedLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.FixedSelectedLayout.Font.Color = clWindowText
-        Appearance.FixedSelectedLayout.Font.Height = -11
-        Appearance.FixedSelectedLayout.Font.Name = 'Segoe UI'
-        Appearance.FixedSelectedLayout.Font.Style = []
-        Appearance.FocusedLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.FocusedLayout.Font.Color = clWindowText
-        Appearance.FocusedLayout.Font.Height = -11
-        Appearance.FocusedLayout.Font.Name = 'Segoe UI'
-        Appearance.FocusedLayout.Font.Style = []
-        Appearance.GroupLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.GroupLayout.Font.Color = clWindowText
-        Appearance.GroupLayout.Font.Height = -11
-        Appearance.GroupLayout.Font.Name = 'Segoe UI'
-        Appearance.GroupLayout.Font.Style = []
-        Appearance.NormalLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.NormalLayout.Font.Color = clWindowText
-        Appearance.NormalLayout.Font.Height = -11
-        Appearance.NormalLayout.Font.Name = 'Segoe UI'
-        Appearance.NormalLayout.Font.Style = []
-        Appearance.SelectedLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.SelectedLayout.Font.Color = clWindowText
-        Appearance.SelectedLayout.Font.Height = -11
-        Appearance.SelectedLayout.Font.Name = 'Segoe UI'
-        Appearance.SelectedLayout.Font.Style = []
-        Appearance.SummaryLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.SummaryLayout.Font.Color = clWindowText
-        Appearance.SummaryLayout.Font.Height = -11
-        Appearance.SummaryLayout.Font.Name = 'Segoe UI'
-        Appearance.SummaryLayout.Font.Style = []
-        Header = 'Limite'
-      end
-      item
-        Appearance.BandLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.BandLayout.Font.Color = clWindowText
-        Appearance.BandLayout.Font.Height = -11
-        Appearance.BandLayout.Font.Name = 'Segoe UI'
-        Appearance.BandLayout.Font.Style = []
-        Appearance.FixedLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.FixedLayout.Font.Color = clWindowText
-        Appearance.FixedLayout.Font.Height = -11
-        Appearance.FixedLayout.Font.Name = 'Segoe UI'
-        Appearance.FixedLayout.Font.Style = []
-        Appearance.FixedSelectedLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.FixedSelectedLayout.Font.Color = clWindowText
-        Appearance.FixedSelectedLayout.Font.Height = -11
-        Appearance.FixedSelectedLayout.Font.Name = 'Segoe UI'
-        Appearance.FixedSelectedLayout.Font.Style = []
-        Appearance.FocusedLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.FocusedLayout.Font.Color = clWindowText
-        Appearance.FocusedLayout.Font.Height = -11
-        Appearance.FocusedLayout.Font.Name = 'Segoe UI'
-        Appearance.FocusedLayout.Font.Style = []
-        Appearance.GroupLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.GroupLayout.Font.Color = clWindowText
-        Appearance.GroupLayout.Font.Height = -11
-        Appearance.GroupLayout.Font.Name = 'Segoe UI'
-        Appearance.GroupLayout.Font.Style = []
-        Appearance.NormalLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.NormalLayout.Font.Color = clWindowText
-        Appearance.NormalLayout.Font.Height = -11
-        Appearance.NormalLayout.Font.Name = 'Segoe UI'
-        Appearance.NormalLayout.Font.Style = []
-        Appearance.SelectedLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.SelectedLayout.Font.Color = clWindowText
-        Appearance.SelectedLayout.Font.Height = -11
-        Appearance.SelectedLayout.Font.Name = 'Segoe UI'
-        Appearance.SelectedLayout.Font.Style = []
-        Appearance.SummaryLayout.Font.Charset = DEFAULT_CHARSET
-        Appearance.SummaryLayout.Font.Color = clWindowText
-        Appearance.SummaryLayout.Font.Height = -11
-        Appearance.SummaryLayout.Font.Name = 'Segoe UI'
-        Appearance.SummaryLayout.Font.Style = []
-        Header = 'Porcentagem'
         Width = 90.000000000000000000
       end
       item
@@ -533,8 +374,191 @@ object MainView: TMainView
         Appearance.SummaryLayout.Font.Height = -11
         Appearance.SummaryLayout.Font.Name = 'Segoe UI'
         Appearance.SummaryLayout.Font.Style = []
+        Header = 'Nome'
+        Width = 430.000000000000000000
+      end
+      item
+        Appearance.BandLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.BandLayout.Font.Color = clWindowText
+        Appearance.BandLayout.Font.Height = -11
+        Appearance.BandLayout.Font.Name = 'Segoe UI'
+        Appearance.BandLayout.Font.Style = []
+        Appearance.FixedLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.FixedLayout.Font.Color = clWindowText
+        Appearance.FixedLayout.Font.Height = -11
+        Appearance.FixedLayout.Font.Name = 'Segoe UI'
+        Appearance.FixedLayout.Font.Style = []
+        Appearance.FixedSelectedLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.FixedSelectedLayout.Font.Color = clWindowText
+        Appearance.FixedSelectedLayout.Font.Height = -11
+        Appearance.FixedSelectedLayout.Font.Name = 'Segoe UI'
+        Appearance.FixedSelectedLayout.Font.Style = []
+        Appearance.FocusedLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.FocusedLayout.Font.Color = clWindowText
+        Appearance.FocusedLayout.Font.Height = -11
+        Appearance.FocusedLayout.Font.Name = 'Segoe UI'
+        Appearance.FocusedLayout.Font.Style = []
+        Appearance.GroupLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.GroupLayout.Font.Color = clWindowText
+        Appearance.GroupLayout.Font.Height = -11
+        Appearance.GroupLayout.Font.Name = 'Segoe UI'
+        Appearance.GroupLayout.Font.Style = []
+        Appearance.NormalLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.NormalLayout.Font.Color = clWindowText
+        Appearance.NormalLayout.Font.Height = -11
+        Appearance.NormalLayout.Font.Name = 'Segoe UI'
+        Appearance.NormalLayout.Font.Style = []
+        Appearance.SelectedLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.SelectedLayout.Font.Color = clWindowText
+        Appearance.SelectedLayout.Font.Height = -11
+        Appearance.SelectedLayout.Font.Name = 'Segoe UI'
+        Appearance.SelectedLayout.Font.Style = []
+        Appearance.SummaryLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.SummaryLayout.Font.Color = clWindowText
+        Appearance.SummaryLayout.Font.Height = -11
+        Appearance.SummaryLayout.Font.Name = 'Segoe UI'
+        Appearance.SummaryLayout.Font.Style = []
+        Header = 'Profiss'#227'o'
+        Width = 300.000000000000000000
+      end
+      item
+        Appearance.BandLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.BandLayout.Font.Color = clWindowText
+        Appearance.BandLayout.Font.Height = -11
+        Appearance.BandLayout.Font.Name = 'Segoe UI'
+        Appearance.BandLayout.Font.Style = []
+        Appearance.FixedLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.FixedLayout.Font.Color = clWindowText
+        Appearance.FixedLayout.Font.Height = -11
+        Appearance.FixedLayout.Font.Name = 'Segoe UI'
+        Appearance.FixedLayout.Font.Style = []
+        Appearance.FixedSelectedLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.FixedSelectedLayout.Font.Color = clWindowText
+        Appearance.FixedSelectedLayout.Font.Height = -11
+        Appearance.FixedSelectedLayout.Font.Name = 'Segoe UI'
+        Appearance.FixedSelectedLayout.Font.Style = []
+        Appearance.FocusedLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.FocusedLayout.Font.Color = clWindowText
+        Appearance.FocusedLayout.Font.Height = -11
+        Appearance.FocusedLayout.Font.Name = 'Segoe UI'
+        Appearance.FocusedLayout.Font.Style = []
+        Appearance.GroupLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.GroupLayout.Font.Color = clWindowText
+        Appearance.GroupLayout.Font.Height = -11
+        Appearance.GroupLayout.Font.Name = 'Segoe UI'
+        Appearance.GroupLayout.Font.Style = []
+        Appearance.NormalLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.NormalLayout.Font.Color = clWindowText
+        Appearance.NormalLayout.Font.Height = -11
+        Appearance.NormalLayout.Font.Name = 'Segoe UI'
+        Appearance.NormalLayout.Font.Style = []
+        Appearance.SelectedLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.SelectedLayout.Font.Color = clWindowText
+        Appearance.SelectedLayout.Font.Height = -11
+        Appearance.SelectedLayout.Font.Name = 'Segoe UI'
+        Appearance.SelectedLayout.Font.Style = []
+        Appearance.SummaryLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.SummaryLayout.Font.Color = clWindowText
+        Appearance.SummaryLayout.Font.Height = -11
+        Appearance.SummaryLayout.Font.Name = 'Segoe UI'
+        Appearance.SummaryLayout.Font.Style = []
+        Formatting.Type = gdftFloat
+        Header = 'Limite'
+        Settings = [gcsFormatting]
+      end
+      item
+        Appearance.BandLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.BandLayout.Font.Color = clWindowText
+        Appearance.BandLayout.Font.Height = -11
+        Appearance.BandLayout.Font.Name = 'Segoe UI'
+        Appearance.BandLayout.Font.Style = []
+        Appearance.FixedLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.FixedLayout.Font.Color = clWindowText
+        Appearance.FixedLayout.Font.Height = -11
+        Appearance.FixedLayout.Font.Name = 'Segoe UI'
+        Appearance.FixedLayout.Font.Style = []
+        Appearance.FixedSelectedLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.FixedSelectedLayout.Font.Color = clWindowText
+        Appearance.FixedSelectedLayout.Font.Height = -11
+        Appearance.FixedSelectedLayout.Font.Name = 'Segoe UI'
+        Appearance.FixedSelectedLayout.Font.Style = []
+        Appearance.FocusedLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.FocusedLayout.Font.Color = clWindowText
+        Appearance.FocusedLayout.Font.Height = -11
+        Appearance.FocusedLayout.Font.Name = 'Segoe UI'
+        Appearance.FocusedLayout.Font.Style = []
+        Appearance.GroupLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.GroupLayout.Font.Color = clWindowText
+        Appearance.GroupLayout.Font.Height = -11
+        Appearance.GroupLayout.Font.Name = 'Segoe UI'
+        Appearance.GroupLayout.Font.Style = []
+        Appearance.NormalLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.NormalLayout.Font.Color = clWindowText
+        Appearance.NormalLayout.Font.Height = -11
+        Appearance.NormalLayout.Font.Name = 'Segoe UI'
+        Appearance.NormalLayout.Font.Style = []
+        Appearance.SelectedLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.SelectedLayout.Font.Color = clWindowText
+        Appearance.SelectedLayout.Font.Height = -11
+        Appearance.SelectedLayout.Font.Name = 'Segoe UI'
+        Appearance.SelectedLayout.Font.Style = []
+        Appearance.SummaryLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.SummaryLayout.Font.Color = clWindowText
+        Appearance.SummaryLayout.Font.Height = -11
+        Appearance.SummaryLayout.Font.Name = 'Segoe UI'
+        Appearance.SummaryLayout.Font.Style = []
+        Formatting.Type = gdftNumber
+        Header = 'Porcentagem'
+        Settings = [gcsType, gcsFormatting]
+        TypeRange = gcirNormal
+        Width = 110.000000000000000000
+      end
+      item
+        Type = gcitCheckBox
+        Appearance.BandLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.BandLayout.Font.Color = clWindowText
+        Appearance.BandLayout.Font.Height = -11
+        Appearance.BandLayout.Font.Name = 'Segoe UI'
+        Appearance.BandLayout.Font.Style = []
+        Appearance.FixedLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.FixedLayout.Font.Color = clWindowText
+        Appearance.FixedLayout.Font.Height = -11
+        Appearance.FixedLayout.Font.Name = 'Segoe UI'
+        Appearance.FixedLayout.Font.Style = []
+        Appearance.FixedSelectedLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.FixedSelectedLayout.Font.Color = clWindowText
+        Appearance.FixedSelectedLayout.Font.Height = -11
+        Appearance.FixedSelectedLayout.Font.Name = 'Segoe UI'
+        Appearance.FixedSelectedLayout.Font.Style = []
+        Appearance.FocusedLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.FocusedLayout.Font.Color = clWindowText
+        Appearance.FocusedLayout.Font.Height = -11
+        Appearance.FocusedLayout.Font.Name = 'Segoe UI'
+        Appearance.FocusedLayout.Font.Style = []
+        Appearance.GroupLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.GroupLayout.Font.Color = clWindowText
+        Appearance.GroupLayout.Font.Height = -11
+        Appearance.GroupLayout.Font.Name = 'Segoe UI'
+        Appearance.GroupLayout.Font.Style = []
+        Appearance.NormalLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.NormalLayout.Font.Color = clWindowText
+        Appearance.NormalLayout.Font.Height = -11
+        Appearance.NormalLayout.Font.Name = 'Segoe UI'
+        Appearance.NormalLayout.Font.Style = []
+        Appearance.SelectedLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.SelectedLayout.Font.Color = clWindowText
+        Appearance.SelectedLayout.Font.Height = -11
+        Appearance.SelectedLayout.Font.Name = 'Segoe UI'
+        Appearance.SelectedLayout.Font.Style = []
+        Appearance.SummaryLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.SummaryLayout.Font.Color = clWindowText
+        Appearance.SummaryLayout.Font.Height = -11
+        Appearance.SummaryLayout.Font.Name = 'Segoe UI'
+        Appearance.SummaryLayout.Font.Style = []
+        Formatting.Type = gdftBoolean
         Header = 'Ativo'
-        Width = 80.000000000000000000
+        Settings = [gcsType, gcsFormatting]
+        Width = 95.000000000000000000
       end>
     Designer = False
     FilterAppearance.Font.Charset = DEFAULT_CHARSET
@@ -795,8 +819,10 @@ object MainView: TMainView
     Options.Filtering.Advanced = False
     Options.Filtering.Enabled = True
     Options.Sorting.Enabled = True
+    Options.Editing.Enabled = False
+    Options.Selection.Mode = gsmSingleRow
     RowCount = 1
-    Stroke.Color = clDarkgray
+    Stroke.Color = 4273203
   end
   object TMSFNCDataGridDatabaseAdapter1: TTMSFNCDataGridDatabaseAdapter
     Left = 680
@@ -823,26 +849,35 @@ object MainView: TMainView
     Left = 360
     Top = 16
     object XDataWebDataSet1Id: TIntegerField
+      DisplayLabel = 'C'#243'digo'
       FieldName = 'Id'
     end
     object XDataWebDataSet1IdCidade: TIntegerField
+      DisplayLabel = 'C'#243'd. Cidade'
+      DisplayWidth = 15
       FieldName = 'IdCidade'
     end
     object XDataWebDataSet1Nome: TStringField
+      DisplayWidth = 55
       FieldName = 'Nome'
       Size = 50
     end
     object XDataWebDataSet1Profissao: TStringField
+      DisplayLabel = 'Profiss'#227'o'
+      DisplayWidth = 45
       FieldName = 'Profissao'
       Size = 50
     end
     object XDataWebDataSet1Limite: TFloatField
+      DefaultExpression = ',,0.00'
       FieldName = 'Limite'
     end
     object XDataWebDataSet1Porcentagem: TFloatField
+      DisplayWidth = 15
       FieldName = 'Porcentagem'
     end
     object XDataWebDataSet1Ativo: TBooleanField
+      DisplayWidth = 10
       FieldName = 'Ativo'
     end
   end
