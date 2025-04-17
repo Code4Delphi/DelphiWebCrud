@@ -20,7 +20,7 @@
 - Documentação oficial: [https://download.tmssoftware.com/doc/tmswebcore/](https://download.tmssoftware.com/doc/tmswebcore/)
 - Vídeo de demonstração: [Web Core: Delphi para Web | Instalação e primeiros passos](https://www.youtube.com/watch?v=n51xdFBRzX0&list=PLLHSz4dOnnN2Xlf7OX47cF20gbmz9-9z0&index=6)
 
-### TMS FNC UI Pack
+### FNC Data Grid - TMS FNC UI Pack
 - O TMS FNC Grid oferece uma grade totalmente multiplataforma, de alto desempenho, versátil e repleta de recursos
 - Onde baixar: [https://www.tmssoftware.com/site/tmsfncuipack-grid.asp](https://www.tmssoftware.com/site/tmsfncuipack-grid.asp)
 - Documentação oficial: [https://download.tmssoftware.com/doc/tmsfncuipack/components/ttmsfncgrid/](https://download.tmssoftware.com/doc/tmsfncuipack/components/ttmsfncgrid/)
@@ -43,6 +43,7 @@
 - [Delphi Web #12 - Criando formulário popup para cadastro de clientes com IA](https://www.youtube.com/watch?v=jwoQ6HuCf64&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=12)
 - [Delphi Web #13 -  Post e Put com dados do formulário popup](https://www.youtube.com/watch?v=CpeKncJJ1wo&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=13)
 - [Delphi Web #14 - Ajustes no template Bootstrap](https://www.youtube.com/watch?v=xoStVXAkKGc&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=14)
+- [Delphi Web #15 - FNC Data Grid - Exibindo dados](https://www.youtube.com/watch?v=lKvuE54d4X0&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=15)
 
 <br/>
 
