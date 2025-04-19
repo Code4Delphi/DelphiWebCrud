@@ -45,6 +45,7 @@
 - [Delphi Web #14 - Ajustes no template Bootstrap](https://www.youtube.com/watch?v=xoStVXAkKGc&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=14)
 - [Delphi Web #15 - FNC Data Grid - Exibindo dados](https://www.youtube.com/watch?v=lKvuE54d4X0&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=15)
 - [Delphi Web #16 - Desenvolvendo Web de forma RAD - Web Form Designer](https://www.youtube.com/watch?v=z5h350NwFso&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=16)
+  - [Repositório do projeto de demonstração do Web Form Designer](https://github.com/Code4Delphi/Web-Form-Designer)
 
 <br/>
 
