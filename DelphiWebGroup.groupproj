@@ -9,6 +9,9 @@
         <Projects Include="Server\Server.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="ServerAuth\ServerAuth.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -35,14 +38,23 @@
     <Target Name="Server:Make">
         <MSBuild Projects="Server\Server.dproj" Targets="Make"/>
     </Target>
+    <Target Name="ServerAuth">
+        <MSBuild Projects="ServerAuth\ServerAuth.dproj"/>
+    </Target>
+    <Target Name="ServerAuth:Clean">
+        <MSBuild Projects="ServerAuth\ServerAuth.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ServerAuth:Make">
+        <MSBuild Projects="ServerAuth\ServerAuth.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="ClientWeb;Server"/>
+        <CallTarget Targets="ClientWeb;Server;ServerAuth"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="ClientWeb:Clean;Server:Clean"/>
+        <CallTarget Targets="ClientWeb:Clean;Server:Clean;ServerAuth:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="ClientWeb:Make;Server:Make"/>
+        <CallTarget Targets="ClientWeb:Make;Server:Make;ServerAuth:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

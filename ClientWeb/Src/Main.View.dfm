@@ -196,6 +196,16 @@ object MainView: TMainView
     ParentFont = False
     TabOrder = 2
     Adapter = TMSFNCDataGridDatabaseAdapter1
+    CellAppearance.FilterMatchLayout.Font.Charset = DEFAULT_CHARSET
+    CellAppearance.FilterMatchLayout.Font.Color = clWindowText
+    CellAppearance.FilterMatchLayout.Font.Height = -12
+    CellAppearance.FilterMatchLayout.Font.Name = 'Segoe UI'
+    CellAppearance.FilterMatchLayout.Font.Style = []
+    CellAppearance.FilterInverseMatchLayout.Font.Charset = DEFAULT_CHARSET
+    CellAppearance.FilterInverseMatchLayout.Font.Color = clWindowText
+    CellAppearance.FilterInverseMatchLayout.Font.Height = -12
+    CellAppearance.FilterInverseMatchLayout.Font.Name = 'Segoe UI'
+    CellAppearance.FilterInverseMatchLayout.Font.Style = []
     CellAppearance.BandLayout.Font.Charset = DEFAULT_CHARSET
     CellAppearance.BandLayout.Font.Color = clWindowText
     CellAppearance.BandLayout.Font.Height = -11
@@ -247,6 +257,16 @@ object MainView: TMainView
     ColumnCount = 7
     Columns = <
       item
+        Appearance.FilterMatchLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.FilterMatchLayout.Font.Color = clWindowText
+        Appearance.FilterMatchLayout.Font.Height = -12
+        Appearance.FilterMatchLayout.Font.Name = 'Segoe UI'
+        Appearance.FilterMatchLayout.Font.Style = []
+        Appearance.FilterInverseMatchLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.FilterInverseMatchLayout.Font.Color = clWindowText
+        Appearance.FilterInverseMatchLayout.Font.Height = -12
+        Appearance.FilterInverseMatchLayout.Font.Name = 'Segoe UI'
+        Appearance.FilterInverseMatchLayout.Font.Style = []
         Appearance.BandLayout.Font.Charset = DEFAULT_CHARSET
         Appearance.BandLayout.Font.Color = clWindowText
         Appearance.BandLayout.Font.Height = -11
@@ -290,6 +310,16 @@ object MainView: TMainView
         Header = 'C'#243'digo'
       end
       item
+        Appearance.FilterMatchLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.FilterMatchLayout.Font.Color = clWindowText
+        Appearance.FilterMatchLayout.Font.Height = -12
+        Appearance.FilterMatchLayout.Font.Name = 'Segoe UI'
+        Appearance.FilterMatchLayout.Font.Style = []
+        Appearance.FilterInverseMatchLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.FilterInverseMatchLayout.Font.Color = clWindowText
+        Appearance.FilterInverseMatchLayout.Font.Height = -12
+        Appearance.FilterInverseMatchLayout.Font.Name = 'Segoe UI'
+        Appearance.FilterInverseMatchLayout.Font.Style = []
         Appearance.BandLayout.Font.Charset = DEFAULT_CHARSET
         Appearance.BandLayout.Font.Color = clWindowText
         Appearance.BandLayout.Font.Height = -11
@@ -334,6 +364,16 @@ object MainView: TMainView
         Width = 90.000000000000000000
       end
       item
+        Appearance.FilterMatchLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.FilterMatchLayout.Font.Color = clWindowText
+        Appearance.FilterMatchLayout.Font.Height = -12
+        Appearance.FilterMatchLayout.Font.Name = 'Segoe UI'
+        Appearance.FilterMatchLayout.Font.Style = []
+        Appearance.FilterInverseMatchLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.FilterInverseMatchLayout.Font.Color = clWindowText
+        Appearance.FilterInverseMatchLayout.Font.Height = -12
+        Appearance.FilterInverseMatchLayout.Font.Name = 'Segoe UI'
+        Appearance.FilterInverseMatchLayout.Font.Style = []
         Appearance.BandLayout.Font.Charset = DEFAULT_CHARSET
         Appearance.BandLayout.Font.Color = clWindowText
         Appearance.BandLayout.Font.Height = -11
@@ -378,6 +418,16 @@ object MainView: TMainView
         Width = 430.000000000000000000
       end
       item
+        Appearance.FilterMatchLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.FilterMatchLayout.Font.Color = clWindowText
+        Appearance.FilterMatchLayout.Font.Height = -12
+        Appearance.FilterMatchLayout.Font.Name = 'Segoe UI'
+        Appearance.FilterMatchLayout.Font.Style = []
+        Appearance.FilterInverseMatchLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.FilterInverseMatchLayout.Font.Color = clWindowText
+        Appearance.FilterInverseMatchLayout.Font.Height = -12
+        Appearance.FilterInverseMatchLayout.Font.Name = 'Segoe UI'
+        Appearance.FilterInverseMatchLayout.Font.Style = []
         Appearance.BandLayout.Font.Charset = DEFAULT_CHARSET
         Appearance.BandLayout.Font.Color = clWindowText
         Appearance.BandLayout.Font.Height = -11
@@ -422,6 +472,16 @@ object MainView: TMainView
         Width = 300.000000000000000000
       end
       item
+        Appearance.FilterMatchLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.FilterMatchLayout.Font.Color = clWindowText
+        Appearance.FilterMatchLayout.Font.Height = -12
+        Appearance.FilterMatchLayout.Font.Name = 'Segoe UI'
+        Appearance.FilterMatchLayout.Font.Style = []
+        Appearance.FilterInverseMatchLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.FilterInverseMatchLayout.Font.Color = clWindowText
+        Appearance.FilterInverseMatchLayout.Font.Height = -12
+        Appearance.FilterInverseMatchLayout.Font.Name = 'Segoe UI'
+        Appearance.FilterInverseMatchLayout.Font.Style = []
         Appearance.BandLayout.Font.Charset = DEFAULT_CHARSET
         Appearance.BandLayout.Font.Color = clWindowText
         Appearance.BandLayout.Font.Height = -11
@@ -467,6 +527,16 @@ object MainView: TMainView
         Settings = [gcsFormatting]
       end
       item
+        Appearance.FilterMatchLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.FilterMatchLayout.Font.Color = clWindowText
+        Appearance.FilterMatchLayout.Font.Height = -12
+        Appearance.FilterMatchLayout.Font.Name = 'Segoe UI'
+        Appearance.FilterMatchLayout.Font.Style = []
+        Appearance.FilterInverseMatchLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.FilterInverseMatchLayout.Font.Color = clWindowText
+        Appearance.FilterInverseMatchLayout.Font.Height = -12
+        Appearance.FilterInverseMatchLayout.Font.Name = 'Segoe UI'
+        Appearance.FilterInverseMatchLayout.Font.Style = []
         Appearance.BandLayout.Font.Charset = DEFAULT_CHARSET
         Appearance.BandLayout.Font.Color = clWindowText
         Appearance.BandLayout.Font.Height = -11
@@ -515,6 +585,16 @@ object MainView: TMainView
       end
       item
         Type = gcitCheckBox
+        Appearance.FilterMatchLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.FilterMatchLayout.Font.Color = clWindowText
+        Appearance.FilterMatchLayout.Font.Height = -12
+        Appearance.FilterMatchLayout.Font.Name = 'Segoe UI'
+        Appearance.FilterMatchLayout.Font.Style = []
+        Appearance.FilterInverseMatchLayout.Font.Charset = DEFAULT_CHARSET
+        Appearance.FilterInverseMatchLayout.Font.Color = clWindowText
+        Appearance.FilterInverseMatchLayout.Font.Height = -12
+        Appearance.FilterInverseMatchLayout.Font.Name = 'Segoe UI'
+        Appearance.FilterInverseMatchLayout.Font.Style = []
         Appearance.BandLayout.Font.Charset = DEFAULT_CHARSET
         Appearance.BandLayout.Font.Color = clWindowText
         Appearance.BandLayout.Font.Height = -11
@@ -561,6 +641,7 @@ object MainView: TMainView
         Width = 95.000000000000000000
       end>
     Designer = False
+    FilterActions = <>
     FilterAppearance.Font.Charset = DEFAULT_CHARSET
     FilterAppearance.Font.Color = clWindowText
     FilterAppearance.Font.Height = -11
