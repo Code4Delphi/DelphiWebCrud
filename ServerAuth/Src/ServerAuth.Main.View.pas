@@ -55,7 +55,7 @@ begin
   begin
     mmLog.Lines.Add('Servidor iniciado em:');
     mmLog.Lines.Add(Self.GetServerBaseUrl);
-    mmLog.Lines.Add(Self.GetServerBaseUrl + '/ClientesService/');
+    mmLog.Lines.Add(Self.GetServerBaseUrl + '/LoginService/');
   end
   else
     mmLog.Lines.Add('Servidor parado');
