@@ -3,8 +3,17 @@ unit ServerAuth.Main.View;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  ShellAPI,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.StdCtrls,
   ServerAuth.XData.DM;
 
 type
@@ -16,13 +25,11 @@ type
     procedure FormCreate(Sender: TObject);
     procedure btnStartClick(Sender: TObject);
     procedure btnStopClick(Sender: TObject);
+    procedure btnSwaggerDocumentacaoClick(Sender: TObject);
   private
     procedure AtualizarTela;
-    procedure btnSwaggerDocumentacaoClick(Sender: TObject);
     function GetServerBaseUrl: string;
-    { Private declarations }
   public
-    { Public declarations }
   end;
 
 var
@@ -75,8 +82,7 @@ end;
 
 procedure TServerAuthMainView.btnSwaggerDocumentacaoClick(Sender: TObject);
 begin
-  //ShellExecute(Handle, 'open', PChar(Self.GetServerBaseUrl + '/swaggerui'), nil, nil, SW_SHOWNORMAL);
+  ShellExecute(Handle, 'open', PChar(Self.GetServerBaseUrl + '/swaggerui'), nil, nil, SW_SHOWNORMAL);
 end;
-
 
 end.

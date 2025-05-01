@@ -61,4 +61,16 @@ object LoginView: TLoginView
     HeightPercent = 100.000000000000000000
     WidthPercent = 100.000000000000000000
   end
+  object XDataWebConnection1: TXDataWebConnection
+    URL = 'http://localhost:2001/tms/auth/'
+    Connected = True
+    Left = 72
+    Top = 16
+  end
+  object XDataWebClient1: TXDataWebClient
+    Connection = XDataWebConnection1
+    OnError = XDataWebClient1Error
+    Left = 216
+    Top = 16
+  end
 end

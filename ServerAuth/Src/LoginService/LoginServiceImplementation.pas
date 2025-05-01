@@ -40,7 +40,7 @@ begin
     JWT.Claims.SetClaimOfType<Boolean>('admin', True);
     JWT.Claims.SetClaimOfType<string>('teste', 'asdf');
 
-    Result := TJOSE.SHA256CompactToken('sua-chave-secreta', JWT);
+    Result := TJOSE.SHA256CompactToken('sua-chave-secreta-1234567890-12345', JWT);
   finally
     JWT.Free;
   end;
