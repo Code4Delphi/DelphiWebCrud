@@ -16,6 +16,7 @@ object XDataDM: TXDataDM
     object XDataServer1JWT: TSparkleJwtMiddleware
       ForbidAnonymousAccess = True
       OnGetSecretEx = XDataServer1JWTGetSecretEx
+      OnForbidRequest = XDataServer1JWTForbidRequest
     end
   end
   object SparkleHttpSysDispatcher1: TSparkleHttpSysDispatcher

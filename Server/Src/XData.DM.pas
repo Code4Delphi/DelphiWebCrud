@@ -23,6 +23,7 @@ type
     XDataServer1JWT: TSparkleJwtMiddleware;
     procedure XDataServer1JWTGetSecretEx(Sender: TObject; const JWT: TJWT; Context: THttpServerContext;
       var Secret: TBytes);
+    procedure XDataServer1JWTForbidRequest(Sender: TObject; Context: THttpServerContext; var Forbid: Boolean);
   private
 
   public
@@ -37,6 +38,12 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+procedure TXDataDM.XDataServer1JWTForbidRequest(Sender: TObject; Context: THttpServerContext; var Forbid: Boolean);
+begin
+  if Context.Request.Uri.AbsolutePath.Contains('swagger') then
+    Forbid := False;
+end;
 
 procedure TXDataDM.XDataServer1JWTGetSecretEx(Sender: TObject; const JWT: TJWT; Context: THttpServerContext;
   var Secret: TBytes);

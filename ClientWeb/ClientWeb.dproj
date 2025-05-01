@@ -123,6 +123,7 @@
             <FormType>dfm</FormType>
             <DesignClass>TWebForm</DesignClass>
         </DCCReference>
+        <DCCReference Include="Src\Configs.pas"/>
         <None Include="Index.html"/>
         <None Include="Index.css"/>
         <None Include="AdminLTE\dist\css\adminlte.css"/>

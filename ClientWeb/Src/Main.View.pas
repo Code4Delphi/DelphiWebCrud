@@ -35,7 +35,8 @@ uses
   VCL.TMSFNCCustomControl,
   VCL.TMSFNCDataGrid,
   VCL.TMSFNCCustomComponent,
-  VCL.TMSFNCDataGridDatabaseAdapter;
+  VCL.TMSFNCDataGridDatabaseAdapter,
+  Configs;
 
 type
   TMainView = class(TWebForm)
@@ -84,6 +85,8 @@ type
     [Async]
     procedure btnDeleteClick(Sender: TObject);
     procedure XDataWebClient1Error(Error: TXDataClientError);
+    procedure XDataWebConnection1Error(Error: TXDataWebConnectionError);
+    procedure XDataWebConnection1Request(Args: TXDataWebConnectionRequest);
   private
     function GetClientePreenchido(const AView: TClientesCadastrarView): TJSObject;
   public
@@ -140,6 +143,16 @@ begin
     'RequestId: ' + Error.RequestId + sLineBreak +
     'ErrorCode: ' + Error.ErrorCode + sLineBreak +
     'ErrorMessage: ' + Error.ErrorMessage);
+end;
+
+procedure TMainView.XDataWebConnection1Error(Error: TXDataWebConnectionError);
+begin
+  ShowMessage('StatusCode: ' + Error.ErrorMessage);
+end;
+
+procedure TMainView.XDataWebConnection1Request(Args: TXDataWebConnectionRequest);
+begin
+  Args.Request.Headers.SetValue('Authorization', 'Bearer ' + Configs_Token);
 end;
 
 procedure TMainView.btnGetNomeClick(Sender: TObject);

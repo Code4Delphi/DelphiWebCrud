@@ -5,7 +5,6 @@ interface
 uses
   System.SysUtils,
   System.Classes,
-  JS,
   Web,
   WEBLib.Graphics,
   WEBLib.Controls,
@@ -13,8 +12,7 @@ uses
   WEBLib.Dialogs,
   Vcl.Controls,
   Vcl.StdCtrls,
-  WEBLib.StdCtrls,
-  Main.View, XData.Web.Client, XData.Web.Connection;
+  WEBLib.StdCtrls, Main.View, XData.Web.Client, XData.Web.Connection, JS, Configs;
 
 type
   TLoginView = class(TWebForm)
@@ -23,8 +21,10 @@ type
     edtSenha: TWebEdit;
     btnEntrar: TWebButton;
     ckLembrarMe: TWebCheckBox;
+    [Async]
     XDataWebConnection1: TXDataWebConnection;
     XDataWebClient1: TXDataWebClient;
+    [Async]
     procedure btnEntrarClick(Sender: TObject);
     procedure WebFormShow(Sender: TObject);
     procedure edtLoginKeyPress(Sender: TObject; var Key: Char);
@@ -97,6 +97,16 @@ begin
     edtLogin.SetFocus;
     Exit;
   end;
+
+  Configs_Token := string(TJSObject(LResponse.Result)['value']);
+  if Configs_Token.Trim.IsEmpty then
+  begin
+    ShowMessage('Token não pode ser recuperado');
+    edtLogin.SetFocus;
+    Exit;
+  end;
+
+  ShowMessage('Token: ' + Configs_Token);
 
   MainView := TMainView.CreateNew;
   MainView.ShowModal;

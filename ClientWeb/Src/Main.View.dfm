@@ -175,7 +175,6 @@ object MainView: TMainView
       HeightPercent = 100.000000000000000000
       WidthPercent = 100.000000000000000000
       OnClick = btnDeleteClick
-      ExplicitLeft = 729
     end
   end
   object TMSFNCDataGrid1: TTMSFNCDataGrid
@@ -917,6 +916,8 @@ object MainView: TMainView
   end
   object XDataWebConnection1: TXDataWebConnection
     URL = 'http://localhost:8000/tms/xdata'
+    OnError = XDataWebConnection1Error
+    OnRequest = XDataWebConnection1Request
     Left = 96
     Top = 16
   end

@@ -13,5 +13,9 @@ object ServerAuthXDataDM: TServerAuthXDataDM
     SwaggerUIOptions.Enabled = True
     Left = 136
     Top = 144
+    object XDataServer1CORS: TSparkleCorsMiddleware
+    end
+    object XDataServer1Compress: TSparkleCompressMiddleware
+    end
   end
 end
