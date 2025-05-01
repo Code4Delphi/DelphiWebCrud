@@ -21,9 +21,20 @@ uses
   XData.Web.Connection,
   WEBLib.DB,
   JS,
-  Clientes.Cadastrar.View, VCL.TMSFNCTypes, VCL.TMSFNCUtils, VCL.TMSFNCGraphics, VCL.TMSFNCGraphicsTypes, System.Rtti,
-  VCL.TMSFNCDataGridCell, VCL.TMSFNCDataGridData, VCL.TMSFNCDataGridBase, VCL.TMSFNCDataGridCore,
-  VCL.TMSFNCDataGridRenderer, VCL.TMSFNCCustomControl, VCL.TMSFNCDataGrid, VCL.TMSFNCCustomComponent,
+  Clientes.Cadastrar.View,
+  VCL.TMSFNCTypes,
+  VCL.TMSFNCUtils,
+  VCL.TMSFNCGraphics,
+  VCL.TMSFNCGraphicsTypes,
+  System.Rtti,
+  VCL.TMSFNCDataGridCell,
+  VCL.TMSFNCDataGridData,
+  VCL.TMSFNCDataGridBase,
+  VCL.TMSFNCDataGridCore,
+  VCL.TMSFNCDataGridRenderer,
+  VCL.TMSFNCCustomControl,
+  VCL.TMSFNCDataGrid,
+  VCL.TMSFNCCustomComponent,
   VCL.TMSFNCDataGridDatabaseAdapter;
 
 type
@@ -142,6 +153,9 @@ begin
     Exit;
   end;
 
+  if not XDataWebConnection1.Connected then
+    XDataWebConnection1.Open;
+
   LResponse := TAwait.Exec<TXDataClientResponse>(
     XDataWebClient1.RawInvokeAsync('IClientesService.GetNome', [StrToIntDef(edtCodigo.Text, 0)]));
 
@@ -158,6 +172,9 @@ begin
     edtCodigo.SetFocus;
     Exit;
   end;
+
+  if not XDataWebConnection1.Connected then
+    XDataWebConnection1.Open;
 
   LResponse := TAwait.Exec<TXDataClientResponse>(
     XDataWebClient1.RawInvokeAsync('IClientesService.Get', [StrToIntDef(edtCodigo.Text, 0)]));
@@ -180,6 +197,9 @@ procedure TMainView.btnListarClick(Sender: TObject);
 var
   LResponse: TXDataClientResponse;
 begin
+  if not XDataWebConnection1.Connected then
+    XDataWebConnection1.Open;
+
   LResponse := TAwait.Exec<TXDataClientResponse>(
     XDataWebClient1.RawInvokeAsync('IClientesService.List', []));
 
@@ -200,6 +220,9 @@ procedure TMainView.btnDeleteClick(Sender: TObject);
 var
   LResponse: TXDataClientResponse;
 begin
+  if not XDataWebConnection1.Connected then
+    XDataWebConnection1.Open;
+
   if await(TModalResult, MessageDlgAsync('Confirma realmente deletar o registro?', mtConfirmation, [mbYes, mbNo])) <> mrYes then
     Exit;
 

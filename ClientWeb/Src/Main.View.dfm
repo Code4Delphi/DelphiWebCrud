@@ -175,6 +175,7 @@ object MainView: TMainView
       HeightPercent = 100.000000000000000000
       WidthPercent = 100.000000000000000000
       OnClick = btnDeleteClick
+      ExplicitLeft = 729
     end
   end
   object TMSFNCDataGrid1: TTMSFNCDataGrid
