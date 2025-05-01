@@ -13,6 +13,10 @@ object XDataDM: TXDataDM
     end
     object XDataServer1Compress: TSparkleCompressMiddleware
     end
+    object XDataServer1JWT: TSparkleJwtMiddleware
+      ForbidAnonymousAccess = True
+      OnGetSecretEx = XDataServer1JWTGetSecretEx
+    end
   end
   object SparkleHttpSysDispatcher1: TSparkleHttpSysDispatcher
     Left = 128

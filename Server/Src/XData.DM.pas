@@ -12,7 +12,7 @@ uses
   Sparkle.Comp.HttpSysDispatcher,
   XData.Comp.Server,
   Sparkle.Comp.CompressMiddleware,
-  Sparkle.Comp.CorsMiddleware;
+  Sparkle.Comp.CorsMiddleware, Sparkle.Comp.JwtMiddleware;
 
 type
   TXDataDM = class(TDataModule)
@@ -20,6 +20,9 @@ type
     SparkleHttpSysDispatcher1: TSparkleHttpSysDispatcher;
     XDataServer1CORS: TSparkleCorsMiddleware;
     XDataServer1Compress: TSparkleCompressMiddleware;
+    XDataServer1JWT: TSparkleJwtMiddleware;
+    procedure XDataServer1JWTGetSecretEx(Sender: TObject; const JWT: TJWT; Context: THttpServerContext;
+      var Secret: TBytes);
   private
 
   public
@@ -34,5 +37,11 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+procedure TXDataDM.XDataServer1JWTGetSecretEx(Sender: TObject; const JWT: TJWT; Context: THttpServerContext;
+  var Secret: TBytes);
+begin
+  Secret := TEncoding.UTF8.GetBytes('sua-chave-secreta-1234567890-12345');
+end;
 
 end.
