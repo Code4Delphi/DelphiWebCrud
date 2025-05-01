@@ -48,6 +48,7 @@
   - [Repositório do projeto de demonstração do Web Form Designer](https://github.com/Code4Delphi/Web-Form-Designer)
  - [Delphi Web #17 - O que é e como usar JWT no Delphi](https://www.youtube.com/watch?v=uYTB_q-C0MY&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=17)
    - [Postagem no blog com tudo que você precisa saber sobre JWT no Delphi](https://code4delphi.com.br/blog/jwt-no-delphi-o-que-e-e-como-utilizar/)
+ - [Delphi Web #18 - O que é e como usar JWT no Delphi - Middleware JWT](https://www.youtube.com/watch?v=uYTB_q-C0MY&list=PLLHSz4dOnnN39OimL44gj6CthKx54MNlY&index=18)
 
 <br/>
 
