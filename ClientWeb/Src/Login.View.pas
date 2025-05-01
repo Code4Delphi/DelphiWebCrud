@@ -14,7 +14,7 @@ uses
   Vcl.Controls,
   Vcl.StdCtrls,
   WEBLib.StdCtrls,
-  Main.View;
+  Main.View, XData.Web.Client, XData.Web.Connection;
 
 type
   TLoginView = class(TWebForm)
@@ -23,11 +23,14 @@ type
     edtSenha: TWebEdit;
     btnEntrar: TWebButton;
     ckLembrarMe: TWebCheckBox;
+    XDataWebConnection1: TXDataWebConnection;
+    XDataWebClient1: TXDataWebClient;
     procedure btnEntrarClick(Sender: TObject);
     procedure WebFormShow(Sender: TObject);
     procedure edtLoginKeyPress(Sender: TObject; var Key: Char);
     procedure edtSenhaKeyPress(Sender: TObject; var Key: Char);
     procedure WebFormCreate(Sender: TObject);
+    procedure XDataWebClient1Error(Error: TXDataClientError);
   private
 
   public
@@ -52,6 +55,16 @@ begin
   edtLogin.SetFocus;
 end;
 
+procedure TLoginView.XDataWebClient1Error(Error: TXDataClientError);
+begin
+  ShowMessage(
+    'StatusCode: ' + Error.StatusCode.ToString + sLineBreak +
+    'RequestUrl: ' + Error.RequestUrl + sLineBreak +
+    'RequestId: ' + Error.RequestId + sLineBreak +
+    'ErrorCode: ' + Error.ErrorCode + sLineBreak +
+    'ErrorMessage: ' + Error.ErrorMessage);
+end;
+
 procedure TLoginView.edtLoginKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
@@ -65,18 +78,23 @@ begin
 end;
 
 procedure TLoginView.btnEntrarClick(Sender: TObject);
+var
+  LResponse: TXDataClientResponse;
 begin
-  if edtLogin.Text <> 'admin' then
+  if Trim(edtLogin.Text).IsEmpty or Trim(edtSenha.Text).IsEmpty then
   begin
-    ShowMessage('Login inválido');
+    ShowMessage('Login e senha devem ser informados');
     edtLogin.SetFocus;
     Exit;
   end;
 
-  if edtSenha.Text <> 'admin' then
+  LResponse := TAwait.Exec<TXDataClientResponse>(
+    XDataWebClient1.RawInvokeAsync('ILoginService.Login', [edtLogin.Text, edtSenha.Text]));
+
+  if LResponse.StatusCode <>  200 then
   begin
-    ShowMessage('Senha inválido');
-    edtSenha.SetFocus;
+    ShowMessage('Login ou senha informados são inválidos');
+    edtLogin.SetFocus;
     Exit;
   end;
 
